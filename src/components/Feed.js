@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
-import Colors from '../style/Colors';
+import Colors from '../../style/Colors';
 
 const Feed = () => {
   return (
