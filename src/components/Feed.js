@@ -9,6 +9,10 @@ const Feed = () => {
       style={styles.scrollView}>
       <ScrollView>
         <View style={styles.body}>
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionTitle}>Pick Up</Text>
+            <Text>Nearby area</Text>
+          </View>
           <Text style={styles.sectionTitle}>Feed</Text>
         </View>
       </ScrollView>
@@ -24,11 +28,12 @@ const styles = StyleSheet.create({
     right: 0,
   },
   body: {
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.dark,
   },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
+    backgroundColor: Colors.white,
   },
   sectionTitle: {
     fontSize: 24,

@@ -47,7 +47,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: Settings,
       navigationOptions: {
         tabBarIcon: ({tintColor}) => (
-          <Icon name="settings" size={25} color={tintColor} outlineadd="red" />
+          <Icon name="settings" size={25} color={tintColor} />
         ),
       },
     },
@@ -55,8 +55,19 @@ const TabNavigator = createBottomTabNavigator(
   {
     initialRouteName: 'Home',
     tabBarOptions: {
-      style: {backgroundColor: '#fff', height: 60, padding: 0, margin: 0},
+      style: {
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 64,
+        borderTopColor: 'transparent',
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
+        shadowColor: '#000',
+        shadowOffset: {height: 1, width: 0},
+      },
       activeTintColor: '#FF385A',
+      inactiveTintColor: '#000',
     },
   },
 );

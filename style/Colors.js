@@ -4,7 +4,7 @@ const Colors = {
 
   black: '#000',
 
-  dark: '#0505',
+  dark: '#050505',
 
   primary: '#000',
 
