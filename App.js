@@ -1,14 +1,13 @@
 import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import Feed from './src/components/Feed';
-import Search from './src/components/Search';
-import Maps from './src/components/Maps';
-import Message from './src/components/Message';
-import Settings from './src/components/Settings';
+import Feed from './src/components/layouts/Feed';
+import Search from './src/components/layouts/Search';
+import Locate from './src/components/layouts/Maps';
+import Message from './src/components/layouts/Message';
+import Settings from './src/components/layouts/Settings';
 import Icon from 'react-native-vector-icons/Feather';
 Icon.loadFont();
-
 const TabNavigator = createBottomTabNavigator(
   {
     Home: {
@@ -27,8 +26,8 @@ const TabNavigator = createBottomTabNavigator(
         ),
       },
     },
-    Maps: {
-      screen: Maps,
+    Locate: {
+      screen: Locate,
       navigationOptions: {
         tabBarIcon: ({tintColor}) => (
           <Icon name="map-pin" size={25} color={tintColor} />
@@ -56,6 +55,7 @@ const TabNavigator = createBottomTabNavigator(
     initialRouteName: 'Home',
     tabBarOptions: {
       style: {
+        showLabel: false,
         backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
@@ -68,6 +68,7 @@ const TabNavigator = createBottomTabNavigator(
       },
       activeTintColor: '#FF385A',
       inactiveTintColor: '#000',
+      showLabel: false,
     },
   },
 );
