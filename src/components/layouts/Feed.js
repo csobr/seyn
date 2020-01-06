@@ -19,17 +19,17 @@ const users = [
     transport: 'car',
   },
   {
-    name: 'Jay Myles',
+    name: 'Yasin Ali',
     email: 'myles@gmail.com',
-    title: 'Im later going to Whole foods',
-    photo: 'https://images.unsplash.com/photo-1518882570151-157128e78fa1?',
+    title: ' Whole foods next..',
+    photo: 'https://images.unsplash.com/photo-1518882570151-157128e78fa1',
     transport: 'bike',
   },
   {
     name: 'Amber Williams',
     email: 'amber@gmail.com',
     title: 'Heading to Target',
-    photo: 'https://source.unsplash.com/user/auttgood/',
+    photo: 'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb',
     transport: 'car',
   },
   {
@@ -40,7 +40,7 @@ const users = [
     transport: 'bus',
   },
   {
-    name: 'Ali Mohammed',
+    name: 'Khela Somti',
     email: 'mohammed@gmail.com',
     title: 'Going to the beach',
     photo: 'https://images.unsplash.com/photo-1578220390767-b706eac7c36b',
@@ -50,7 +50,7 @@ const users = [
     name: 'Sang Wang',
     email: 'wang@gmail.com',
     title: 'Heading to In and out',
-    photo: 'https://images.unsplash.com/photo-1487309078313-fad80c3ec1e5?',
+    photo: 'https://images.unsplash.com/photo-1487309078313-fad80c3ec1e5',
     transport: 'car',
   },
   {
@@ -95,6 +95,15 @@ const Feed = () => {
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
           <Text style={styles.secondTitle}>Nearby area</Text>
+          {users.map(u => {
+            return (
+              <Image
+                source={{uri: u.photo}}
+                key={u.name}
+                style={styles.profile}
+              />
+            );
+          })}
         </View>
         <View style={{marginTop: 25}}>
           <Text style={styles.itemTitle}>Today</Text>
@@ -158,8 +167,8 @@ const styles = StyleSheet.create({
     shadowOffset: {height: 1, width: 1},
   },
   profile: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     borderRadius: 50,
     backgroundColor: 'black',
     right: 15,
