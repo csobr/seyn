@@ -9,48 +9,56 @@ import {
   Image,
 } from 'react-native';
 import Colors from '../../constants/Colors';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const users = [
   {
     name: 'Amina Aden',
     email: 'aden@gmail.com',
     title: 'Heading to In and out',
     photo: 'https://images.unsplash.com/photo-1573748348952-91cc89c83979',
+    transport: 'car',
   },
   {
     name: 'Jay Myles',
     email: 'myles@gmail.com',
     title: 'Im later going to Whole foods',
     photo: 'https://images.unsplash.com/photo-1518882570151-157128e78fa1?',
+    transport: 'bike',
   },
   {
     name: 'Amber Williams',
     email: 'amber@gmail.com',
     title: 'Heading to Target',
     photo: 'https://source.unsplash.com/user/auttgood/',
+    transport: 'car',
   },
   {
     name: 'Ida Niskanen',
     email: 'iida.niskanen@gmail.com',
     title: 'Going out to Ikea',
-    photo: 'https://source.unsplash.com/user/samburriss/',
+    photo: 'https://images.unsplash.com/photo-1499155286265-79a9dc9c6380',
+    transport: 'bus',
   },
   {
     name: 'Ali Mohammed',
     email: 'mohammed@gmail.com',
     title: 'Going to the beach',
     photo: 'https://images.unsplash.com/photo-1578220390767-b706eac7c36b',
+    transport: 'walk',
   },
   {
     name: 'Sang Wang',
     email: 'wang@gmail.com',
     title: 'Heading to In and out',
     photo: 'https://images.unsplash.com/photo-1487309078313-fad80c3ec1e5?',
+    transport: 'car',
   },
   {
     name: 'Annie Lim',
     email: 'lim@gmail.com',
     title: 'Off to San fran',
     photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
+    transport: 'car',
   },
 ];
 
@@ -62,6 +70,20 @@ function Item({item}) {
         <Text style={styles.userName}>{item.name}</Text>
         <Text style={styles.userTitle}>{item.title}</Text>
       </View>
+      <TouchableOpacity
+        style={{
+          right: 10,
+          position: 'absolute',
+          justifyContent: 'center',
+        }}>
+        <Icon
+          name="message-outline"
+          size={25}
+          color="black"
+          style={{paddingBottom: 20}}
+        />
+        <Icon name={item.transport} size={25} color="black" />
+      </TouchableOpacity>
     </View>
   );
 }
