@@ -11,75 +11,75 @@ import {
 import Colors from '../../constants/Colors';
 const users = [
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    name: 'Floyd Warren',
-    title: 'Going to IKEA on Friday',
-    avatar_url:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    name: 'Amina Aden',
+    email: 'aden@gmail.com',
+    title: 'Heading to In and out',
+    photo: 'https://images.unsplash.com/photo-1573748348952-91cc89c83979',
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    name: 'Calvin Flores',
-    title: 'Going to IKEA on Friday',
-    avatar_url:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    name: 'Jay Myles',
+    email: 'myles@gmail.com',
+    title: 'Im later going to Whole foods',
+    photo: 'https://images.unsplash.com/photo-1518882570151-157128e78fa1?',
   },
   {
-    id: '58694a0f-3da1-471f-bd96-14557m1e29d72',
-    name: 'Lily Jones',
-    title: 'Going to IKEA on Friday',
-    avatar_url:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    name: 'Amber Williams',
+    email: 'amber@gmail.com',
+    title: 'Heading to Target',
+    photo: 'https://source.unsplash.com/user/auttgood/',
+  },
+  {
+    name: 'Ida Niskanen',
+    email: 'iida.niskanen@gmail.com',
+    title: 'Going out to Ikea',
+    photo: 'https://source.unsplash.com/user/samburriss/',
+  },
+  {
+    name: 'Ali Mohammed',
+    email: 'mohammed@gmail.com',
+    title: 'Going to the beach',
+    photo: 'https://images.unsplash.com/photo-1578220390767-b706eac7c36b',
+  },
+  {
+    name: 'Sang Wang',
+    email: 'wang@gmail.com',
+    title: 'Heading to In and out',
+    photo: 'https://images.unsplash.com/photo-1487309078313-fad80c3ec1e5?',
+  },
+  {
+    name: 'Annie Lim',
+    email: 'lim@gmail.com',
+    title: 'Off to San fran',
+    photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
   },
 ];
-function Item({id, name, image, title, selected, onSelect}) {
+
+function Item({item}) {
   return (
-    <TouchableOpacity
-      onPress={() => onSelect(id)}
-      style={[styles.item, {backgroundColor: selected ? '#6e3b6e' : '#fff'}]}>
-      <Text style={styles.title}>{name}</Text>
-      <Text style={styles.title}>{title}</Text>
-      <Image style={styles.imageList} source={image} />
-    </TouchableOpacity>
+    <View style={styles.item}>
+      <Image source={{uri: item.photo}} style={styles.userImage} />
+      <View style={{paddingLeft: 70}}>
+        <Text style={styles.userName}>{item.name}</Text>
+        <Text style={styles.userTitle}>{item.title}</Text>
+      </View>
+    </View>
   );
 }
+
 const Feed = () => {
-  const [selected, setSelected] = React.useState(new Map());
-
-  const onSelect = React.useCallback(
-    id => {
-      const newSelected = new Map(selected);
-      newSelected.set(id, !selected.get(id));
-
-      setSelected(newSelected);
-    },
-    [selected],
-  );
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.body}>
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
           <Text style={styles.secondTitle}>Nearby area</Text>
-          <Image style={styles.profile} />
         </View>
         <View style={{marginTop: 25}}>
           <Text style={styles.itemTitle}>Today</Text>
           <FlatList
             data={users}
-            renderItem={({item}) => (
-              <Item
-                id={item.id}
-                name={item.name}
-                title={item.title}
-                image={{source: item.avatar_url && {uri: item.avatar_url}}}
-                subtitle={item.subtitle}
-                selected={!!selected.get(item.id)}
-                onSelect={onSelect}
-              />
-            )}
-            keyExtractor={item => item.id}
-            extraData={selected}
+            renderItem={({item}) => <Item item={item} />}
+            keyExtractor={item => item.name}
           />
         </View>
       </View>
@@ -90,10 +90,6 @@ const Feed = () => {
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: Colors.white,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
   },
   body: {
     backgroundColor: Colors.white,
@@ -125,6 +121,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   item: {
+    flex: 1,
+    justifyContent: 'center',
     fontSize: 12,
     height: 80,
     marginVertical: 8,
@@ -145,22 +143,22 @@ const styles = StyleSheet.create({
     right: 15,
     position: 'absolute',
   },
-  imageList: {
-    width: 40,
-    height: 40,
+  userImage: {
+    width: 50,
+    height: 50,
     borderRadius: 50,
     backgroundColor: 'pink',
     position: 'absolute',
     margin: 10,
-    alignItems: 'center',
   },
-  title: {
+  userName: {
     fontSize: 14,
     color: Colors.black,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingLeft: 50,
-    alignSelf: 'center',
+    fontWeight: '700',
+  },
+  userTitle: {
+    fontSize: 12,
+    color: Colors.black,
   },
   message: {
     fontSize: 12,
