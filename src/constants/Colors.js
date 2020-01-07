@@ -6,8 +6,8 @@ const Colors = {
 
   dark: '#050505',
 
-  primary: '#000',
+  primary: '#FF385A',
 
-  secondary: '#000',
+  secondary: '#38FFDD',
 };
 export default Colors;

@@ -1,17 +1,13 @@
 import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import Feed from './src/components/layouts/Feed';
-import Search from './src/components/layouts/Search';
-import Locate from './src/components/layouts/Maps';
-import Message from './src/components/layouts/Message';
-import Settings from './src/components/layouts/Settings';
+import {Home, Message, Search, Maps, Settings} from './src/components/screens';
 import Icon from 'react-native-vector-icons/Feather';
 Icon.loadFont();
 const TabNavigator = createBottomTabNavigator(
   {
     Home: {
-      screen: Feed,
+      screen: Home,
       navigationOptions: {
         tabBarIcon: ({tintColor}) => (
           <Icon name="home" size={25} color={tintColor} />
@@ -27,7 +23,7 @@ const TabNavigator = createBottomTabNavigator(
       },
     },
     Locate: {
-      screen: Locate,
+      screen: Maps,
       navigationOptions: {
         tabBarIcon: ({tintColor}) => (
           <Icon name="map-pin" size={25} color={tintColor} />

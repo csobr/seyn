@@ -12,6 +12,7 @@ import Colors from '../../constants/Colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const users = [
   {
+    id: '1',
     name: 'Amina Aden',
     email: 'aden@gmail.com',
     title: 'Heading to In and out',
@@ -19,6 +20,7 @@ const users = [
     transport: 'car',
   },
   {
+    id: '2',
     name: 'Yasin Ali',
     email: 'myles@gmail.com',
     title: ' Whole foods next..',
@@ -26,6 +28,7 @@ const users = [
     transport: 'bike',
   },
   {
+    id: '3',
     name: 'Amber Williams',
     email: 'amber@gmail.com',
     title: 'Heading to Target',
@@ -33,6 +36,7 @@ const users = [
     transport: 'car',
   },
   {
+    id: '4',
     name: 'Ida Niskanen',
     email: 'iida.niskanen@gmail.com',
     title: 'Going out to Ikea',
@@ -40,6 +44,7 @@ const users = [
     transport: 'bus',
   },
   {
+    id: '5',
     name: 'Khela Somti',
     email: 'mohammed@gmail.com',
     title: 'Going to the beach',
@@ -47,6 +52,7 @@ const users = [
     transport: 'walk',
   },
   {
+    id: '6',
     name: 'Sang Wang',
     email: 'wang@gmail.com',
     title: 'Heading to In and out',
@@ -54,6 +60,7 @@ const users = [
     transport: 'car',
   },
   {
+    id: '7',
     name: 'Annie Lim',
     email: 'lim@gmail.com',
     title: 'Off to San fran',
@@ -73,8 +80,8 @@ function Item({item}) {
       <TouchableOpacity
         style={{
           right: 10,
+          top: 4,
           position: 'absolute',
-          justifyContent: 'center',
         }}>
         <Icon
           name="message-outline"
@@ -82,8 +89,17 @@ function Item({item}) {
           color="black"
           style={{paddingBottom: 20}}
         />
-        <Icon name={item.transport} size={25} color="black" />
       </TouchableOpacity>
+      <Icon
+        name={item.transport}
+        size={25}
+        color="black"
+        style={{
+          right: 10,
+          bottom: 2,
+          position: 'absolute',
+        }}
+      />
     </View>
   );
 }
@@ -170,7 +186,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 50,
-    backgroundColor: 'black',
+    backgroundColor: Colors.primary,
     right: 15,
     position: 'absolute',
   },
@@ -178,7 +194,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 50,
-    backgroundColor: 'pink',
+    backgroundColor: Colors.primary,
     position: 'absolute',
     margin: 10,
   },
