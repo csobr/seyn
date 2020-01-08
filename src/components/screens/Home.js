@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
+  Button,
 } from 'react-native';
 import Colors from '../../constants/Colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -113,11 +114,15 @@ const Feed = () => {
           <Text style={styles.secondTitle}>Nearby area</Text>
           {users.map(u => {
             return (
-              <Image
-                source={{uri: u.photo}}
-                key={u.name}
-                style={styles.profile}
-              />
+              <TouchableOpacity
+                onPress={() => alert('Helo')}
+                style={{position: 'absolute', right: 15}}>
+                <Image
+                  source={{uri: u.photo}}
+                  key={u.id}
+                  style={styles.profile}
+                />
+              </TouchableOpacity>
             );
           })}
         </View>
@@ -140,6 +145,7 @@ const styles = StyleSheet.create({
   },
   body: {
     backgroundColor: Colors.white,
+    fontFamily: 'HelveticaNeue',
   },
   header: {
     marginTop: 30,
@@ -187,8 +193,6 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     backgroundColor: Colors.primary,
-    right: 15,
-    position: 'absolute',
   },
   userImage: {
     width: 50,
