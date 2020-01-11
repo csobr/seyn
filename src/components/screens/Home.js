@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
-  Button,
 } from 'react-native';
 import Colors from '../../constants/Colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 const users = [
   {
     id: '1',
@@ -104,40 +104,41 @@ function Item({item}) {
     </View>
   );
 }
-
-const Feed = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.body}>
-        <View style={styles.header}>
-          <Text style={styles.sectionTitle}>Pick up</Text>
-          <Text style={styles.secondTitle}>Nearby area</Text>
-          {users.map(u => {
-            return (
-              <TouchableOpacity
-                onPress={() => alert('Helo')}
-                style={{position: 'absolute', right: 15}}>
-                <Image
-                  source={{uri: u.photo}}
-                  key={u.id}
-                  style={styles.profile}
-                />
-              </TouchableOpacity>
-            );
-          })}
+export default class Home extends React.Component {
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.body}>
+          <View style={styles.header}>
+            <Text style={styles.sectionTitle}>Pick up</Text>
+            <Text style={styles.secondTitle}>Nearby area</Text>
+            {users.map(u => {
+              return (
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('Profile')}
+                  style={{position: 'absolute', right: 15}}>
+                  <Image
+                    source={{uri: u.photo}}
+                    key={u.id}
+                    style={styles.profile}
+                  />
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+          <View style={{marginTop: 25}}>
+            <Text style={styles.itemTitle}>Today</Text>
+            <FlatList
+              data={users}
+              renderItem={({item}) => <Item item={item} />}
+              keyExtractor={item => item.name}
+            />
+          </View>
         </View>
-        <View style={{marginTop: 25}}>
-          <Text style={styles.itemTitle}>Today</Text>
-          <FlatList
-            data={users}
-            renderItem={({item}) => <Item item={item} />}
-            keyExtractor={item => item.name}
-          />
-        </View>
-      </View>
-    </SafeAreaView>
-  );
-};
+      </SafeAreaView>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -219,5 +220,3 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
-
-export default Feed;
