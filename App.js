@@ -35,24 +35,8 @@ function getHeaderTitle(route) {
 }
 const HomeTabNavigator = () => (
   <Tab.Navigator
-    tabBarOptions={{
-      style: {
-        backgroundColor: Colors.white,
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 80,
-        borderTopColor: 'transparent',
-        shadowOpacity: 0.25,
-        shadowRadius: 3,
-        shadowColor: '#000',
-        shadowOffset: {height: 1, width: 0},
-      },
-      activeTintColor: Colors.primary,
-      inactiveTintColor: Colors.ligher,
-      showLabel: false,
-    }}
     screenOptions={({route}) => ({
-      tabBarIcon: ({size}) => {
+      tabBarIcon: ({focused, tintColor}) => {
         let iconName;
         if (route.name === 'Home') {
           iconName = 'home';
@@ -65,9 +49,29 @@ const HomeTabNavigator = () => (
         } else if (route.name === 'Settings') {
           iconName = 'settings';
         }
-        return <Icon name={iconName} size={25} />;
+        return (
+          <Icon
+            name={iconName}
+            size={25}
+            tintColor={{tintColor}}
+            focused={focused}
+          />
+        );
       },
-    })}>
+    })}
+    tabBarOptions={{
+      style: {
+        backgroundColor: Colors.white,
+        height: 85,
+        borderTopColor: 'transparent',
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
+        shadowColor: '#000',
+        shadowOffset: {height: 1, width: 0},
+      },
+      activeTintColor: Colors.primary,
+      inactiveTintColor: Colors.ligher,
+    }}>
     <Tab.Screen name="Home" component={Home} />
     <Tab.Screen name="Maps" component={Maps} />
     <Tab.Screen name="Message" component={Message} />
