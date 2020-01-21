@@ -10,74 +10,21 @@ import {
 } from 'react-native';
 import Colors from '../../constants/Colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import user from '../../constants/User';
 
-const users = [
-  {
-    id: '1',
-    name: 'Amina Aden',
-    email: 'aden@gmail.com',
-    title: 'Heading to In and out',
-    photo: 'https://images.unsplash.com/photo-1573748348952-91cc89c83979',
-    transport: 'car',
-  },
-  {
-    id: '2',
-    name: 'Yasin Ali',
-    email: 'myles@gmail.com',
-    title: ' Whole foods next..',
-    photo: 'https://images.unsplash.com/photo-1518882570151-157128e78fa1',
-    transport: 'bike',
-  },
-  {
-    id: '3',
-    name: 'Amber Williams',
-    email: 'amber@gmail.com',
-    title: 'Heading to Target',
-    photo: 'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb',
-    transport: 'car',
-  },
-  {
-    id: '4',
-    name: 'Ida Niskanen',
-    email: 'iida.niskanen@gmail.com',
-    title: 'Going out to Ikea',
-    photo: 'https://images.unsplash.com/photo-1499155286265-79a9dc9c6380',
-    transport: 'bus',
-  },
-  {
-    id: '5',
-    name: 'Khela Somti',
-    email: 'mohammed@gmail.com',
-    title: 'Going to the beach',
-    photo: 'https://images.unsplash.com/photo-1578220390767-b706eac7c36b',
-    transport: 'walk',
-  },
-  {
-    id: '6',
-    name: 'Sang Wang',
-    email: 'wang@gmail.com',
-    title: 'Heading to In and out',
-    photo: 'https://images.unsplash.com/photo-1487309078313-fad80c3ec1e5',
-    transport: 'car',
-  },
-  {
-    id: '7',
-    name: 'Annie Lim',
-    email: 'lim@gmail.com',
-    title: 'Off to San fran',
-    photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
-    transport: 'car',
-  },
-];
-
-function Item({item}) {
+function Item({id, name, title, image, transport}) {
   return (
     <View style={styles.item}>
-      <Image source={{uri: item.photo}} style={styles.userImage} />
-      <View style={{paddingLeft: 70}}>
-        <Text style={styles.userName}>{item.name}</Text>
-        <Text style={styles.userTitle}>{item.title}</Text>
-      </View>
+      <TouchableOpacity
+        onPress={() => {
+          this._onPressItem(id);
+        }}>
+        <View style={{paddingLeft: 70, justifyContent: 'center'}}>
+          <Image source={{uri: image}} style={styles.userImage} />
+          <Text style={styles.userName}>{name}</Text>
+          <Text style={styles.userTitle}>{title}</Text>
+        </View>
+      </TouchableOpacity>
       <TouchableOpacity
         style={{
           right: 10,
@@ -92,7 +39,7 @@ function Item({item}) {
         />
       </TouchableOpacity>
       <Icon
-        name={item.transport}
+        name={transport}
         size={25}
         color="black"
         style={{
@@ -104,46 +51,53 @@ function Item({item}) {
     </View>
   );
 }
-export default class Home extends React.Component {
-  render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.body}>
-          <View style={styles.header}>
-            <Text style={styles.sectionTitle}>Pick up</Text>
-            <Text style={styles.secondTitle}>Nearby area</Text>
-            {users.map(u => {
-              return (
-                <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate('Profile')}
-                  style={{position: 'absolute', right: 15}}>
-                  <Image
-                    source={{uri: u.photo}}
-                    key={u.id}
-                    style={styles.profile}
-                  />
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-          <View style={{marginTop: 25}}>
-            <Text style={styles.itemTitle}>Today</Text>
-            <FlatList
-              data={users}
-              renderItem={({item}) => <Item item={item} />}
-              keyExtractor={item => item.name}
-            />
-          </View>
+
+const Home = ({navigation}) => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.body}>
+        <View style={styles.header}>
+          <Text style={styles.sectionTitle}>Pick up</Text>
+          <Text style={styles.secondTitle}>Nearby area</Text>
+          {user.map(u => {
+            return (
+              <TouchableOpacity
+                key={u.id}
+                onPress={() => navigation.navigate('Profile')}
+                style={{
+                  position: 'absolute',
+                  right: 15,
+                  backgroundColor: Colors.white,
+                }}>
+                <Image source={{uri: u.photo}} style={styles.profile} />
+              </TouchableOpacity>
+            );
+          })}
         </View>
-      </SafeAreaView>
-    );
-  }
-}
+
+        <View style={{marginTop: 25}}>
+          <Text style={styles.itemTitle}>Today</Text>
+          <FlatList
+            data={user}
+            renderItem={({item}) => (
+              <Item
+                name={item.name}
+                title={item.title}
+                image={item.photo}
+                transport={item.transport}
+              />
+            )}
+            keyExtractor={item => item.id}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+export default Home;
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.white,
-  },
   body: {
     backgroundColor: Colors.white,
     fontFamily: 'HelveticaNeue',
@@ -168,6 +122,7 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 14,
     paddingLeft: 20,
+    paddingBottom: 3,
     fontWeight: '700',
     color: Colors.black,
   },
