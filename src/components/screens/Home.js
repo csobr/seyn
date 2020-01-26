@@ -12,13 +12,10 @@ import Colors from '../../constants/Colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import user from '../../constants/User';
 
-function Item({id, name, title, image, transport}) {
+const Item = ({id, name, title, image, transport}) => {
   return (
     <View style={styles.item}>
-      <TouchableOpacity
-        onPress={() => {
-          this._onPressItem(id);
-        }}>
+      <TouchableOpacity>
         <View style={{paddingLeft: 70, justifyContent: 'center'}}>
           <Image source={{uri: image}} style={styles.userImage} />
           <Text style={styles.userName}>{name}</Text>
@@ -50,20 +47,20 @@ function Item({id, name, title, image, transport}) {
       />
     </View>
   );
-}
+};
 
-const Home = ({navigation}) => {
+export default function Home({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.body}>
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
-          <Text style={styles.secondTitle}>Nearby area</Text>
+          <Text style={styles.secondTitle}>Venice</Text>
           {user.map(u => {
             return (
               <TouchableOpacity
                 key={u.id}
-                onPress={() => navigation.navigate('Profile')}
+                onPress={() => navigation.navigate('Profile', u)}
                 style={{
                   position: 'absolute',
                   right: 15,
@@ -76,7 +73,13 @@ const Home = ({navigation}) => {
         </View>
 
         <View style={{marginTop: 25}}>
-          <Text style={styles.itemTitle}>Today</Text>
+          <Text
+            style={styles.itemTitle}
+            onPress={() => {
+              navigation.navigate('Message');
+            }}>
+            Today
+          </Text>
           <FlatList
             data={user}
             renderItem={({item}) => (
@@ -93,9 +96,7 @@ const Home = ({navigation}) => {
       </View>
     </SafeAreaView>
   );
-};
-
-export default Home;
+}
 
 const styles = StyleSheet.create({
   body: {

@@ -3,14 +3,19 @@ import {View, SafeAreaView, Text, Image, StyleSheet} from 'react-native';
 import Colors from '../../constants/Colors';
 import {ScrollView} from 'react-native-gesture-handler';
 
-export default function Profile() {
+export default function Profile({route, navigation}) {
+  const {name, photo, title} = route.params;
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"
       style={styles.scrollView}>
       <SafeAreaView style={styles.container}>
         <View style={styles.body}>
-          <View style={styles.header} />
+          <View style={styles.header}>
+            <Image source={{uri: photo}} style={styles.userImage} />
+            <Text style={styles.userName}>{name}</Text>
+            <Text style={styles.userTitle}>{title}</Text>
+          </View>
         </View>
       </SafeAreaView>
     </ScrollView>
@@ -29,19 +34,25 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    height: 60,
+    height: 150,
+    margin: 30,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   userImage: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
     borderRadius: 50,
     backgroundColor: Colors.primary,
-    position: 'absolute',
-    margin: 10,
   },
   userName: {
     fontSize: 14,
     color: Colors.black,
     fontWeight: '700',
+  },
+  userTitle: {
+    fontSize: 14,
+    color: Colors.black,
+    fontWeight: '500',
   },
 });
