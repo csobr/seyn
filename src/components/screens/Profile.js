@@ -1,7 +1,14 @@
 import React from 'react';
-import {View, SafeAreaView, Text, Image, StyleSheet} from 'react-native';
-import Colors from '../../constants/Colors';
+import {
+  View,
+  SafeAreaView,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import Colors from '../../constants/Colors';
 
 export default function Profile({route, navigation}) {
   const {name, photo, title} = route.params;
@@ -12,9 +19,18 @@ export default function Profile({route, navigation}) {
       <SafeAreaView style={styles.container}>
         <View style={styles.body}>
           <View style={styles.header}>
-            <Image source={{uri: photo}} style={styles.userImage} />
-            <Text style={styles.userName}>{name}</Text>
-            <Text style={styles.userTitle}>{title}</Text>
+            <Image
+              style={styles.headerBackground}
+              source={require('../../assets/header.jpg')}
+            />
+            <View style={styles.headerDetails}>
+              <Image source={{uri: photo}} style={styles.userImage} />
+              <Text style={styles.userName}>{name}</Text>
+              <Text style={styles.userTitle}>{title}</Text>
+              <TouchableOpacity style={styles.custumButton}>
+                <Text style={styles.customBtnText}>Edit</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </SafeAreaView>
@@ -34,8 +50,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    height: 150,
-    margin: 30,
+    height: 200,
+    alignItems: 'center',
+  },
+  headerBackground: {
+    height: 100,
+  },
+  headerDetails: {
+    position: 'absolute',
+    marginTop: 50,
+    height: 170,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -54,5 +78,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.black,
     fontWeight: '500',
+  },
+  custumButton: {
+    alignSelf: 'flex-end',
+  },
+  customBtnText: {
+    fontSize: 13,
+    color: Colors.black,
+    fontWeight: '300',
   },
 });
