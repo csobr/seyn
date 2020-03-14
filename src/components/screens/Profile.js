@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   userTitle: {
     fontSize: 14,
     color: Colors.black,
-    fontWeight: '500',
+    fontWeight: '300',
   },
   custumButton: {
     alignSelf: 'flex-end',
