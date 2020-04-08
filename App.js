@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavigationNativeContainer} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
@@ -117,7 +117,7 @@ const HomeTabNavigator = () => (
 export default class App extends Component {
   render() {
     return (
-      <NavigationNativeContainer>
+      <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             gestureEnaled: true,
@@ -143,7 +143,7 @@ export default class App extends Component {
           <Stack.Screen name="Settings" component={Settings} />
           <Stack.Screen name="Profile" component={Profile} />
         </Stack.Navigator>
-      </NavigationNativeContainer>
+      </NavigationContainer>
     );
   }
 }
