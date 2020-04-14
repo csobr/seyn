@@ -3,12 +3,13 @@ import {
   View,
   SafeAreaView,
   Text,
+  Button,
   Image,
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import Colors from '../../constants/Colors';
+import Colors from '../constants/Colors';
 
 export default function Profile({route, navigation}) {
   const {name, photo, title} = route.params;
@@ -27,9 +28,13 @@ export default function Profile({route, navigation}) {
               <Image source={{uri: photo}} style={styles.userImage} />
               <Text style={styles.userName}>{name}</Text>
               <Text style={styles.userTitle}>{title}</Text>
-              <TouchableOpacity style={styles.custumButton}>
-                <Text style={styles.customBtnText}>Edit</Text>
-              </TouchableOpacity>
+
+              <Button
+                style={styles.customBtn}
+                color={Colors.black}
+                title="Edit Profile"
+                onPress={() => ''}
+              />
             </View>
           </View>
         </View>
@@ -79,10 +84,8 @@ const styles = StyleSheet.create({
     color: Colors.black,
     fontWeight: '300',
   },
-  custumButton: {
+  customBtn: {
     alignSelf: 'flex-end',
-  },
-  customBtnText: {
     fontSize: 13,
     color: Colors.black,
     fontWeight: '300',
