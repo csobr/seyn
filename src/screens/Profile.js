@@ -22,7 +22,7 @@ export default function Profile({route, navigation}) {
           <View style={styles.header}>
             <Image
               style={styles.headerBackground}
-              source={require('../../assets/header.jpg')}
+              source={require('../assets/header.jpg')}
             />
             <View style={styles.headerDetails}>
               <Image source={{uri: photo}} style={styles.userImage} />
@@ -33,7 +33,7 @@ export default function Profile({route, navigation}) {
                 style={styles.customBtn}
                 color={Colors.black}
                 title="Edit Profile"
-                onPress={() => ''}
+                onPress={() => navigation.navigate('Settings')}
               />
             </View>
           </View>

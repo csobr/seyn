@@ -8,9 +8,9 @@ import {
   FlatList,
   Image,
 } from 'react-native';
-import Colors from '../../constants/Colors';
+import Colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import user from '../../constants/User';
+import user from '../constants/User';
 
 const Item = ({id, name, title, image, transport}) => {
   return (
@@ -55,7 +55,7 @@ export default function Home({navigation}) {
       <View style={styles.body}>
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
-          <Text style={styles.secondTitle}>Venice</Text>
+          <Text style={styles.secondTitle}>West LA</Text>
           {user.map(u => {
             return (
               <TouchableOpacity

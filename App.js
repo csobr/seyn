@@ -2,14 +2,8 @@ import React, {Component} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {
-  Home,
-  Message,
-  Search,
-  Maps,
-  Settings,
-  Profile,
-} from './src/components/screens';
+import {Home, Message, Search, Maps, Profile} from './src/screens';
+import Settings from './src/components/Settings';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from './src/constants/Colors';
 const Stack = createStackNavigator();
@@ -29,6 +23,8 @@ function getHeaderTitle(route) {
       return 'Maps';
     case 'Message':
       return 'Message';
+    case 'Profile':
+      return 'Profile';
     case 'Settings':
       return 'Settings';
   }
@@ -41,7 +37,7 @@ const HomeTabNavigator = () => (
         } else if (route.name === 'Search') {
         } else if (route.name === 'Maps') {
         } else if (route.name === 'Message') {
-        } else if (route.name === 'Settings') {
+        } else if (route.name === 'Profile') {
         }
         return <Icon size={25} color={tintColor} focused={focused} />;
       },
@@ -103,13 +99,13 @@ const HomeTabNavigator = () => (
     />
     <Tab.Screen
       options={{
-        tabBarLabel: 'Settings',
+        tabBarLabel: 'Profile',
         tabBarIcon: ({color, size}) => (
-          <Icon name="settings" color={color} size={size} />
+          <Icon name="user" color={color} size={size} />
         ),
       }}
-      name="Settings"
-      component={Settings}
+      name="Profile"
+      component={Profile}
     />
   </Tab.Navigator>
 );
@@ -140,8 +136,8 @@ export default class App extends Component {
           <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="Maps" component={Maps} />
           <Stack.Screen name="Message" component={Message} />
-          <Stack.Screen name="Settings" component={Settings} />
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Settings" component={Settings} />
         </Stack.Navigator>
       </NavigationContainer>
     );
