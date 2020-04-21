@@ -54,51 +54,47 @@ const Item = ({id, name, title, image, transport}) => {
 export default function Home({navigation}) {
   return (
     <SafeAreaView styles={GlobalStyle.container}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={GlobalStyle.scrollView}>
-        <View style={GlobalStyle.body}>
-          <View style={styles.header}>
-            <Text style={styles.sectionTitle}>Pick up</Text>
-            <Text style={styles.secondTitle}>West LA</Text>
-            {user.map(uid => {
-              return (
-                <TouchableOpacity
-                  key={uid.id}
-                  onPress={() => navigation.navigate('Profile', uid)}
-                  style={{
-                    position: 'absolute',
-                    right: 15,
-                    backgroundColor: Colors.white,
-                  }}>
-                  <Image source={{uri: uid.photo}} style={styles.profile} />
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-
-          <Text
-            style={styles.dateTitle}
-            onPress={() => {
-              navigation.navigate('Message');
-            }}>
-            Today
-          </Text>
-          <FlatList
-            contentContainerStyle={{paddingBottom: 150}}
-            data={user}
-            renderItem={({item}) => (
-              <Item
-                name={item.name}
-                title={item.title}
-                image={item.photo}
-                transport={item.transport}
-              />
-            )}
-            keyExtractor={item => item.id}
-          />
+      <View style={GlobalStyle.body}>
+        <View style={styles.header}>
+          <Text style={styles.sectionTitle}>Pick up</Text>
+          <Text style={styles.secondTitle}>West LA</Text>
+          {user.map(uid => {
+            return (
+              <TouchableOpacity
+                key={uid.id}
+                onPress={() => navigation.navigate('Profile', uid)}
+                style={{
+                  position: 'absolute',
+                  right: 15,
+                  backgroundColor: Colors.white,
+                }}>
+                <Image source={{uri: uid.photo}} style={styles.profile} />
+              </TouchableOpacity>
+            );
+          })}
         </View>
-      </ScrollView>
+
+        <Text
+          style={styles.dateTitle}
+          onPress={() => {
+            navigation.navigate('Message');
+          }}>
+          Today
+        </Text>
+        <FlatList
+          contentContainerStyle={{paddingBottom: 250}}
+          data={user}
+          renderItem={({item}) => (
+            <Item
+              name={item.name}
+              title={item.title}
+              image={item.photo}
+              transport={item.transport}
+            />
+          )}
+          keyExtractor={item => item.id}
+        />
+      </View>
     </SafeAreaView>
   );
 }

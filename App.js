@@ -45,7 +45,7 @@ const HomeTabNavigator = () => (
     tabBarOptions={{
       activeTintColor: Colors.primary,
       inactiveTintColor: Colors.dark,
-      showLabel: false,
+      showLabel: true,
       style: {
         backgroundColor: Colors.white,
         justifyContent: 'center',
