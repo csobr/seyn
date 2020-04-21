@@ -5,20 +5,20 @@ import {
   Text,
   Button,
   Image,
-  TouchableOpacity,
   StyleSheet,
 } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
+import GlobalStyle from '../GlobalStyles';
 
 export default function Profile({route, navigation}) {
   const {name, photo, title} = route.params;
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-      style={styles.scrollView}>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.body}>
+    <SafeAreaView style={GlobalStyle.container}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={GlobalStyle.scrollView}>
+        <View style={GlobalStyle.body}>
           <View style={styles.header}>
             <Image
               style={styles.headerBackground}
@@ -38,22 +38,12 @@ export default function Profile({route, navigation}) {
             </View>
           </View>
         </View>
-      </SafeAreaView>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.white,
-  },
-  body: {
-    backgroundColor: Colors.white,
-    fontFamily: 'HelveticaNeue',
-  },
-  container: {
-    flex: 1,
-  },
   header: {
     height: 200,
     alignItems: 'center',

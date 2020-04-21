@@ -2,6 +2,7 @@ import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
+  ScrollView,
   View,
   Text,
   TouchableOpacity,
@@ -9,6 +10,7 @@ import {
   Image,
 } from 'react-native';
 import Colors from '../constants/Colors';
+import GlobalStyle from '../GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import user from '../constants/User';
 
@@ -51,58 +53,58 @@ const Item = ({id, name, title, image, transport}) => {
 
 export default function Home({navigation}) {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.body}>
-        <View style={styles.header}>
-          <Text style={styles.sectionTitle}>Pick up</Text>
-          <Text style={styles.secondTitle}>West LA</Text>
-          {user.map(u => {
-            return (
-              <TouchableOpacity
-                key={u.id}
-                onPress={() => navigation.navigate('Profile', u)}
-                style={{
-                  position: 'absolute',
-                  right: 15,
-                  backgroundColor: Colors.white,
-                }}>
-                <Image source={{uri: u.photo}} style={styles.profile} />
-              </TouchableOpacity>
-            );
-          })}
-        </View>
+    <SafeAreaView styles={GlobalStyle.container}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={GlobalStyle.scrollView}>
+        <View style={GlobalStyle.body}>
+          <View style={styles.header}>
+            <Text style={styles.sectionTitle}>Pick up</Text>
+            <Text style={styles.secondTitle}>West LA</Text>
+            {user.map(u => {
+              return (
+                <TouchableOpacity
+                  key={u.id}
+                  onPress={() => navigation.navigate('Profile', u)}
+                  style={{
+                    position: 'absolute',
+                    right: 15,
+                    backgroundColor: Colors.white,
+                  }}>
+                  <Image source={{uri: u.photo}} style={styles.profile} />
+                </TouchableOpacity>
+              );
+            })}
+          </View>
 
-        <View style={{marginTop: 25}}>
-          <Text
-            style={styles.itemTitle}
-            onPress={() => {
-              navigation.navigate('Message');
-            }}>
-            Today
-          </Text>
-          <FlatList
-            data={user}
-            renderItem={({item}) => (
-              <Item
-                name={item.name}
-                title={item.title}
-                image={item.photo}
-                transport={item.transport}
-              />
-            )}
-            keyExtractor={item => item.id}
-          />
+          <View style={{marginTop: 25}}>
+            <Text
+              style={styles.itemTitle}
+              onPress={() => {
+                navigation.navigate('Message');
+              }}>
+              Today
+            </Text>
+            <FlatList
+              data={user}
+              renderItem={({item}) => (
+                <Item
+                  name={item.name}
+                  title={item.title}
+                  image={item.photo}
+                  transport={item.transport}
+                />
+              )}
+              keyExtractor={item => item.id}
+            />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  body: {
-    backgroundColor: Colors.white,
-    fontFamily: 'HelveticaNeue',
-  },
   header: {
     marginTop: 30,
     paddingHorizontal: 24,
@@ -126,9 +128,6 @@ const styles = StyleSheet.create({
     paddingBottom: 3,
     fontWeight: '700',
     color: Colors.black,
-  },
-  container: {
-    flex: 1,
   },
   item: {
     flex: 1,

@@ -1,6 +1,6 @@
 const Colors = {
   ligther: '#ddd',
-  white: '#fff',
+  white: '#ffffff',
 
   black: '#000',
 
