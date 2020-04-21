@@ -5,9 +5,9 @@ import {
   Text,
   Button,
   Image,
+  ScrollView,
   StyleSheet,
 } from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import GlobalStyle from '../GlobalStyles';
 
@@ -25,7 +25,7 @@ export default function Profile({route, navigation}) {
               source={require('../assets/header.jpg')}
             />
             <View style={styles.headerDetails}>
-              <Image source={{uri: photo}} style={styles.userImage} />
+              <Image source={{uri: photo}} style={GlobalStyle.userImage} />
               <Text style={styles.userName}>{name}</Text>
               <Text style={styles.userTitle}>{title}</Text>
 
@@ -33,7 +33,7 @@ export default function Profile({route, navigation}) {
                 style={styles.customBtn}
                 color={Colors.black}
                 title="Edit Profile"
-                onPress={() => navigation.navigate('Settings')}
+                onPress={() => navigation.navigate('Settings', route.params)}
               />
             </View>
           </View>
@@ -57,12 +57,6 @@ const styles = StyleSheet.create({
     height: 170,
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  userImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: Colors.primary,
   },
   userName: {
     fontSize: 14,

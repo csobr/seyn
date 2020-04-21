@@ -61,17 +61,17 @@ export default function Home({navigation}) {
           <View style={styles.header}>
             <Text style={styles.sectionTitle}>Pick up</Text>
             <Text style={styles.secondTitle}>West LA</Text>
-            {user.map(u => {
+            {user.map(uid => {
               return (
                 <TouchableOpacity
-                  key={u.id}
-                  onPress={() => navigation.navigate('Profile', u)}
+                  key={uid.id}
+                  onPress={() => navigation.navigate('Profile', uid)}
                   style={{
                     position: 'absolute',
                     right: 15,
                     backgroundColor: Colors.white,
                   }}>
-                  <Image source={{uri: u.photo}} style={styles.profile} />
+                  <Image source={{uri: uid.photo}} style={styles.profile} />
                 </TouchableOpacity>
               );
             })}

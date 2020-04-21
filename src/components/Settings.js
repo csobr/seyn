@@ -1,13 +1,24 @@
 import React from 'react';
 import GlobalStyle from '../GlobalStyles';
-import {SafeAreaView, ScrollView, View, Text, StyleSheet} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  Text,
+  Image,
+  StyleSheet,
+} from 'react-native';
 
-const Settings = ({navigation}) => {
+const Settings = ({route, navigation}) => {
+  const {photo} = route.params;
   return (
     <SafeAreaView style={GlobalStyle.container}>
       <ScrollView style={GlobalStyle.scrollView}>
         <View style={GlobalStyle.body}>
-          <Text>Edit</Text>
+          <Image source={{uri: photo}} style={GlobalStyle.userImage} />
+          <Text>Username</Text>
+          <Text>Email</Text>
+          <Text>Password</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
