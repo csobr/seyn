@@ -77,27 +77,26 @@ export default function Home({navigation}) {
             })}
           </View>
 
-          <View style={{marginTop: 25}}>
-            <Text
-              style={styles.itemTitle}
-              onPress={() => {
-                navigation.navigate('Message');
-              }}>
-              Today
-            </Text>
-            <FlatList
-              data={user}
-              renderItem={({item}) => (
-                <Item
-                  name={item.name}
-                  title={item.title}
-                  image={item.photo}
-                  transport={item.transport}
-                />
-              )}
-              keyExtractor={item => item.id}
-            />
-          </View>
+          <Text
+            style={styles.dateTitle}
+            onPress={() => {
+              navigation.navigate('Message');
+            }}>
+            Today
+          </Text>
+          <FlatList
+            contentContainerStyle={{paddingBottom: 150}}
+            data={user}
+            renderItem={({item}) => (
+              <Item
+                name={item.name}
+                title={item.title}
+                image={item.photo}
+                transport={item.transport}
+              />
+            )}
+            keyExtractor={item => item.id}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -122,15 +121,15 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     color: Colors.black,
   },
-  itemTitle: {
+  dateTitle: {
     fontSize: 14,
     paddingLeft: 20,
-    paddingBottom: 3,
+    paddingBottom: 8,
     fontWeight: '700',
     color: Colors.black,
+    marginTop: 15,
   },
   item: {
-    flex: 1,
     justifyContent: 'center',
     fontSize: 12,
     height: 80,

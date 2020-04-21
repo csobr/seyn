@@ -5,7 +5,6 @@ export default StyleSheet.create({
   body: {
     backgroundColor: Colors.white,
     fontFamily: 'HelveticaNeue',
-    flex: 1,
   },
   container: {
     flex: 1,
