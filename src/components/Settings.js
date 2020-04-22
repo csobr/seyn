@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import GlobalStyle from '../GlobalStyles';
 import {
   SafeAreaView,
@@ -10,19 +10,29 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const Settings = ({route, navigation}) => {
-  const {name, email, photo} = route.params;
+const Settings = ({route}) => {
+  const {name, title, photo} = route.params;
+  const [userName, setName] = useState(name);
+
+  useEffect(() => {
+    console.log(userName);
+  }, [userName]);
+
   return (
     <SafeAreaView style={GlobalStyle.container}>
       <ScrollView style={GlobalStyle.scrollView}>
         <View style={GlobalStyle.body}>
           <Image source={{uri: photo}} style={GlobalStyle.userImage} />
           <Text> Name: </Text>
-          <TextInput textContentType="name" value={name} />
+          <TextInput
+            textContentType="name"
+            defaultValue={userName}
+            onChangeText={userNa => setName(userNa)}
+          />
           <Text>Username:</Text>
           <TextInput textContextType="username" value={'blank'} />
-          <Text>Email:</Text>
-          <TextInput textContentType="emailAddress" value={email} />
+          <Text>Status:</Text>
+          <TextInput value={title} />
         </View>
       </ScrollView>
     </SafeAreaView>
