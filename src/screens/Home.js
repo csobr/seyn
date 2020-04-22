@@ -12,7 +12,7 @@ import {
 import Colors from '../constants/Colors';
 import GlobalStyle from '../GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import user from '../constants/User';
+import UserApi from '../components/UserApi';
 
 const Item = ({id, name, title, image, transport}) => {
   return (
@@ -52,13 +52,14 @@ const Item = ({id, name, title, image, transport}) => {
 };
 
 export default function Home({navigation}) {
+  const [{users}] = UserApi();
   return (
     <SafeAreaView styles={GlobalStyle.container}>
       <View style={GlobalStyle.body}>
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
           <Text style={styles.secondTitle}>West LA</Text>
-          {user.map(uid => {
+          {users.map(uid => {
             return (
               <TouchableOpacity
                 key={uid.id}
@@ -83,7 +84,7 @@ export default function Home({navigation}) {
         </Text>
         <FlatList
           contentContainerStyle={{paddingBottom: 250}}
-          data={user}
+          data={users}
           renderItem={({item}) => (
             <Item
               name={item.name}

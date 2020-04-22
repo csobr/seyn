@@ -1,14 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import '../constants/User.json';
+import UserData from '../constants/User.json';
 
 const UserApi = () => {
-  const [user, setUser] = React.useState([]);
-  const [url, setUrl] = React.useState([]);
-  React.useEffect(() => {
+  // const [user, setUser] = useState([]);
+  const [users, setUsers] = useState(UserData);
+  useEffect(() => {
     const requestUser = async () => {
-      const result = await axios.get('User.json').then();
+      const result = await fetch(users)
+        .then(data => {
+          setUsers(result.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     };
-  });
+    requestUser();
+  }, [users]);
+  return [{users}];
 };
 export default UserApi;
