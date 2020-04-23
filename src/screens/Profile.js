@@ -13,6 +13,7 @@ import GlobalStyle from '../GlobalStyles';
 
 export default function Profile({route, navigation}) {
   const {name, photo, title} = route.params;
+
   return (
     <SafeAreaView style={GlobalStyle.container}>
       <ScrollView

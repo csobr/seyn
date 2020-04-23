@@ -27,7 +27,7 @@ const Settings = ({route}) => {
           <TextInput
             textContentType="name"
             defaultValue={userName}
-            onChangeText={userNa => setName(userNa)}
+            onChangeText={text => setName(text)}
           />
           <Text>Username:</Text>
           <TextInput textContextType="username" value={'blank'} />

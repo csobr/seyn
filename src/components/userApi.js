@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import UserData from '../constants/User.json';
 
 const UserApi = () => {
-  // const [user, setUser] = useState([]);
   const [users, setUsers] = useState(UserData);
   useEffect(() => {
     const requestUser = async () => {
