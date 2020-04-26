@@ -3,6 +3,7 @@ import UserData from '../constants/User.json';
 
 const UserApi = () => {
   const [users, setUsers] = useState(UserData);
+  // const [error, setError] = useState(false);
   useEffect(() => {
     const requestUser = async () => {
       const result = await fetch(users)

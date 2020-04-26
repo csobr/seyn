@@ -10,8 +10,7 @@ import {
 } from 'react-native';
 import Colors from '../constants/Colors';
 import GlobalStyle from '../GlobalStyles';
-
-export default function Profile({route, navigation}) {
+const Profile = ({route, navigation}) => {
   const {name, photo, title} = route.params;
 
   return (
@@ -42,7 +41,8 @@ export default function Profile({route, navigation}) {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
+export default Profile;
 
 const styles = StyleSheet.create({
   header: {
