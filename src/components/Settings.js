@@ -18,14 +18,14 @@ const Settings = ({route}) => {
   const handleChange = newName => {
     setName(newName);
 
-    const setData = async () => {
+    const setValue = async () => {
       try {
         await AsyncStorage.setItem('name', JSON.stringify(userName));
       } catch (error) {
         console.log('Error saving data');
       }
     };
-    setData();
+    setValue();
   };
 
   const retrieveData = async () => {
