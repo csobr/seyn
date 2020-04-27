@@ -3,14 +3,14 @@ import Colors from '../src/constants/Colors';
 
 export default StyleSheet.create({
   body: {
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.background,
     fontFamily: 'HelveticaNeue',
   },
   container: {
     flex: 1,
   },
   scrollView: {
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.background,
   },
   userImage: {
     width: 100,

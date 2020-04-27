@@ -2,7 +2,6 @@ import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
   TouchableOpacity,
@@ -105,25 +104,24 @@ const styles = StyleSheet.create({
     marginTop: 30,
     paddingHorizontal: 24,
     height: 65,
-    backgroundColor: Colors.white,
     justifyContent: 'center',
   },
   sectionTitle: {
     fontSize: 32,
     fontWeight: '700',
-    color: Colors.black,
+    color: Colors.dark,
   },
   secondTitle: {
     fontSize: 14,
     fontWeight: '300',
-    color: Colors.black,
+    color: Colors.dark,
   },
   dateTitle: {
     fontSize: 14,
     paddingLeft: 20,
     paddingBottom: 8,
     fontWeight: '700',
-    color: Colors.black,
+    color: Colors.dark,
     marginTop: 15,
   },
   item: {
@@ -133,8 +131,8 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
     borderRadius: 6,
-    color: Colors.black,
-    backgroundColor: Colors.white,
+    color: Colors.dark,
+    backgroundColor: Colors.background,
     shadowOpacity: 0.09,
     shadowRadius: 4,
     shadowColor: '#000',
@@ -156,16 +154,16 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: 14,
-    color: Colors.black,
+    color: Colors.dark,
     fontWeight: '700',
   },
   userTitle: {
     fontSize: 12,
-    color: Colors.black,
+    color: Colors.dark,
   },
   message: {
     fontSize: 12,
-    color: Colors.black,
+    color: Colors.dark,
   },
   highlight: {
     fontWeight: '700',

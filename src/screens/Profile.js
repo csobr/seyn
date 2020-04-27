@@ -3,15 +3,16 @@ import {
   View,
   SafeAreaView,
   Text,
-  Button,
   Image,
   ScrollView,
   StyleSheet,
 } from 'react-native';
 import Colors from '../constants/Colors';
 import GlobalStyle from '../GlobalStyles';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 const Profile = ({route, navigation}) => {
-  const {name, photo, title} = route.params;
+  const {name, photo, title, transport} = route.params;
 
   return (
     <SafeAreaView style={GlobalStyle.container}>
@@ -28,13 +29,14 @@ const Profile = ({route, navigation}) => {
               <Image source={{uri: photo}} style={GlobalStyle.userImage} />
               <Text style={styles.userName}>{name}</Text>
               <Text style={styles.userTitle}>{title}</Text>
-
-              <Button
-                style={styles.customBtn}
-                color={Colors.black}
-                title="Edit Profile"
-                onPress={() => navigation.navigate('Settings', route.params)}
-              />
+              <Icon name={transport} size={20} />
+              <View style={styles.customBtn}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Settings', route.params)}
+                  styles={styles.customBtn}>
+                  <Text>Edit profile</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </View>
@@ -70,9 +72,16 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   customBtn: {
-    alignSelf: 'flex-end',
-    fontSize: 13,
+    fontSize: 11,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
     color: Colors.black,
     fontWeight: '300',
+    height: 25,
+    width: 100,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: Colors.ligther,
+    borderRadius: 6,
   },
 });
