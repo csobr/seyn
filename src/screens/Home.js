@@ -13,21 +13,80 @@ import GlobalStyle from '../GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import UserApi from '../components/UserApi';
 
+const Home = ({navigation: {navigate}}) => {
+  const [{users}] = UserApi();
+
+  return (
+    <SafeAreaView styles={GlobalStyle.container}>
+      <View style={GlobalStyle.body}>
+        <View style={styles.header}>
+          <Text style={styles.sectionTitle}>Pick up</Text>
+          <Text style={styles.secondTitle}>West LA</Text>
+          {users.map(uid => {
+            return (
+              <TouchableOpacity
+                key={uid.id}
+                onPress={() => navigate('Profile', uid)}
+                style={{
+                  position: 'absolute',
+                  right: 15,
+                  backgroundColor: Colors.white,
+                }}>
+                <Image source={{uri: uid.photo}} style={styles.profile} />
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+
+        <Text
+          style={styles.dateTitle}
+          onPress={() => {
+            navigate('Message');
+          }}>
+          Today
+        </Text>
+
+        <FlatList
+          contentContainerStyle={{paddingBottom: 250}}
+          data={users}
+          renderItem={({item}) => (
+            // Add uid
+            <TouchableOpacity
+              onPress={() => {
+                navigate('Profile', item.id);
+              }}>
+              <Item
+                id={item.id}
+                name={item.name}
+                title={item.title}
+                image={item.photo}
+                transport={item.transport}
+              />
+            </TouchableOpacity>
+          )}
+          keyExtractor={item => item.id}
+        />
+      </View>
+    </SafeAreaView>
+  );
+};
 const Item = ({id, name, title, image, transport}) => {
   return (
     <View style={styles.item}>
-      <TouchableOpacity>
-        <View style={{paddingLeft: 70, justifyContent: 'center'}}>
-          <Image source={{uri: image}} style={styles.userImage} />
-          <Text style={styles.userName}>{name}</Text>
-          <Text style={styles.userTitle}>{title}</Text>
-        </View>
-      </TouchableOpacity>
+      <View style={{paddingLeft: 70, justifyContent: 'center'}}>
+        <Image source={{uri: image}} style={styles.userImage} />
+        <Text style={styles.userName}>{name}</Text>
+        <Text style={styles.userTitle}>{title}</Text>
+      </View>
+
       <TouchableOpacity
         style={{
           right: 10,
           top: 4,
           position: 'absolute',
+        }}
+        onPress={() => {
+          this.props.navigation.navigate('Message');
         }}>
         <Icon
           name="message-outline"
@@ -50,54 +109,7 @@ const Item = ({id, name, title, image, transport}) => {
   );
 };
 
-export default function Home({navigation}) {
-  const [{users}] = UserApi();
-  return (
-    <SafeAreaView styles={GlobalStyle.container}>
-      <View style={GlobalStyle.body}>
-        <View style={styles.header}>
-          <Text style={styles.sectionTitle}>Pick up</Text>
-          <Text style={styles.secondTitle}>West LA</Text>
-          {users.map(uid => {
-            return (
-              <TouchableOpacity
-                key={uid.id}
-                onPress={() => navigation.navigate('Profile', uid)}
-                style={{
-                  position: 'absolute',
-                  right: 15,
-                  backgroundColor: Colors.white,
-                }}>
-                <Image source={{uri: uid.photo}} style={styles.profile} />
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-
-        <Text
-          style={styles.dateTitle}
-          onPress={() => {
-            navigation.navigate('Message');
-          }}>
-          Today
-        </Text>
-        <FlatList
-          contentContainerStyle={{paddingBottom: 250}}
-          data={users}
-          renderItem={({item}) => (
-            <Item
-              name={item.name}
-              title={item.title}
-              image={item.photo}
-              transport={item.transport}
-            />
-          )}
-          keyExtractor={item => item.id}
-        />
-      </View>
-    </SafeAreaView>
-  );
-}
+export default Home;
 
 const styles = StyleSheet.create({
   header: {

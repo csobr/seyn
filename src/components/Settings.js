@@ -27,6 +27,7 @@ const Settings = ({route}) => {
     };
     setValue();
   };
+  // Update users values
 
   const retrieveData = async () => {
     try {
