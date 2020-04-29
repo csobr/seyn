@@ -12,7 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import Colors from '../constants/Colors';
 import GlobalStyle from '../GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import UserApi from '../components/userApi';
+import UserApi from '../components/UsersHook';
 
 const Home = ({navigation: {navigate}}) => {
   const [{users}] = UserApi();

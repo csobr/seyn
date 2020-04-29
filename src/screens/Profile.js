@@ -11,6 +11,7 @@ import Colors from '../constants/Colors';
 import GlobalStyle from '../GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+
 const Profile = ({route, navigation}) => {
   const {name, photo, title, transport} = route.params;
 
