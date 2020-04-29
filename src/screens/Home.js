@@ -8,10 +8,11 @@ import {
   FlatList,
   Image,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Colors from '../constants/Colors';
 import GlobalStyle from '../GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import UserApi from '../components/UserApi';
+import UserApi from '../components/userApi';
 
 const Home = ({navigation: {navigate}}) => {
   const [{users}] = UserApi();
@@ -38,13 +39,7 @@ const Home = ({navigation: {navigate}}) => {
           })}
         </View>
 
-        <Text
-          style={styles.dateTitle}
-          onPress={() => {
-            navigate('Message');
-          }}>
-          Today
-        </Text>
+        <Text style={styles.dateTitle}>Today</Text>
 
         <FlatList
           contentContainerStyle={{paddingBottom: 250}}
@@ -70,7 +65,8 @@ const Home = ({navigation: {navigate}}) => {
     </SafeAreaView>
   );
 };
-const Item = ({id, name, title, image, transport}) => {
+export const Item = ({id, name, title, image, transport}) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.item}>
       <View style={{paddingLeft: 70, justifyContent: 'center'}}>
@@ -78,7 +74,7 @@ const Item = ({id, name, title, image, transport}) => {
         <Text style={styles.userName}>{name}</Text>
         <Text style={styles.userTitle}>{title}</Text>
       </View>
-
+      {/*      open messagescreen with uid */}
       <TouchableOpacity
         style={{
           right: 10,
@@ -86,7 +82,7 @@ const Item = ({id, name, title, image, transport}) => {
           position: 'absolute',
         }}
         onPress={() => {
-          this.props.navigation.navigate('Message');
+          navigation.navigate('Message');
         }}>
         <Icon
           name="message-outline"
