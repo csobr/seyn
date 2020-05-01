@@ -1,6 +1,13 @@
 import React from 'react';
+import CurrentUser from './src/components/User/UserContext';
 import AppNavigation from './src/components/Navigation/AppNavigation';
+import UserInfo from './src/components/User/UserContext';
 
-export default function App() {
-  return <AppNavigation />;
-}
+const App = () => {
+  return (
+    <>
+      <AppNavigation />
+    </>
+  );
+};
+export default App;
