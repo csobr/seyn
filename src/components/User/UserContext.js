@@ -1,8 +1,10 @@
-import React, {useState, useContext, Fragment} from 'react';
+import React, {useState, useContext, Fragment, createContext} from 'react';
 import {Text} from 'react-native';
-import UserApi from '../components/UsersHook';
+import UserApi from './UsersHook';
 
-const CurrentUser = () => {
+const CurrentUser = createContext(null);
+
+const UserInfo = ({id, name, title, image, transport}) => {
   const user = useContext(CurrentUser);
   const {users} = UserApi();
   const [u, setUser] = useState(users);
@@ -14,4 +16,4 @@ const CurrentUser = () => {
     </React.Fragment>
   );
 };
-export default CurrentUser;
+export default UserInfo;

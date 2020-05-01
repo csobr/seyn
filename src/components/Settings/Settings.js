@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import GlobalStyle from '../GlobalStyles';
+import GlobalStyle from '../../GlobalStyles';
 import {
   SafeAreaView,
   ScrollView,
