@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -13,9 +13,11 @@ import Colors from '../constants/Colors';
 import GlobalStyle from '../GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import UserApi from '../components/User/UsersHook';
+import {CurrentUser} from '../components/User/UserContext';
 
 const Home = ({navigation: {navigate}}) => {
   const [{users}] = UserApi();
+  const user = useContext(CurrentUser);
 
   return (
     <SafeAreaView styles={GlobalStyle.container}>
