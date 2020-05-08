@@ -47,7 +47,7 @@ const TabNavigator = () => (
       inactiveTintColor: Colors.dark,
       showLabel: true,
       style: {
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.background,
         justifyContent: 'center',
         alignItems: 'center',
         borderTopColor: 'transparent',
@@ -119,9 +119,10 @@ export default class AppNavigation extends Component {
             gestureEnaled: true,
             gesturedirection: 'horizontal',
             headerStyle: {
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.background,
             },
             headerTintColor: Colors.dark,
+
             headerTitleStyle: {
               fontWeight: 'bold',
             },
