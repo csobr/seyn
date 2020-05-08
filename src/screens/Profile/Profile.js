@@ -7,8 +7,8 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import Colors from '../constants/Colors';
-import GlobalStyle from '../GlobalStyles';
+import Colors from '../../constants/Colors';
+import GlobalStyle from '../../GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
@@ -24,7 +24,7 @@ const Profile = ({route, navigation}) => {
           <View style={styles.header}>
             <Image
               style={styles.headerBackground}
-              source={require('../assets/header.jpg')}
+              source={require('../../assets/header.jpg')}
             />
             <View style={styles.headerDetails}>
               <Image source={{uri: photo}} style={GlobalStyle.userImage} />

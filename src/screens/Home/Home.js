@@ -9,11 +9,11 @@ import {
   Image,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Colors from '../constants/Colors';
-import GlobalStyle from '../GlobalStyles';
+import Colors from '../../constants/Colors';
+import GlobalStyle from '../../GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import UserApi from '../components/User/UsersHook';
-import {CurrentUser} from '../components/User/UserContext';
+import UserApi from '../../components/User/UsersHook';
+import {CurrentUser} from '../../components/User/UserContext';
 
 const Home = ({navigation: {navigate}}) => {
   const [{users}] = UserApi();
