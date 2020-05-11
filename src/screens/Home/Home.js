@@ -9,8 +9,8 @@ import {
   Image,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Colors from '../../constants/Colors';
-import GlobalStyle from '../../GlobalStyles';
+import Colors from '../../styles/Colors';
+import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import UserApi from '../../components/User/UsersHook';
 import {CurrentUser} from '../../components/User/UserContext';

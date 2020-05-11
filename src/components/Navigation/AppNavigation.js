@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home, Message, Search, Maps, Profile} from '../../screens';
 import Settings from '../Settings/';
 import Icon from 'react-native-vector-icons/Feather';
-import Colors from '../../constants/Colors';
+import Colors from '../../styles/Colors';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
