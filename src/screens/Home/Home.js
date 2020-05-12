@@ -24,7 +24,7 @@ const Home = ({navigation: {navigate}}) => {
       <View style={GlobalStyle.body}>
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
-          <Text style={styles.secondTitle}>West LA</Text>
+          <Text style={styles.secondTitle}>Nearby</Text>
           {users.map(uid => {
             return (
               <TouchableOpacity
@@ -54,6 +54,7 @@ const Home = ({navigation: {navigate}}) => {
               }}>
               <Item
                 id={item.id}
+                time={item.time}
                 name={item.name}
                 title={item.title}
                 image={item.photo}
@@ -67,7 +68,7 @@ const Home = ({navigation: {navigate}}) => {
     </SafeAreaView>
   );
 };
-export const Item = ({id, name, title, image, transport}) => {
+export const Item = ({id, time, name, title, image, transport}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.item}>
@@ -75,6 +76,7 @@ export const Item = ({id, name, title, image, transport}) => {
         <Image source={{uri: image}} style={styles.userImage} />
         <Text style={styles.userName}>{name}</Text>
         <Text style={styles.userTitle}>{title}</Text>
+        <Text style={styles.userTime}>{time} ago</Text>
       </View>
       {/*      open messagescreen with uid */}
       <TouchableOpacity
@@ -142,8 +144,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     borderRadius: 6,
     color: Colors.dark,
-    backgroundColor: Colors.background,
-    shadowOpacity: 0.09,
+    backgroundColor: Colors.white,
+    shadowOpacity: 0.1,
     shadowRadius: 4,
     shadowColor: '#000',
     shadowOffset: {height: 1, width: 1},
@@ -170,6 +172,14 @@ const styles = StyleSheet.create({
   userTitle: {
     fontSize: 12,
     color: Colors.dark,
+
+    marginTop: 3,
+  },
+  userTime: {
+    fontSize: 10,
+    fontWeight: '200',
+    color: Colors.dark,
+    marginTop: 3,
   },
   message: {
     fontSize: 12,

@@ -1,15 +1,16 @@
 const Colors = {
   background: '#FAFAFA',
 
-  ligther: '#d1d1d1',
+  ligther: '#E1E1E1',
 
   white: '#ffffff',
 
   black: '#000',
 
-  dark: '#050505',
+  dark: '#0A0A0A',
+  //050505
 
-  primary: '#FF385A',
+  primary: '#747676',
 
   secondary: '#38FFDD',
 };

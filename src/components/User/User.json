@@ -2,56 +2,63 @@
   {
     "id": "1",
     "name": "Amina Aden",
+    "time": "1 min",
     "email": "aden@gmail.com",
-    "title": "Heading to In and out",
+    "title": "MC",
     "photo": "https://images.unsplash.com/photo-1573748348952-91cc89c83979",
     "transport": "car"
   },
   {
     "id": "2",
     "name": "Yasin Ali",
+    "time": "2 min",
     "email": "myles@gmail.com",
-    "title": " Whole foods next..",
+    "title": "Grocery store",
     "photo": "https://images.unsplash.com/photo-1518882570151-157128e78fa1",
     "transport": "bike"
   },
   {
     "id": "3",
     "name": "Amber Williams",
+    "time": "15 min",
     "email": "amber@gmail.com",
-    "title": "Heading to Target",
+    "title": "Post office",
     "photo": "https://images.unsplash.com/photo-1492633423870-43d1cd2775eb",
     "transport": "car"
   },
   {
     "id": "4",
     "name": "Ida Niskanen",
+    "time": "20 min",
     "email": "iida.niskanen@gmail.com",
-    "title": "Going out to Ikea",
+    "title": "Off to Ikea",
     "photo": "https://images.unsplash.com/photo-1499155286265-79a9dc9c6380",
     "transport": "bus"
   },
   {
     "id": "5",
     "name": "Khela Somti",
+    "time": "30 min",
     "email": "mohammed@gmail.com",
-    "title": "Going to the beach",
+    "title": "The Park",
     "photo": "https://images.unsplash.com/photo-1578220390767-b706eac7c36b",
     "transport": "walk"
   },
   {
     "id": "6",
     "name": "Sang Wang",
+    "time": "25 min",
     "email": "wang@gmail.com",
-    "title": "Heading to In and out",
+    "title": "North",
     "photo": "https://images.unsplash.com/photo-1487309078313-fad80c3ec1e5",
     "transport": "car"
   },
   {
     "id": "7",
     "name": "Annie Lim",
+    "time": "35 min",
     "email": "lim@gmail.com",
-    "title": "Off to San fran",
+    "title": "Post Office",
     "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
     "transport": "car"
   }

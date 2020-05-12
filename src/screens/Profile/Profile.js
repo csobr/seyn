@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     color: Colors.black,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.backgroundColor,
     fontWeight: '300',
     height: 25,
     width: 100,
