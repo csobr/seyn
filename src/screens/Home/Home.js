@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     color: Colors.dark,
     backgroundColor: Colors.white,
     shadowOpacity: 0.1,
-    shadowRadius: 4,
+    shadowRadius: 2,
     shadowColor: '#000',
     shadowOffset: {height: 1, width: 1},
   },

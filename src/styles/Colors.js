@@ -3,15 +3,15 @@ const Colors = {
 
   ligther: '#E1E1E1',
 
-  white: '#ffffff',
+  white: '#FFFFFF',
 
   black: '#000',
 
   dark: '#0A0A0A',
   //050505
 
-  primary: '#747676',
+  primary: '#FF7A59',
 
-  secondary: '#38FFDD',
+  secondary: '#FFB7A5',
 };
 export default Colors;

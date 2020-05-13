@@ -91,7 +91,7 @@ const TabNavigator = () => (
       options={{
         tabBarLabel: 'Message',
         tabBarIcon: ({color, size}) => (
-          <Icon name="message-circle" color={color} size={size} />
+          <Icon name="message-square" color={color} size={size} />
         ),
       }}
       name="Message"
