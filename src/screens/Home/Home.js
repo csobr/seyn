@@ -21,7 +21,7 @@ const Home = ({navigation: {navigate}}) => {
 
   return (
     <SafeAreaView styles={GlobalStyle.container}>
-      <View>
+      <View style={{backgroundColor: Colors.background}}>
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
           <Text style={styles.secondTitle}>Nearby</Text>

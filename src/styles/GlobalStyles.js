@@ -10,10 +10,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
-  scrollView: {
-    fontFamily: 'HelveticaNeue',
-    backgroundColor: Colors.background,
-  },
+  scrollView: {},
   userImage: {
     width: 100,
     height: 100,
