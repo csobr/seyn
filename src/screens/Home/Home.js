@@ -16,54 +16,56 @@ import UserApi from '../../components/User/UsersHook';
 import {CurrentUser} from '../../components/User/UserContext';
 
 const Home = ({navigation: {navigate}}) => {
-  const [{users}] = UserApi();
+  const [{users, loading, isError}] = UserApi();
   const user = useContext(CurrentUser);
 
   return (
     <SafeAreaView styles={GlobalStyle.container}>
-      <View style={GlobalStyle.body}>
+      <View>
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
           <Text style={styles.secondTitle}>Nearby</Text>
-          {users.map(uid => {
-            return (
-              <TouchableOpacity
-                key={uid.id}
-                onPress={() => navigate('Profile', uid)}
-                style={{
-                  position: 'absolute',
-                  right: 15,
-                  backgroundColor: Colors.white,
-                }}>
-                <Image source={{uri: uid.photo}} style={styles.profile} />
-              </TouchableOpacity>
-            );
-          })}
+          {users.map(uid => (
+            <TouchableOpacity
+              key={uid.id}
+              onPress={() => navigate('Profile', uid)}
+              style={{
+                position: 'absolute',
+                right: 15,
+              }}>
+              <Image source={{uri: uid.photo}} style={styles.profile} />
+            </TouchableOpacity>
+          ))}
         </View>
 
         <Text style={styles.dateTitle}>Today</Text>
-
-        <FlatList
-          contentContainerStyle={{paddingBottom: 250}}
-          data={users}
-          renderItem={({item}) => (
-            // Add uid
-            <TouchableOpacity
-              onPress={() => {
-                navigate('Profile', item.id);
-              }}>
-              <Item
-                id={item.id}
-                time={item.time}
-                name={item.name}
-                title={item.title}
-                image={item.photo}
-                transport={item.transport}
-              />
-            </TouchableOpacity>
+        <>
+          {/* {isError && <Text>Opps.. something went wrong</Text>} */}
+          {loading ? (
+            <Text>loading..</Text>
+          ) : (
+            <FlatList
+              contentContainerStyle={{paddingBottom: 250}}
+              data={users}
+              renderItem={({item}) => (
+                <TouchableOpacity
+                  onPress={() => {
+                    navigate('Profile', item.id);
+                  }}>
+                  <Item
+                    id={item.id}
+                    time={item.time}
+                    name={item.name}
+                    title={item.title}
+                    image={item.photo}
+                    transport={item.transport}
+                  />
+                </TouchableOpacity>
+              )}
+              keyExtractor={item => item.id}
+            />
           )}
-          keyExtractor={item => item.id}
-        />
+        </>
       </View>
     </SafeAreaView>
   );
@@ -144,7 +146,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     borderRadius: 6,
     color: Colors.dark,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.background,
     shadowOpacity: 0.1,
     shadowRadius: 2,
     shadowColor: '#000',

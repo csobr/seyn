@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  View,
-  SafeAreaView,
-  Text,
-  Image,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
+import {View, SafeAreaView, Text, Image, StyleSheet} from 'react-native';
 import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,31 +10,27 @@ const Profile = ({route, navigation}) => {
 
   return (
     <SafeAreaView style={GlobalStyle.container}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={GlobalStyle.scrollView}>
-        <View style={GlobalStyle.body}>
-          <View style={styles.header}>
-            <Image
-              style={styles.headerBackground}
-              source={require('../../assets/header.jpg')}
-            />
-            <View style={styles.headerDetails}>
-              <Image source={{uri: photo}} style={GlobalStyle.userImage} />
-              <Text style={styles.userName}>{name}</Text>
-              <Text style={styles.userTitle}>{title}</Text>
-              <Icon name={transport} size={20} />
-              <View style={styles.customBtn}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Settings', route.params)}
-                  styles={styles.customBtn}>
-                  <Text>Edit profile</Text>
-                </TouchableOpacity>
-              </View>
+      <View style={GlobalStyle.body}>
+        <View style={styles.header}>
+          <Image
+            style={styles.headerBackground}
+            source={require('../../assets/header.jpg')}
+          />
+          <View style={styles.headerDetails}>
+            <Image source={{uri: photo}} style={GlobalStyle.userImage} />
+            <Text style={styles.userName}>{name}</Text>
+            <Text style={styles.userTitle}>{title}</Text>
+            <Icon name={transport} size={20} />
+            <View style={styles.customBtn}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Settings', route.params)}
+                styles={styles.customBtn}>
+                <Text>Edit profile</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
@@ -77,7 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     color: Colors.white,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.secondary,
     fontWeight: '300',
     height: 25,
     width: 100,

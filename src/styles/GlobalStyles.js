@@ -5,11 +5,13 @@ export default StyleSheet.create({
   body: {
     backgroundColor: Colors.background,
     fontFamily: 'HelveticaNeue',
+    height: '100%',
   },
   container: {
     flex: 1,
   },
   scrollView: {
+    fontFamily: 'HelveticaNeue',
     backgroundColor: Colors.background,
   },
   userImage: {
