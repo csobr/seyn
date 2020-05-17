@@ -24,7 +24,7 @@ const Profile = ({route, navigation}) => {
             <View style={styles.customBtn}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('Settings', route.params)}
-                styles={styles.customBtn}>
+                style={styles.customBtn}>
                 <Text>Edit profile</Text>
               </TouchableOpacity>
             </View>

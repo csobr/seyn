@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -6,6 +6,8 @@ import {Home, Message, Search, Maps, Profile} from '../../screens';
 import Settings from '../Settings';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '../../styles/Colors';
+
+interface AppNavigationProps {}
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -29,17 +31,21 @@ function getHeaderTitle(route) {
       return 'Settings';
   }
 }
+// const TabBarIconProps= (tintColor: string): React.ReactElement =>{
+//   return (
+//      <Icon size={25} color={tintColor}  />;
+//   );
+// };
 const TabNavigator = () => (
   <Tab.Navigator
     screenOptions={({route}) => ({
-      tabBarIcon: ({focused, tintColor}) => {
+      tabBarIcon: ({focused, color}) => {
         if (route.name === 'Home') {
         } else if (route.name === 'Search') {
         } else if (route.name === 'Maps') {
-        } else if (route.name === 'Message') {
         } else if (route.name === 'Profile') {
         }
-        return <Icon size={25} color={tintColor} focused={focused} />;
+        return <Icon size={25} color={color} focused={focused} />;
       },
     })}
     tabBarOptions={{
@@ -110,13 +116,13 @@ const TabNavigator = () => (
   </Tab.Navigator>
 );
 
-const AppNavigation = () => {
+const AppNavigation: React.FC<AppNavigationProps> = ({}) => {
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          gestureEnaled: true,
-          gesturedirection: 'horizontal',
+          // gestureEnaled: true,
+          // gesturedirection: 'horizontal',
           headerStyle: {
             backgroundColor: Colors.background,
           },

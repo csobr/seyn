@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import * as React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -13,14 +13,14 @@ import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import UserApi from '../../components/User/UsersHook';
-import {CurrentUser} from '../../components/User/UserContext';
+// import {CurrentUser} from '../../components/User/UserContext';
 
 const Home = ({navigation: {navigate}}) => {
-  const [{users, loading, isError}] = UserApi();
-  const user = useContext(CurrentUser);
+  const [{users, loading}] = UserApi();
+  // const user = React.useContext(CurrentUser);
 
   return (
-    <SafeAreaView styles={GlobalStyle.container}>
+    <SafeAreaView style={GlobalStyle.container}>
       <View style={{backgroundColor: Colors.background}}>
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
@@ -53,7 +53,6 @@ const Home = ({navigation: {navigate}}) => {
                     navigate('Profile', item.id);
                   }}>
                   <Item
-                    id={item.id}
                     time={item.time}
                     name={item.name}
                     title={item.title}
@@ -70,7 +69,7 @@ const Home = ({navigation: {navigate}}) => {
     </SafeAreaView>
   );
 };
-export const Item = ({id, time, name, title, image, transport}) => {
+export const Item = ({time, name, title, image, transport}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.item}>
