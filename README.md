@@ -1,8 +1,6 @@
-## Seyn
+# Seyn
 
 A fun side project idea.
-
-React Native
 
 ## Installation
 
