@@ -7,6 +7,12 @@ React Native
 ## Installation
 
 ```bash
-npm run ios
-npm run android
+$ npm install
+```
+
+## Build
+
+```bash
+$ npm run ios
+$ npm run android
 ```
