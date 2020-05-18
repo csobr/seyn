@@ -31,90 +31,84 @@ function getHeaderTitle(route) {
       return 'Settings';
   }
 }
-// const TabBarIconProps= (tintColor: string): React.ReactElement =>{
-//   return (
-//      <Icon size={25} color={tintColor}  />;
-//   );
-// };
-const TabNavigator = () => (
-  <Tab.Navigator
-    screenOptions={({route}) => ({
-      tabBarIcon: ({focused, color}) => {
-        if (route.name === 'Home') {
-        } else if (route.name === 'Search') {
-        } else if (route.name === 'Maps') {
-        } else if (route.name === 'Profile') {
-        }
-        return <Icon size={25} color={color} focused={focused} />;
-      },
-    })}
-    tabBarOptions={{
-      activeTintColor: Colors.primary,
-      inactiveTintColor: Colors.dark,
-      showLabel: true,
-      style: {
-        backgroundColor: Colors.background,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderTopColor: 'transparent',
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        shadowColor: '#000',
-        shadowOffset: {height: 1, width: 0},
-      },
-    }}>
-    <Tab.Screen
-      options={{
-        tabBarLabel: 'Home',
-        tabBarIcon: ({color, size}) => (
-          <Icon name="home" color={color} size={size} />
-        ),
+const TabBarIcon = (tintColor: string): React.ReactElement => {
+  return <Icon size={25} color={tintColor} name="Home" />;
+};
+
+function TabNavigator(): React.ReactElement {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarIcon: ({color}): React.ReactElement => TabBarIcon(color),
       }}
-      name="Home"
-      component={Home}
-    />
-    <Tab.Screen
-      options={{
-        tabBarLabel: 'Search',
-        tabBarIcon: ({color, size}) => (
-          <Icon name="search" color={color} size={size} />
-        ),
-      }}
-      name="Search"
-      component={Search}
-    />
-    <Tab.Screen
-      options={{
-        tabBarLabel: 'Maps',
-        tabBarIcon: ({color, size}) => (
-          <Icon name="map-pin" color={color} size={size} />
-        ),
-      }}
-      name="Maps"
-      component={Maps}
-    />
-    <Tab.Screen
-      options={{
-        tabBarLabel: 'Message',
-        tabBarIcon: ({color, size}) => (
-          <Icon name="message-square" color={color} size={size} />
-        ),
-      }}
-      name="Message"
-      component={Message}
-    />
-    <Tab.Screen
-      options={{
-        tabBarLabel: 'Profile',
-        tabBarIcon: ({color, size}) => (
-          <Icon name="user" color={color} size={size} />
-        ),
-      }}
-      name="Profile"
-      component={Profile}
-    />
-  </Tab.Navigator>
-);
+      tabBarOptions={{
+        activeTintColor: Colors.primary,
+        inactiveTintColor: Colors.dark,
+        showLabel: true,
+        style: {
+          backgroundColor: Colors.background,
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderTopColor: 'transparent',
+          shadowOpacity: 0.1,
+          shadowRadius: 4,
+          shadowColor: '#000',
+          shadowOffset: {height: 1, width: 0},
+        },
+      }}>
+      <Tab.Screen
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({color, size}) => (
+            <Icon name="home" color={color} size={size} />
+          ),
+        }}
+        name="Home"
+        component={Home}
+      />
+      <Tab.Screen
+        options={{
+          tabBarLabel: 'Search',
+          tabBarIcon: ({color, size}) => (
+            <Icon name="search" color={color} size={size} />
+          ),
+        }}
+        name="Search"
+        component={Search}
+      />
+      <Tab.Screen
+        options={{
+          tabBarLabel: 'Maps',
+          tabBarIcon: ({color, size}) => (
+            <Icon name="map-pin" color={color} size={size} />
+          ),
+        }}
+        name="Maps"
+        component={Maps}
+      />
+      <Tab.Screen
+        options={{
+          tabBarLabel: 'Message',
+          tabBarIcon: ({color, size}) => (
+            <Icon name="message-square" color={color} size={size} />
+          ),
+        }}
+        name="Message"
+        component={Message}
+      />
+      <Tab.Screen
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({color, size}) => (
+            <Icon name="user" color={color} size={size} />
+          ),
+        }}
+        name="Profile"
+        component={Profile}
+      />
+    </Tab.Navigator>
+  );
+}
 
 const AppNavigation: React.FC<AppNavigationProps> = ({}) => {
   return (
