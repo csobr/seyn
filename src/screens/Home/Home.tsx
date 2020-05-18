@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     color: Colors.dark,
   },
   secondTitle: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '300',
     color: Colors.dark,
   },
