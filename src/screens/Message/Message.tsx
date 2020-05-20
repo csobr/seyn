@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-const Message = ({navigation}) => {
+const Message = () => {
   return (
     <View>
       <Text>Message</Text>
