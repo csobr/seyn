@@ -16,13 +16,13 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import UserApi from '../../components/User/UsersHook';
 // import {CurrentUser} from '../../components/User/UserContext';
 
-type NavigationProps = {
+export interface NavProps {
   navigation: NavigationStackProp<any, any>;
-};
-const Home: React.FC<NavigationProps> = props => {
+}
+const Home: React.FC<NavProps> = props => {
   const [{users, loading}] = UserApi();
-  // const user = React.useContext(CurrentUser);
-
+  // const user = React.useContext(CurrentUser)
+  const {navigation} = props;
   return (
     <SafeAreaView style={GlobalStyle.container}>
       <View style={{backgroundColor: Colors.background}}>
@@ -32,7 +32,7 @@ const Home: React.FC<NavigationProps> = props => {
           {users.map(uid => (
             <TouchableOpacity
               key={uid.id}
-              onPress={() => props.navigation.navigate('Profile', uid)}
+              onPress={() => navigation.navigate('Profile', uid)}
               style={{
                 position: 'absolute',
                 right: 15,
@@ -54,7 +54,7 @@ const Home: React.FC<NavigationProps> = props => {
               renderItem={({item}) => (
                 <TouchableOpacity
                   onPress={() => {
-                    props.navigation.navigate('Profile', item.id);
+                    navigation.navigate('Profile', item.id);
                   }}>
                   <Item
                     time={item.time}
