@@ -8,6 +8,7 @@ import {
   FlatList,
   Image,
 } from 'react-native';
+import {NavigationStackProp} from 'react-navigation-stack';
 import {useNavigation} from '@react-navigation/native';
 import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
@@ -15,7 +16,10 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import UserApi from '../../components/User/UsersHook';
 // import {CurrentUser} from '../../components/User/UserContext';
 
-const Home = ({navigation: {navigate}}) => {
+type NavigationProps = {
+  navigation: NavigationStackProp<any, any>;
+};
+const Home: React.FC<NavigationProps> = props => {
   const [{users, loading}] = UserApi();
   // const user = React.useContext(CurrentUser);
 
@@ -28,7 +32,7 @@ const Home = ({navigation: {navigate}}) => {
           {users.map(uid => (
             <TouchableOpacity
               key={uid.id}
-              onPress={() => navigate('Profile', uid)}
+              onPress={() => props.navigation.navigate('Profile', uid)}
               style={{
                 position: 'absolute',
                 right: 15,
@@ -50,7 +54,7 @@ const Home = ({navigation: {navigate}}) => {
               renderItem={({item}) => (
                 <TouchableOpacity
                   onPress={() => {
-                    navigate('Profile', item.id);
+                    props.navigation.navigate('Profile', item.id);
                   }}>
                   <Item
                     time={item.time}
