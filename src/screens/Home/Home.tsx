@@ -34,10 +34,7 @@ const Home: React.FC<NavProps> = props => {
             <TouchableOpacity
               key={uid.id}
               onPress={() => navigation.navigate('Profile', uid)}
-              style={{
-                position: 'absolute',
-                right: 15,
-              }}>
+              style={styles.profilePosition}>
               <Image source={{uri: uid.photo}} style={styles.profile} />
             </TouchableOpacity>
           ))}
@@ -50,7 +47,7 @@ const Home: React.FC<NavProps> = props => {
             <Text>loading..</Text>
           ) : (
             <FlatList
-              contentContainerStyle={{paddingBottom: 250}}
+              contentContainerStyle={styles.listPadding}
               data={users}
               renderItem={({item}) => (
                 <TouchableOpacity
@@ -78,7 +75,7 @@ export const Item = ({time, name, title, image, transport}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.item}>
-      <View style={{paddingLeft: 70, justifyContent: 'center'}}>
+      <View style={styles.listItems}>
         <Image source={{uri: image}} style={styles.userImage} />
         <Text style={styles.userName}>{name}</Text>
         <Text style={styles.userTitle}>{title}</Text>
@@ -86,11 +83,7 @@ export const Item = ({time, name, title, image, transport}) => {
       </View>
       {/*      open messagescreen with uid */}
       <TouchableOpacity
-        style={{
-          right: 10,
-          top: 4,
-          position: 'absolute',
-        }}
+        style={styles.listIcons}
         onPress={() => {
           navigation.navigate('Message');
         }}>
@@ -98,19 +91,10 @@ export const Item = ({time, name, title, image, transport}) => {
           name="message-outline"
           size={25}
           color="black"
-          style={{paddingBottom: 20}}
+          style={styles.listIconPadding}
         />
       </TouchableOpacity>
-      <Icon
-        name={transport}
-        size={25}
-        color="black"
-        style={{
-          right: 10,
-          bottom: 2,
-          position: 'absolute',
-        }}
-      />
+      <Icon name={transport} size={25} color="black" style={styles.listIcon} />
     </View>
   );
 };
@@ -162,6 +146,10 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: Colors.primary,
   },
+  profilePosition: {
+    position: 'absolute',
+    right: 15,
+  },
   userImage: {
     width: 50,
     height: 50,
@@ -193,5 +181,26 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  listPadding: {
+    paddingBottom: 250,
+  },
+
+  listItems: {
+    paddingLeft: 70,
+    justifyContent: 'center',
+  },
+  listIcons: {
+    right: 10,
+    top: 4,
+    position: 'absolute',
+  },
+  listIconPadding: {
+    paddingBottom: 20,
+  },
+  listIcon: {
+    right: 10,
+    bottom: 2,
+    position: 'absolute',
   },
 });
