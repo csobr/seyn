@@ -7,9 +7,7 @@ import {
   Text,
   TextInput,
   Image,
-  StyleSheet,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 
 const Settings = ({route}) => {
   const {name, title, photo} = route.params;
@@ -17,29 +15,6 @@ const Settings = ({route}) => {
 
   const handleChange = newName => {
     setName(newName);
-
-    const setValue = async () => {
-      try {
-        await AsyncStorage.setItem('name', JSON.stringify(userName));
-      } catch (error) {
-        console.log('Error saving data');
-      }
-    };
-    setValue();
-  };
-  // Update users values
-
-  const retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('name');
-      if (value !== null) {
-        setName(JSON.parse(value));
-      }
-    } catch (error) {
-      console.log('Error fetching data');
-    }
-  };
-
   useEffect(() => {}, [userName]);
 
   return (
@@ -55,7 +30,7 @@ const Settings = ({route}) => {
           />
 
           <Text>Username:</Text>
-          <TextInput textContextType="username" value={'blank'} />
+          <TextInput value={'blank'} />
           <Text>Status:</Text>
           <TextInput value={title} />
         </View>
@@ -64,6 +39,6 @@ const Settings = ({route}) => {
   );
 };
 
-const styles = StyleSheet.create({});
+// const styles = StyleSheet.create({});
 
 export default Settings;

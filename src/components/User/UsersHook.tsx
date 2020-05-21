@@ -1,5 +1,5 @@
 import React from 'react';
-import * as initialData from './Users.json';
+import initialData from './Users.json';
 // import axios from 'axios';
 
 const UserApi = () => {

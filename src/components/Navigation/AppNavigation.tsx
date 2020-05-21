@@ -2,8 +2,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Message, Search, Maps, Profile} from '../../screens';
-import Settings from '../Settings';
+import {Home, Message, Search, Maps, Profile, Settings} from '../../screens';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '../../styles/Colors';
 
