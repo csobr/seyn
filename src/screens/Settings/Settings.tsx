@@ -15,6 +15,7 @@ const Settings = ({route}) => {
 
   const handleChange = newName => {
     setName(newName);
+  };
   useEffect(() => {}, [userName]);
 
   return (
@@ -38,7 +39,5 @@ const Settings = ({route}) => {
     </SafeAreaView>
   );
 };
-
-// const styles = StyleSheet.create({});
-
 export default Settings;
+// const styles = StyleSheet.create({});
