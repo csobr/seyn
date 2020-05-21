@@ -1,11 +1,11 @@
-import React from 'react';
-import {CurrentUser, UserInfo} from './src/components/User/UserContext';
+import * as React from 'react';
+import {CurrentUser} from './src/components/User/UserContext';
 import AppNavigation from './src/components/Navigation/AppNavigation';
 
-const App = () => {
+const App: React.FC = ({}) => {
   return (
     <>
-      <CurrentUser.Provider value={'user'}>
+      <CurrentUser.Provider value={{name: 'Annie'}}>
         <AppNavigation />
       </CurrentUser.Provider>
     </>
