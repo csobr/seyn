@@ -18,7 +18,6 @@ import UserApi from '../../components/User/UsersHook';
 
 export interface NavProps {
   navigation: NavigationStackProp<any, any>;
-  navigate: NavigationStackProp;
 }
 const Home: React.FC<NavProps> = props => {
   const [{users, loading}] = UserApi();
