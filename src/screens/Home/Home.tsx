@@ -75,6 +75,7 @@ export const Item = ({time, name, title, image, transport}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.item}>
+      <View style={styles.activeIndicator} />
       <View style={styles.listItems}>
         <Image source={{uri: image}} style={styles.userImage} />
         <Text style={styles.userName}>{name}</Text>
@@ -149,6 +150,7 @@ const styles = StyleSheet.create({
   profilePosition: {
     position: 'absolute',
     right: 15,
+    backgroundColor: Colors.background,
   },
   userImage: {
     width: 50,
@@ -202,5 +204,14 @@ const styles = StyleSheet.create({
     right: 10,
     bottom: 2,
     position: 'absolute',
+  },
+  activeIndicator: {
+    backgroundColor: '#59ff7a',
+    top: 5,
+    position: 'absolute',
+    left: 4,
+    height: 7,
+    width: 7,
+    borderRadius: 50,
   },
 });

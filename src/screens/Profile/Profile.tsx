@@ -21,10 +21,6 @@ const Profile = ({route, navigation}: Props) => {
     <SafeAreaView style={GlobalStyle.container}>
       <View style={GlobalStyle.body}>
         <View style={styles.header}>
-          <Image
-            style={styles.headerBackground}
-            source={require('../../assets/header.jpg')}
-          />
           <View style={styles.headerDetails}>
             <Image source={{uri: photo}} style={GlobalStyle.userImage} />
             <Text style={styles.userName}>{name}</Text>
@@ -50,9 +46,6 @@ const styles = StyleSheet.create({
     height: 200,
     alignItems: 'center',
   },
-  headerBackground: {
-    height: 100,
-  },
   headerDetails: {
     position: 'absolute',
     marginTop: 50,
@@ -61,7 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   userName: {
-    fontSize: 14,
+    fontSize: 18,
     color: Colors.black,
     fontWeight: '700',
   },

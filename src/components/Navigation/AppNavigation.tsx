@@ -2,7 +2,14 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Message, Search, Maps, Profile, Settings} from '../../screens';
+import {
+  HomeScreen,
+  MessageScreen,
+  SearchScreen,
+  MapsScreen,
+  ProfileScreen,
+  SettingsScreen,
+} from '../../screens';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '../../styles/Colors';
 
@@ -41,9 +48,9 @@ function TabNavigator(): React.ReactElement {
         tabBarIcon: ({color}): React.ReactElement => TabBarIcon(color),
       }}
       tabBarOptions={{
-        activeTintColor: Colors.primary,
+        activeTintColor: Colors.grey,
         inactiveTintColor: Colors.dark,
-        showLabel: true,
+        showLabel: false,
         style: {
           backgroundColor: Colors.background,
           justifyContent: 'center',
@@ -59,11 +66,11 @@ function TabNavigator(): React.ReactElement {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({color, size}) => (
-            <Icon name="home" color={color} size={size} />
+            <Icon name="circle" color={color} size={size} />
           ),
         }}
         name="Home"
-        component={Home}
+        component={HomeScreen}
       />
       <Tab.Screen
         options={{
@@ -73,7 +80,7 @@ function TabNavigator(): React.ReactElement {
           ),
         }}
         name="Search"
-        component={Search}
+        component={SearchScreen}
       />
       <Tab.Screen
         options={{
@@ -83,7 +90,7 @@ function TabNavigator(): React.ReactElement {
           ),
         }}
         name="Maps"
-        component={Maps}
+        component={MapsScreen}
       />
       <Tab.Screen
         options={{
@@ -93,7 +100,7 @@ function TabNavigator(): React.ReactElement {
           ),
         }}
         name="Message"
-        component={Message}
+        component={MessageScreen}
       />
       <Tab.Screen
         options={{
@@ -103,7 +110,7 @@ function TabNavigator(): React.ReactElement {
           ),
         }}
         name="Profile"
-        component={Profile}
+        component={ProfileScreen}
       />
     </Tab.Navigator>
   );
@@ -132,11 +139,11 @@ const AppNavigation: React.FC<AppNavigationProps> = ({}) => {
           name="Home"
           component={TabNavigator}
         />
-        <Stack.Screen name="Search" component={Search} />
-        <Stack.Screen name="Maps" component={Maps} />
-        <Stack.Screen name="Message" component={Message} />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="Maps" component={MapsScreen} />
+        <Stack.Screen name="Message" component={MessageScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

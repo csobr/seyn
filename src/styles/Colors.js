@@ -2,16 +2,16 @@ const Colors = {
   background: '#FAFAFA',
 
   ligther: '#E1E1E1',
+  grey: '#424242',
 
   white: '#FFFFFF',
 
   black: '#000',
 
-  dark: '#0A0A0A',
-  //050505
+  dark: '#0C0C0C',
 
-  primary: '#FF7A59',
+  primary: '#181818',
 
-  secondary: '#FFB7A5',
+  secondary: '#ececec',
 };
 export default Colors;
