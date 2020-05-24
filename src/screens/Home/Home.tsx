@@ -75,9 +75,9 @@ export const Item = ({time, name, title, image, transport}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.item}>
-      <View style={styles.activeIndicator} />
       <View style={styles.listItems}>
         <Image source={{uri: image}} style={styles.userImage} />
+        <View style={styles.activeIndicator} />
         <Text style={styles.userName}>{name}</Text>
         <Text style={styles.userTitle}>{title}</Text>
         <Text style={styles.userTime}>{time} ago</Text>
@@ -168,7 +168,6 @@ const styles = StyleSheet.create({
   userTitle: {
     fontSize: 12,
     color: Colors.dark,
-
     marginTop: 3,
   },
   userTime: {
@@ -206,12 +205,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   activeIndicator: {
-    backgroundColor: '#59ff7a',
-    top: 5,
+    backgroundColor: '#60cd52',
     position: 'absolute',
-    left: 4,
-    height: 7,
-    width: 7,
+    left: 45,
+    top: 40,
+    height: 10,
+    width: 10,
     borderRadius: 50,
   },
 });
