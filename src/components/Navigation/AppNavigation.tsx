@@ -12,6 +12,7 @@ import {
 } from '../../screens';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '../../styles/Colors';
+import {Image} from 'react-native';
 
 interface AppNavigationProps {}
 const Stack = createStackNavigator();
@@ -65,8 +66,11 @@ function TabNavigator(): React.ReactElement {
       <Tab.Screen
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({color, size}) => (
-            <Icon name="circle" color={color} size={size} />
+          tabBarIcon: () => (
+            <Image
+              style={{width: 25, height: 25}}
+              source={require('./icon/seynoutline.png')}
+            />
           ),
         }}
         name="Home"
