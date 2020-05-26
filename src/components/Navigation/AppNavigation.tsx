@@ -69,7 +69,7 @@ function TabNavigator(): React.ReactElement {
           tabBarIcon: () => (
             <Image
               style={{width: 25, height: 25}}
-              source={require('./icon/seynoutline.png')}
+              source={require('./icon/seynoutlineicon.png')}
             />
           ),
         }}
