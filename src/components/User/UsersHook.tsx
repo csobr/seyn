@@ -24,12 +24,10 @@ const dataFetchReducer = (state, action) => {
 };
 
 const UsersApi = () => {
-  const [users, setUsers] = React.useState(initaldata);
-
   const [state, dispatch] = React.useReducer(dataFetchReducer, {
     isLoading: false,
     isError: false,
-    data: users, // replace
+    data: initaldata, // replace
   });
 
   React.useEffect(() => {
@@ -41,7 +39,7 @@ const UsersApi = () => {
 
       try {
         if (!didCancel) {
-          dispatch({type: 'FETCH_SUCCESS', payload: users});
+          dispatch({type: 'FETCH_SUCCESS', payload: initaldata});
         }
       } catch (error) {
         if (!didCancel) {
@@ -55,8 +53,8 @@ const UsersApi = () => {
     return () => {
       didCancel = true;
     };
-  }, [users]);
+  }, []);
 
-  return [state, setUsers];
+  return [state];
 };
 export default UsersApi;

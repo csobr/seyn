@@ -17,7 +17,6 @@ const App: React.FC = ({}) => {
   //   }
   // };
   const [{data}] = UsersApi();
-  console.log(data);
 
   // const [filter, dispatchFilter] = React.useReducer(usersReducer, 'ALL');
 
