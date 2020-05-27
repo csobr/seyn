@@ -13,7 +13,8 @@ import {useNavigation} from '@react-navigation/native';
 import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import UserApi from '../../components/User/UsersHook';
+import UsersApi from '../../components/User/UsersHook';
+
 // import {CurrentUser} from '../../components/User/UserContext';
 
 export interface NavProps {
@@ -21,7 +22,8 @@ export interface NavProps {
   navigation: NavigationStackProp<any, any>;
 }
 const Home: React.FC<NavProps> = props => {
-  const [{users, loading}] = UserApi();
+  const [{data, isLoading}] = UsersApi();
+
   // const user = React.useContext(CurrentUser)
   const {navigation} = props;
   return (
@@ -30,7 +32,7 @@ const Home: React.FC<NavProps> = props => {
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
           <Text style={styles.secondTitle}>Nearby</Text>
-          {users.map(uid => (
+          {data.map(uid => (
             <TouchableOpacity
               key={uid.id}
               onPress={() => navigation.navigate('Profile', uid)}
@@ -43,12 +45,12 @@ const Home: React.FC<NavProps> = props => {
         <Text style={styles.dateTitle}>Today</Text>
         <>
           {/* {isError && <Text>Opps.. something went wrong</Text>} */}
-          {loading ? (
+          {isLoading ? (
             <Text>loading..</Text>
           ) : (
             <FlatList
               contentContainerStyle={styles.listPadding}
-              data={users}
+              data={data}
               renderItem={({item}) => (
                 <TouchableOpacity
                   onPress={() => {

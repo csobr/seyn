@@ -1,28 +1,62 @@
-import React from 'react';
-import initialData from './Users.json';
-// import axios from 'axios';
+import * as React from 'react';
+import initaldata from './Users.json';
 
-const UserApi = () => {
-  const [users, setUsers] = React.useState(initialData);
-  const [loading, setLoading] = React.useState(false);
-  const [isError, setError] = React.useState(false);
-  React.useEffect(() => {
-    const requestUser = async () => {
-      setLoading(true);
-      setError(false);
-
-      // try {
-      //   const result = await axios.get().then(res => setUsers(result.res));
-      // } catch (error) {
-      //   setError(true);
-      //   // console.error('Failed to load users');
-      // }
-      setUsers(users);
-
-      setLoading(false);
-    };
-    requestUser();
-  }, [users]);
-  return [{users, loading, isError}];
+const dataFetchReducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_INIT':
+      return {...state, isLoading: true, isError: false};
+    case 'FETCH_SUCCESS':
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: action.payload,
+      };
+    case 'FETCH_FAILURE':
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    default:
+      throw new Error();
+  }
 };
-export default UserApi;
+
+const UsersApi = () => {
+  const [users, setUsers] = React.useState(initaldata);
+
+  const [state, dispatch] = React.useReducer(dataFetchReducer, {
+    isLoading: false,
+    isError: false,
+    data: users, // replace
+  });
+
+  React.useEffect(() => {
+    let didCancel = false;
+
+    const fetchData = async () => {
+      // add fetch
+      dispatch({type: 'FETCH_INIT'});
+
+      try {
+        if (!didCancel) {
+          dispatch({type: 'FETCH_SUCCESS', payload: users});
+        }
+      } catch (error) {
+        if (!didCancel) {
+          dispatch({type: 'FETCH_FAILURE'});
+        }
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      didCancel = true;
+    };
+  }, [users]);
+
+  return [state, setUsers];
+};
+export default UsersApi;
