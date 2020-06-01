@@ -1,9 +1,9 @@
-declare module '*.json' {
-  const value: any;
-  export default value;
-}
-
-declare module 'json!*' {
-  const value: any;
-  export default value;
-}
+export type User = {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  transport: string;
+  time: number;
+  active: boolean;
+};

@@ -1,3 +1,4 @@
+import SignUpScreen from './Signup/Signup';
 import HomeScreen from './Home/Home';
 import SearchScreen from './Search/Search';
 import MapsScreen from './Maps/Maps';
@@ -6,6 +7,7 @@ import ProfileScreen from './Profile/Profile';
 import SettingsScreen from './Settings/Settings';
 
 export {
+  SignUpScreen,
   HomeScreen,
   SearchScreen,
   MapsScreen,

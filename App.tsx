@@ -2,8 +2,10 @@ import React from 'react';
 import {CurrentUser} from './src/components/User/UserContext';
 import UsersApi from './src/components/User/UsersHook';
 import AppNavigation from './src/components/Navigation/AppNavigation';
+// import auth from '@react-native-firebase/app';
 
 const App: React.FC = ({}) => {
+  // const user = auth().CurrentUser;
   const [{data}] = UsersApi();
   const activeReducer = (state, action) => {
     switch (action.type) {

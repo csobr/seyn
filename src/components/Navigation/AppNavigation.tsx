@@ -9,6 +9,7 @@ import {
   MapsScreen,
   ProfileScreen,
   SettingsScreen,
+  SignUpScreen,
 } from '../../screens';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '../../styles/Colors';
@@ -36,6 +37,8 @@ function getHeaderTitle(route) {
       return 'Profile';
     case 'Settings':
       return 'Settings';
+    case 'SignUp':
+      return 'SignUp';
   }
 }
 const TabBarIcon = (tintColor: string): React.ReactElement => {
@@ -148,6 +151,7 @@ const AppNavigation: React.FC<AppNavigationProps> = ({}) => {
         <Stack.Screen name="Message" component={MessageScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
