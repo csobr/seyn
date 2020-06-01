@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {View, SafeAreaView, Text, Image, StyleSheet} from 'react-native';
 import {NavProps} from '../Home/Home';
 import {RouteProp} from '@react-navigation/native';

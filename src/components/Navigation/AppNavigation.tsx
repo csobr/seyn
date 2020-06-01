@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -12,7 +12,7 @@ import {
 } from '../../screens';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '../../styles/Colors';
-import {Image} from 'react-native';
+import {Image, StyleSheet} from 'react-native';
 
 interface AppNavigationProps {}
 const Stack = createStackNavigator();
@@ -68,7 +68,7 @@ function TabNavigator(): React.ReactElement {
           tabBarLabel: 'Home',
           tabBarIcon: () => (
             <Image
-              style={{width: 25, height: 25}}
+              style={styles.icon}
               source={require('./icon/seynoutlineicon.png')}
             />
           ),
@@ -153,3 +153,9 @@ const AppNavigation: React.FC<AppNavigationProps> = ({}) => {
   );
 };
 export default AppNavigation;
+const styles = StyleSheet.create({
+  icon: {
+    width: 25,
+    height: 25,
+  },
+});

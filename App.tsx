@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {CurrentUser} from './src/components/User/UserContext';
 import UsersApi from './src/components/User/UsersHook';
 import AppNavigation from './src/components/Navigation/AppNavigation';
