@@ -4,25 +4,32 @@ import UsersApi from './src/components/User/UsersHook';
 import AppNavigation from './src/components/Navigation/AppNavigation';
 
 const App: React.FC = ({}) => {
-  // const usersReducer = (state, action) => {
-  //   switch (action.type) {
-  //     case 'SHOW_ALL':
-  //       return 'ALL';
-  //     case 'SHOW_ACTIVE':
-  //       return 'ACTIVE';
-  //     case 'SHOW_OFFLINE':
-  //       return 'OFFLINE';
-  //     default:
-  //       throw Error();
-  //   }
-  // };
   const [{data}] = UsersApi();
+  const activeReducer = (state, action) => {
+    switch (action.type) {
+      case 'SHOW_ACTIVE':
+        return 'ACTIVE';
+      case 'SHOW_NOTACTIVE':
+        return 'NOTACTIVE';
+      default:
+        throw Error();
+    }
+  };
 
-  // const [filter, dispatchFilter] = React.useReducer(usersReducer, 'ALL');
+  const [filter, dispatchFilter] = React.useReducer(activeReducer, 'ACTIVE');
+  const filterActive = data.filter(el => {
+    if (filter === 'ACTIVE' && el.active === true) {
+      return true;
+    }
+    if (filter === 'NOTACTIVE' && !el.active === false) {
+      return true;
+    }
+    return false;
+  });
 
   return (
     <>
-      <CurrentUser.Provider value={data}>
+      <CurrentUser.Provider value={filterActive}>
         <AppNavigation />
       </CurrentUser.Provider>
     </>

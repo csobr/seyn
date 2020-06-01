@@ -14,17 +14,16 @@ import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import UsersApi from '../../components/User/UsersHook';
-
-// import {CurrentUser} from '../../components/User/UserContext';
+import {CurrentUser} from '../../components/User/UserContext';
 
 export interface NavProps {
   navigate: any;
   navigation: NavigationStackProp<any, any>;
 }
 const Home: React.FC<NavProps> = props => {
-  const [{data, isLoading}] = UsersApi();
+  const [{isLoading}] = UsersApi();
+  const users = React.useContext(CurrentUser);
 
-  // const user = React.useContext(CurrentUser)
   const {navigation} = props;
   return (
     <SafeAreaView style={GlobalStyle.container}>
@@ -32,7 +31,7 @@ const Home: React.FC<NavProps> = props => {
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
           <Text style={styles.secondTitle}>Nearby</Text>
-          {data.map(uid => (
+          {users.map(uid => (
             <TouchableOpacity
               key={uid.id}
               onPress={() => navigation.navigate('Profile', uid)}
@@ -50,7 +49,7 @@ const Home: React.FC<NavProps> = props => {
           ) : (
             <FlatList
               contentContainerStyle={styles.listPadding}
-              data={data}
+              data={users}
               renderItem={({item}) => (
                 <TouchableOpacity
                   onPress={() => {
