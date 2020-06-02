@@ -2,6 +2,7 @@ import React from 'react';
 import {CurrentUser} from './src/components/User/UserContext';
 import UsersApi from './src/components/User/UsersHook';
 import AppNavigation from './src/components/Navigation/AppNavigation';
+import {SignUpScreen} from './src/screens';
 // import auth from '@react-native-firebase/app';
 
 const App: React.FC = ({}) => {
@@ -32,6 +33,7 @@ const App: React.FC = ({}) => {
   return (
     <>
       <CurrentUser.Provider value={filterActive}>
+        <SignUpScreen />
         <AppNavigation />
       </CurrentUser.Provider>
     </>

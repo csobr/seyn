@@ -1,16 +1,24 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, Button, StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import Colors from '../../styles/Colors';
 import GlobalStyles from '../../styles/GlobalStyles';
 
-const SignUp: React.FC = ({}) => {
+const SignUp: React.FC = props => {
+  const {navigation} = props;
   return (
     <View style={GlobalStyles.body}>
-      <Text style={styles.title}>Sign up</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>Sign up</Text>
 
-      <TextInput keyboardType="number-pad" placeholder="phone-number" />
-      {/* <TextInput
+        <TextInput
+          keyboardType="number-pad"
+          placeholder="phone-number"
+          selectionColor={Colors.black}
+          keyboardAppearance={'dark'}
+        />
+
+        {/* <TextInput
         placeholder="Email"
         autoCapitalize="none"
         onChangeText={email => email}
@@ -25,18 +33,28 @@ const SignUp: React.FC = ({}) => {
         onChangeText={password => password}
         style={styles.input}
       /> */}
-      {/* <Button title="Sign Up" /> */}
+        <Button title="Sign Up" onPress={() => navigation.navigate('Home')} />
+      </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+  },
   title: {
-    fontSize: 32,
+    fontSize: 24,
+    marginBottom: 50,
+    fontWeight: '600',
   },
   input: {
     width: 200,
     height: 30,
-    borderBottomColor: Colors.black,
+    borderColor: Colors.black,
     borderBottomWidth: 1,
   },
 });
