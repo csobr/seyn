@@ -9,7 +9,7 @@ const SignUp: React.FC = ({}) => {
     <View style={GlobalStyles.body}>
       <Text style={styles.title}>Sign up</Text>
 
-      <TextInput keyboardType="number" placeholder="phone-number" />
+      <TextInput keyboardType="number-pad" placeholder="phone-number" />
       {/* <TextInput
         placeholder="Email"
         autoCapitalize="none"

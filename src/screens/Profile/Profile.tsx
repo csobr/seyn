@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  View,
-  SafeAreaView,
-  Text,
-  Image,
-  StyleSheet,
-  Button,
-} from 'react-native';
+import {View, SafeAreaView, Text, Image, StyleSheet} from 'react-native';
 import {NavProps} from '../Home/Home';
 import {RouteProp} from '@react-navigation/native';
 import Colors from '../../styles/Colors';
@@ -40,10 +33,6 @@ const Profile = ({route, navigation}: Props) => {
                 <Text>Edit profile</Text>
               </TouchableOpacity>
             </View>
-            <Button
-              title="signup screen"
-              onPress={() => navigation.navigate('SignUp', route.params)}
-            />
           </View>
         </View>
       </View>
