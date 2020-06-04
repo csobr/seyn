@@ -15,8 +15,10 @@ const SignUp: React.FC = ({}) => {
           placeholderText="Email"
           onChangeText={userEmail => setEmail(userEmail)}
           value={email}
+          autoCapitalize={'none'}
         />
         <FormInput
+          secureTextEntry={true}
           placeholderText="Password"
           value={password}
           onChangeText={userPassword => setPassword(userPassword)}
