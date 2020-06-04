@@ -1,28 +1,35 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
 import Colors from '../../styles/Colors';
 import GlobalStyles from '../../styles/GlobalStyles';
 import FormInput from '../../components/Form/FormInput';
+import {AuthContext} from '../../components/Auth/AuthProvider';
 
 const SignUp: React.FC = ({}) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const {register} = React.useContext(AuthContext);
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Sign up</Text>
-        <FormInput
-          placeholderText="Email"
+        <TextInput
+          placeholder="Email"
           onChangeText={userEmail => setEmail(userEmail)}
           value={email}
+          keyboardType="email-address"
+          autoCorrect={false}
           autoCapitalize={'none'}
+          style={styles.input}
         />
-        <FormInput
-          secureTextEntry={true}
-          placeholderText="Password"
+        <TextInput
+          placeholder="Password"
           value={password}
+          secureTextEntry={true}
           onChangeText={userPassword => setPassword(userPassword)}
+          style={styles.input}
         />
+        <Button title="Sign up" onPress={() => register(email, password)} />
       </View>
     </View>
   );

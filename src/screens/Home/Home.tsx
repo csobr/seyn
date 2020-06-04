@@ -13,16 +13,14 @@ import {useNavigation} from '@react-navigation/native';
 import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import UsersApi from '../../components/User/UsersHook';
-import {CurrentUser} from '../../components/User/UserContext';
+import UsersApi from '../../components/Users/UsersHook';
 
 export interface NavProps {
   navigate: any;
   navigation: NavigationStackProp<any, any>;
 }
 const Home: React.FC<NavProps> = props => {
-  const [{isLoading}] = UsersApi();
-  const users = React.useContext(CurrentUser);
+  const [{data, isLoading}] = UsersApi();
 
   const {navigation} = props;
   return (
@@ -31,7 +29,7 @@ const Home: React.FC<NavProps> = props => {
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
           <Text style={styles.secondTitle}>Nearby</Text>
-          {users.map(uid => (
+          {data.map(uid => (
             <TouchableOpacity
               key={uid.id}
               onPress={() => navigation.navigate('Profile', uid)}
@@ -49,7 +47,7 @@ const Home: React.FC<NavProps> = props => {
           ) : (
             <FlatList
               contentContainerStyle={styles.listPadding}
-              data={users}
+              data={data}
               renderItem={({item}) => (
                 <TouchableOpacity
                   onPress={() => {
