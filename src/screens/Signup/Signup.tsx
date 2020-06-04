@@ -1,39 +1,26 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import {View, Text, StyleSheet} from 'react-native';
 import Colors from '../../styles/Colors';
 import GlobalStyles from '../../styles/GlobalStyles';
+import FormInput from '../../components/Form/FormInput';
 
-const SignUp: React.FC = props => {
-  const {navigation} = props;
+const SignUp: React.FC = ({}) => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Sign up</Text>
-
-        <TextInput
-          keyboardType="number-pad"
-          placeholder="phone-number"
-          selectionColor={Colors.black}
-          keyboardAppearance={'dark'}
+        <FormInput
+          placeholderText="Email"
+          onChangeText={userEmail => setEmail(userEmail)}
+          value={email}
         />
-
-        {/* <TextInput
-        placeholder="Email"
-        autoCapitalize="none"
-        onChangeText={email => email}
-        value={'Email'}
-        style={styles.input}
-      />
-      <TextInput
-        secureTextEntry
-        placeholder="Password"
-        value={'Password'}
-        autoCapitalize="none"
-        onChangeText={password => password}
-        style={styles.input}
-      /> */}
-        <Button title="Sign Up" onPress={() => navigation.navigate('Home')} />
+        <FormInput
+          placeholderText="Password"
+          value={password}
+          onChangeText={userPassword => setPassword(userPassword)}
+        />
       </View>
     </View>
   );
@@ -48,7 +35,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    marginBottom: 50,
+    marginBottom: 30,
     fontWeight: '600',
   },
   input: {

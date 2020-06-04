@@ -29,6 +29,9 @@ build/
 local.properties
 *.iml
 
+# Firebase
+app/
+google-services.json
 # node.js
 #
 node_modules/
