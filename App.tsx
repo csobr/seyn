@@ -1,19 +1,10 @@
 import React from 'react';
-import AppNavigation from './src/components/Navigation/AppNavigation';
-import {SignUpScreen} from './src/screens';
-import {AuthProvider} from './src/components/Auth/AuthProvider';
+import Providers from './src/components/Navigation/index';
 
 const App: React.FC = ({}) => {
   // const user = auth().CurrentUser;
 
-  return (
-    <>
-      <AuthProvider>
-        <SignUpScreen />
-        <AppNavigation />
-      </AuthProvider>
-    </>
-  );
+  return <Providers />;
 };
 export default App;
 //const [{data}] = UsersApi();

@@ -14,6 +14,7 @@ import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import UsersApi from '../../components/Users/UsersHook';
+import {AuthContext} from '../../components/Auth/AuthProvider';
 
 export interface NavProps {
   navigate: any;
@@ -21,6 +22,7 @@ export interface NavProps {
 }
 const Home: React.FC<NavProps> = props => {
   const [{data, isLoading}] = UsersApi();
+  const {user, logout} = React.useContext(AuthContext);
 
   const {navigation} = props;
   return (
@@ -39,7 +41,7 @@ const Home: React.FC<NavProps> = props => {
           ))}
         </View>
 
-        <Text style={styles.dateTitle}>Today</Text>
+        <Text style={styles.dateTitle}>Today {user.uid}</Text>
         <>
           {/* {isError && <Text>Opps.. something went wrong</Text>} */}
           {isLoading ? (

@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
@@ -9,13 +8,11 @@ import {
   MapsScreen,
   ProfileScreen,
   SettingsScreen,
-  SignUpScreen,
 } from '../../screens';
 import Icon from 'react-native-vector-icons/Feather';
 import Colors from '../../styles/Colors';
 import {Image, StyleSheet} from 'react-native';
 
-interface AppNavigationProps {}
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -37,8 +34,6 @@ function getHeaderTitle(route) {
       return 'Profile';
     case 'Settings':
       return 'Settings';
-    case 'SignUp':
-      return 'SignUp';
   }
 }
 const TabBarIcon = (tintColor: string): React.ReactElement => {
@@ -123,37 +118,34 @@ function TabNavigator(): React.ReactElement {
   );
 }
 
-const AppNavigation: React.FC<AppNavigationProps> = ({}) => {
+const AppNavigation: React.FC = ({}) => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          // gestureEnaled: true,
-          // gesturedirection: 'horizontal',
-          headerStyle: {
-            backgroundColor: Colors.background,
-          },
-          headerTintColor: Colors.dark,
+    <Stack.Navigator
+      screenOptions={{
+        // gestureEnaled: true,
+        // gesturedirection: 'horizontal',
+        headerStyle: {
+          backgroundColor: Colors.background,
+        },
+        headerTintColor: Colors.dark,
 
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}>
-        <Stack.Screen
-          options={({route}) => ({
-            title: getHeaderTitle(route),
-          })}
-          name="Home"
-          component={TabNavigator}
-        />
-        <Stack.Screen name="Search" component={SearchScreen} />
-        <Stack.Screen name="Maps" component={MapsScreen} />
-        <Stack.Screen name="Message" component={MessageScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Settings" component={SettingsScreen} />
-        <Stack.Screen name="SignUp" component={SignUpScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
+      <Stack.Screen
+        options={({route}) => ({
+          title: getHeaderTitle(route),
+        })}
+        name="Home"
+        component={TabNavigator}
+      />
+      <Stack.Screen name="Search" component={SearchScreen} />
+      <Stack.Screen name="Maps" component={MapsScreen} />
+      <Stack.Screen name="Message" component={MessageScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
+    </Stack.Navigator>
   );
 };
 export default AppNavigation;

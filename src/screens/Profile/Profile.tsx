@@ -1,11 +1,20 @@
 import * as React from 'react';
-import {View, SafeAreaView, Text, Image, StyleSheet} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Text,
+  Image,
+  StyleSheet,
+  Button,
+} from 'react-native';
 import {NavProps} from '../Home/Home';
 import {RouteProp} from '@react-navigation/native';
 import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {AuthContext} from '../../components/Auth/AuthProvider';
+
 type Params = {
   Profile: {name: string; title: string; transport: string; photo?: string};
 };
@@ -17,6 +26,7 @@ type Props = {
 };
 const Profile = ({route, navigation}: Props) => {
   const {name, title, transport, photo} = route.params;
+  const {logout} = React.useContext(AuthContext);
   return (
     <SafeAreaView style={GlobalStyle.container}>
       <View style={GlobalStyle.body}>
@@ -33,6 +43,7 @@ const Profile = ({route, navigation}: Props) => {
                 <Text>Edit profile</Text>
               </TouchableOpacity>
             </View>
+            <Button title="Log out" onPress={() => logout()} />
           </View>
         </View>
       </View>
