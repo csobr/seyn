@@ -2,17 +2,18 @@ import React from 'react';
 import {TextInput, StyleSheet} from 'react-native';
 import Colors from '../../styles/Colors';
 
-type FormProps = {
+interface FormProps extends HTMLInputElement {
   labelValue: string;
   placeholderText: string;
-};
-const FormInput: React.FC<FormProps & React.HTMLAttributes<any>> = props => {
+}
+const FormInput: React.FC<FormProps> = props => {
   const {labelValue, placeholderText} = props;
   return (
     <TextInput
       value={labelValue}
       placeholder={placeholderText}
       style={styles.input}
+      {...props}
     />
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
+import {View, Text, StyleSheet, Button} from 'react-native';
 import Colors from '../../styles/Colors';
 import GlobalStyles from '../../styles/GlobalStyles';
 import FormInput from '../../components/Form/FormInput';
@@ -13,18 +13,18 @@ const SignUp: React.FC = ({}) => {
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Sign up</Text>
-        <TextInput
-          placeholder="Email"
+        <FormInput
+          placeholderText="Email"
           onChangeText={userEmail => setEmail(userEmail)}
-          value={email}
+          labelValue={email}
           keyboardType="email-address"
           autoCorrect={false}
           autoCapitalize={'none'}
           style={styles.input}
         />
-        <TextInput
-          placeholder="Password"
-          value={password}
+        <FormInput
+          placeholderText="Password"
+          labelValue={password}
           secureTextEntry={true}
           onChangeText={userPassword => setPassword(userPassword)}
           style={styles.input}
