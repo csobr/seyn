@@ -30,7 +30,7 @@ const Login = ({navigation}: Props) => {
         />
         <Button title="Login" onPress={() => login(email, password)} />
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-          <Text>Join</Text>
+          <Text>Sign up</Text>
         </TouchableOpacity>
       </View>
     </View>

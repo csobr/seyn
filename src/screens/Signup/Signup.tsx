@@ -6,8 +6,10 @@ import FormInput from '../../components/Form/FormInput';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 
 const SignUp = ({}) => {
+  const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  // //Add pass sec
   const {register} = React.useContext(AuthContext);
   return (
     <View style={GlobalStyles.body}>
@@ -35,7 +37,10 @@ const SignUp = ({}) => {
           onChangeText={userPassword => setPassword(userPassword)}
           style={styles.input}
         />
-        <Button title="Sign up" onPress={() => register(email, password)} />
+        <Button
+          title="Sign up"
+          onPress={() => register(email, password, name)}
+        />
       </View>
     </View>
   );

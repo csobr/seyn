@@ -41,7 +41,7 @@ const Home: React.FC<NavProps> = props => {
           ))}
         </View>
 
-        <Text style={styles.dateTitle}>Today {user.uid}</Text>
+        <Text style={styles.dateTitle}>Today {user.displayName}</Text>
         <>
           {/* {isError && <Text>Opps.. something went wrong</Text>} */}
           {isLoading ? (
