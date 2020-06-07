@@ -1,6 +1,6 @@
 import React from 'react';
 import auth from '@react-native-firebase/auth';
-
+import firestore from '@react-native-firebase/firestore';
 export const AuthContext = React.createContext({});
 
 export const AuthProvider = ({children}) => {
@@ -18,12 +18,21 @@ export const AuthProvider = ({children}) => {
             console.log(e);
           }
         },
-        register: async (email, password, name) => {
+        register: async (email, password, name, newUser) => {
           try {
             await auth()
               .createUserWithEmailAndPassword(email, password)
-              .then(userInfo => {
-                userInfo.user.updateProfile({displayName: name}).then(() => {});
+              .then(userName => {
+                userName.user.updateProfile({displayName: name}).then(() => {
+                  firestore()
+                    .collection('users')
+                    .add({
+                      userDetails: newUser,
+                    });
+                });
+              })
+              .then(() => {
+                console.log('User added!');
               });
           } catch (e) {
             console.log(e);

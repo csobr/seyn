@@ -22,7 +22,7 @@ export interface NavProps {
 }
 const Home: React.FC<NavProps> = props => {
   const [{data, isLoading}] = UsersApi();
-  const {user, logout} = React.useContext(AuthContext);
+  const {user} = React.useContext(AuthContext);
 
   const {navigation} = props;
   return (

@@ -4,13 +4,25 @@ import Colors from '../../styles/Colors';
 import GlobalStyles from '../../styles/GlobalStyles';
 import FormInput from '../../components/Form/FormInput';
 import {AuthContext} from '../../components/Auth/AuthProvider';
+import {User} from '../../types/user';
 
 const SignUp = ({}) => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  // //Add pass sec
+  const newUser = {
+    name: name,
+    email: email,
+    profileImg: null,
+    transport: null,
+    time: null,
+    active: false,
+    status: null,
+  };
+  const userInfo: User = newUser;
+  // //Add  sec
   const {register} = React.useContext(AuthContext);
+
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
@@ -39,7 +51,7 @@ const SignUp = ({}) => {
         />
         <Button
           title="Sign up"
-          onPress={() => register(email, password, name)}
+          onPress={() => register(email, password, name, userInfo)}
         />
       </View>
     </View>
