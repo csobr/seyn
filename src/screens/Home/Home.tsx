@@ -213,5 +213,7 @@ const styles = StyleSheet.create({
     height: 10,
     width: 10,
     borderRadius: 50,
+    borderWidth: 1.5,
+    borderColor: Colors.white,
   },
 });

@@ -64,8 +64,8 @@ function TabNavigator(): React.ReactElement {
       <Tab.Screen
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({color, size}) => (
-            <Icon name="circle" color={color} size={size} />
+          tabBarIcon: ({}) => (
+            <Image style={styles.icon} source={require('./icon/sey.png')} />
           ),
         }}
         name="Home"

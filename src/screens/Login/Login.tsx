@@ -20,6 +20,7 @@ const Login = ({navigation}: Props) => {
         <FormInput
           placeholderText={'Email'}
           labelValue={email}
+          autoCapitalize={'none'}
           onChangeText={userEmail => setEmail(userEmail)}
         />
         <FormInput

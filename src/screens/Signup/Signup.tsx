@@ -31,7 +31,6 @@ const SignUp = ({}) => {
           placeholderText="Full Name"
           onChangeText={userName => setName(userName)}
           autoCorrect={false}
-          autoCapitalize={'none'}
           style={styles.input}
         />
         <FormInput
