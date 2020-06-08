@@ -65,7 +65,7 @@ function TabNavigator(): React.ReactElement {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({}) => (
-            <Image style={styles.icon} source={require('./icon/sey.png')} />
+            <Image style={styles.icon} source={require('./icon/seyn.png')} />
           ),
         }}
         name="Home"
