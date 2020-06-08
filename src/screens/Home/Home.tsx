@@ -41,7 +41,7 @@ const Home: React.FC<NavProps> = props => {
           ))}
         </View>
 
-        <Text style={styles.dateTitle}>Today {user.displayName}</Text>
+        <Text style={styles.dateTitle}>Today</Text>
         <>
           {/* {isError && <Text>Opps.. something went wrong</Text>} */}
           {isLoading ? (
@@ -210,10 +210,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 45,
     top: 40,
-    height: 10,
-    width: 10,
+    height: 12,
+    width: 12,
     borderRadius: 50,
-    borderWidth: 1.5,
+    borderWidth: 2,
     borderColor: Colors.white,
   },
 });
