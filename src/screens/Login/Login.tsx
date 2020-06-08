@@ -1,9 +1,11 @@
 import React from 'react';
-import {View, StyleSheet, Button, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
 import FormInput from '../../components/Form/FormInput';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
+import FormButton from '../../components/Form/FormButton';
+import Colors from '../../styles/Colors';
 
 type Props = {
   navigation: NavProps;
@@ -29,9 +31,11 @@ const Login = ({navigation}: Props) => {
           secureTextEntry={true}
           onChangeText={userPassword => setPassword(userPassword)}
         />
-        <Button title="Login" onPress={() => login(email, password)} />
+        <FormButton title={'Login'} onPress={() => login(email, password)} />
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-          <Text>Sign up</Text>
+          <Text style={styles.lightText}>
+            New? <Text style={styles.darkText}>Sign Up</Text>
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -46,9 +50,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     marginBottom: 30,
     fontWeight: '600',
+  },
+  lightText: {
+    color: Colors.grey,
+  },
+  darkText: {
+    color: Colors.dark,
   },
 });
 export default Login;

@@ -13,5 +13,6 @@ const Colors = {
   primary: '#181818',
 
   secondary: '#ececec',
+  accent: '#fefb82',
 };
 export default Colors;

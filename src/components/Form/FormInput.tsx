@@ -19,10 +19,11 @@ const FormInput: React.FC<FormProps> = props => {
 };
 const styles = StyleSheet.create({
   input: {
-    width: 200,
+    width: 220,
     height: 30,
-    borderColor: Colors.black,
+    borderColor: Colors.dark,
     borderBottomWidth: 1,
+    marginBottom: 20,
   },
 });
 export default FormInput;
