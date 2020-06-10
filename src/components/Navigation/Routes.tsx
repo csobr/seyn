@@ -20,7 +20,7 @@ export default function Routes() {
   React.useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;
-  }, []);
+  });
   if (loading) {
     return <Loading />;
   }
