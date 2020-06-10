@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Button, StyleSheet} from 'react-native';
+import {Text, StyleSheet} from 'react-native';
 import Colors from '../../styles/Colors';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 interface ButtonProps extends HTMLButtonElement {
   titleName: string;
@@ -9,24 +10,27 @@ interface ButtonProps extends HTMLButtonElement {
 const FormButton: React.FC<ButtonProps> = props => {
   const {titleName, onPress} = props;
   return (
-    <View style={styles.button}>
-      <Button
-        title={titleName}
-        onPress={() => onPress}
-        color={Colors.background}
-        {...props}
-      />
-    </View>
+    <TouchableOpacity onPress={() => onPress} {...props} style={styles.button}>
+      <Text style={styles.text}>{titleName}</Text>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.dark,
-    height: 40,
-    width: 150,
+    height: 50,
+    width: 240,
     margin: 30,
     borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: Colors.background,
+    textTransform: 'uppercase',
   },
 });
 export default FormButton;

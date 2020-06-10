@@ -31,7 +31,10 @@ const Login = ({navigation}: Props) => {
           secureTextEntry={true}
           onChangeText={userPassword => setPassword(userPassword)}
         />
-        <FormButton title={'Login'} onPress={() => login(email, password)} />
+        <FormButton
+          titleName={'Login'}
+          onPress={() => login(email, password)}
+        />
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.lightText}>
             New? <Text style={styles.darkText}>Sign Up</Text>
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     marginBottom: 30,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   lightText: {
     color: Colors.grey,

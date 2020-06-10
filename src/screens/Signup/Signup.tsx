@@ -46,7 +46,7 @@ const SignUp = ({}) => {
           onChangeText={userPassword => setPassword(userPassword)}
         />
         <FormButton
-          title="Sign Up"
+          titleName="Sign Up"
           onPress={() => register(email, password, name, userInfo)}
         />
       </View>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     marginBottom: 30,
-    fontWeight: '600',
+    fontWeight: '700',
   },
 });
 export default SignUp;
