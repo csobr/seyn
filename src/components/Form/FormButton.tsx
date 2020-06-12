@@ -7,14 +7,11 @@ interface ButtonProps extends HTMLButtonElement {
   titleName: string;
   onPress: any;
 }
-const FormButton: React.FC<ButtonProps> = props => {
-  const {titleName, onPress} = props;
-  return (
-    <TouchableOpacity onPress={() => onPress} {...props} style={styles.button}>
-      <Text style={styles.text}>{titleName}</Text>
-    </TouchableOpacity>
-  );
-};
+const FormButton: React.FC<ButtonProps> = ({titleName, ...props}) => (
+  <TouchableOpacity {...props} style={styles.button}>
+    <Text style={styles.text}>{titleName}</Text>
+  </TouchableOpacity>
+);
 
 const styles = StyleSheet.create({
   button: {

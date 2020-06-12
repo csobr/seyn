@@ -5,6 +5,7 @@ import FormInput from '../../components/Form/FormInput';
 import {NavProps} from '../Home/Home';
 import FormButton from '../../components/Form/FormButton';
 import {AuthContext} from '../../components/Auth/AuthProvider';
+import {ErrorMessage} from '../../components/Form';
 
 type Props = {
   navigation: NavProps;
@@ -17,7 +18,7 @@ const ForgotPassword = ({navigation}: Props) => {
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Forgot Password</Text>
-        <Text style={styles.error}>{isError}</Text>
+        <ErrorMessage errorText={isError} />
         <FormInput
           placeholderText={'Email'}
           labelValue={email}
@@ -41,10 +42,6 @@ const styles = StyleSheet.create({
     fontSize: 28,
     marginBottom: 30,
     fontWeight: '700',
-  },
-  error: {
-    color: '#333333',
-    fontSize: 11,
   },
 });
 export default ForgotPassword;

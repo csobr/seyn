@@ -1,10 +1,9 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
-import FormInput from '../../components/Form/FormInput';
+import {FormInput, FormButton, ErrorMessage} from '../../components/Form/index';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
-import FormButton from '../../components/Form/FormButton';
 import Colors from '../../styles/Colors';
 
 type Props = {
@@ -20,7 +19,7 @@ const Login = ({navigation}: Props) => {
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Log in</Text>
-        <Text style={styles.error}>{isError}</Text>
+        <ErrorMessage errorText={isError} />
         <FormInput
           placeholderText={'Email'}
           labelValue={email}
@@ -69,10 +68,6 @@ const styles = StyleSheet.create({
   },
   darkText: {
     color: Colors.dark,
-  },
-  error: {
-    color: 'red',
-    fontSize: 11,
   },
   bottomText: {
     position: 'absolute',

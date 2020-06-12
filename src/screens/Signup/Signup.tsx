@@ -5,6 +5,7 @@ import FormInput from '../../components/Form/FormInput';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {User} from '../../types/user';
 import FormButton from '../../components/Form/FormButton';
+import {ErrorMessage} from '../../components/Form';
 
 const SignUp = ({}) => {
   const [name, setName] = React.useState('');
@@ -27,7 +28,7 @@ const SignUp = ({}) => {
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Sign up</Text>
-        <Text style={styles.error}>{isError}</Text>
+        <ErrorMessage errorText={isError} />
         <FormInput
           placeholderText="Full Name"
           onChangeText={userName => setName(userName)}
@@ -66,10 +67,6 @@ const styles = StyleSheet.create({
     fontSize: 28,
     marginBottom: 30,
     fontWeight: '700',
-  },
-  error: {
-    color: 'red',
-    fontSize: 11,
   },
 });
 export default SignUp;
