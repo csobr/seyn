@@ -21,12 +21,13 @@ const SignUp = ({}) => {
   };
   const userInfo: User = newUser;
   // //Add  sec
-  const {register} = React.useContext(AuthContext);
+  const {register, isError} = React.useContext(AuthContext);
 
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Sign up</Text>
+        <Text style={styles.error}>{isError}</Text>
         <FormInput
           placeholderText="Full Name"
           onChangeText={userName => setName(userName)}
@@ -65,6 +66,10 @@ const styles = StyleSheet.create({
     fontSize: 28,
     marginBottom: 30,
     fontWeight: '700',
+  },
+  error: {
+    color: 'red',
+    fontSize: 11,
   },
 });
 export default SignUp;

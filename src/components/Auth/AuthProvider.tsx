@@ -22,13 +22,13 @@ export const AuthProvider = ({children}) => {
                 setError('Email already in use.');
                 break;
               case 'auth/wrong-password':
-                setError('Wrong password');
+                setError('Invalid');
                 break;
               case 'auth/invalid-email':
                 setError('Invalid email.');
                 break;
               case 'auth/user-not-found':
-                setError('User does not exist.');
+                setError('Account does not exist.');
                 break;
             }
 
@@ -52,7 +52,20 @@ export const AuthProvider = ({children}) => {
                 console.log('User added!');
               });
           } catch (e) {
-            console.log(e);
+            switch (e.code) {
+              case 'auth/email-already-in-use':
+                setError('Email already in use.');
+                break;
+              case 'auth/wrong-password':
+                setError('Invalid');
+                break;
+              case 'auth/invalid-email':
+                setError('Invalid email.');
+                break;
+              case 'auth/user-not-found':
+                setError('Account does not exist.');
+                break;
+            }
           }
         },
         logout: async () => {

@@ -20,8 +20,7 @@ const Login = ({navigation}: Props) => {
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Log in</Text>
-        <Text>{isError}</Text>
-
+        <Text style={styles.error}>{isError}</Text>
         <FormInput
           placeholderText={'Email'}
           labelValue={email}
@@ -65,6 +64,10 @@ const styles = StyleSheet.create({
   },
   darkText: {
     color: Colors.dark,
+  },
+  error: {
+    color: 'red',
+    fontSize: 11,
   },
 });
 export default Login;
