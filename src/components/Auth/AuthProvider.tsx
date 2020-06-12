@@ -31,7 +31,6 @@ export const AuthProvider = ({children}) => {
                 setError('Account does not exist.');
                 break;
             }
-
             console.log(e.code);
           }
         },

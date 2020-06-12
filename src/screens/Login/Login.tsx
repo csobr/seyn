@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
 import FormInput from '../../components/Form/FormInput';
-import {AuthContext, AuthProvider} from '../../components/Auth/AuthProvider';
+import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import FormButton from '../../components/Form/FormButton';
 import Colors from '../../styles/Colors';
@@ -42,6 +42,11 @@ const Login = ({navigation}: Props) => {
             New? <Text style={styles.darkText}>Sign Up</Text>
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.bottomText}
+          onPress={() => navigation.navigate('ForgotPassword')}>
+          <Text styles={styles.lightText}>Forgot Password?</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -56,7 +61,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    marginBottom: 30,
+    paddingBottom: 20,
     fontWeight: '700',
   },
   lightText: {
@@ -68,6 +73,10 @@ const styles = StyleSheet.create({
   error: {
     color: 'red',
     fontSize: 11,
+  },
+  bottomText: {
+    position: 'absolute',
+    bottom: 70,
   },
 });
 export default Login;
