@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
 import FormInput from '../../components/Form/FormInput';
-import {AuthContext} from '../../components/Auth/AuthProvider';
+import {AuthContext, AuthProvider} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import FormButton from '../../components/Form/FormButton';
 import Colors from '../../styles/Colors';
@@ -14,11 +14,14 @@ type Props = {
 const Login = ({navigation}: Props) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const {login} = React.useContext(AuthContext);
+  const {login, isError} = React.useContext(AuthContext);
+
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Log in</Text>
+        <Text>{isError}</Text>
+
         <FormInput
           placeholderText={'Email'}
           labelValue={email}

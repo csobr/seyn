@@ -5,17 +5,34 @@ export const AuthContext = React.createContext({});
 
 export const AuthProvider = ({children}) => {
   const [user, setUser] = React.useState(null);
-
+  const [isError, setError] = React.useState('');
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
+        isError,
+        setError,
         login: async (email, password) => {
           try {
             await auth().signInWithEmailAndPassword(email, password);
           } catch (e) {
-            console.log(e);
+            switch (e.code) {
+              case 'auth/email-already-in-use':
+                setError('Email already in use.');
+                break;
+              case 'auth/wrong-password':
+                setError('Wrong password');
+                break;
+              case 'auth/invalid-email':
+                setError('Invalid email.');
+                break;
+              case 'auth/user-not-found':
+                setError('User does not exist.');
+                break;
+            }
+
+            console.log(e.code);
           }
         },
         register: async (email, password, name, newUser) => {
