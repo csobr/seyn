@@ -74,6 +74,23 @@ export const AuthProvider = ({children}) => {
             console.error(e);
           }
         },
+        forgotPassword: async email => {
+          try {
+            await auth().sendPasswordResetEmail(email);
+            setError('');
+          } catch (e) {
+            switch (e.code) {
+              case 'auth/invalid-email':
+                setError('Invalid email.');
+                break;
+              case 'auth/user-not-found':
+                setError('There is no account with that email address.');
+                break;
+            }
+
+            console.log(e.code);
+          }
+        },
       }}>
       {children}
     </AuthContext.Provider>

@@ -2,17 +2,14 @@ import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
 import FormInput from '../../components/Form/FormInput';
-import {NavProps} from '../Home/Home';
 import FormButton from '../../components/Form/FormButton';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {ErrorMessage} from '../../components/Form';
 
-type Props = {
-  navigation: NavProps;
-};
+const ForgotPassword = ({}) => {
+  const {email, isError, forgotPassword} = React.useContext(AuthContext);
 
-const ForgotPassword = ({navigation}: Props) => {
-  const {email, isError} = React.useContext(AuthContext);
+  // check it email exits
 
   return (
     <View style={GlobalStyles.body}>
@@ -23,9 +20,13 @@ const ForgotPassword = ({navigation}: Props) => {
           placeholderText={'Email'}
           labelValue={email}
           autoCapitalize={'none'}
-          onChangeText={setEmail => setEmail}
+          onChangeText={email || forgotPassword}
         />
-        <FormButton titleName={'Send email'} onPress={setEmail => setEmail} />
+        <FormButton
+          titleName={'Send email'}
+          onPress={() => forgotPassword(email)}
+          // disabled={}
+        />
       </View>
     </View>
   );
