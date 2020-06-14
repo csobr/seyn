@@ -81,14 +81,14 @@ export const AuthProvider = ({children}) => {
           } catch (e) {
             switch (e.code) {
               case 'auth/invalid-email':
-                setError('Invalid email.');
+                setError('Please enter an email address.');
                 break;
               case 'auth/user-not-found':
                 setError('There is no account with that email address.');
                 break;
             }
 
-            console.log(e.code);
+            console.error(e.code);
           }
         },
       }}>
