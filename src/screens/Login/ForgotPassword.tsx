@@ -7,10 +7,19 @@ import {AuthContext} from '../../components/Auth/AuthProvider';
 import {ErrorMessage} from '../../components/Form';
 
 const ForgotPassword = ({}) => {
-  const {email, isError, forgotPassword} = React.useContext(AuthContext);
-
+  const {isError, forgotPassword} = React.useContext(AuthContext);
+  const [email, setEmail] = React.useState('');
   // check it email exits
+  async function handlePasswordReset(values) {
+    const {email} = values;
 
+    try {
+      await forgotPassword(email);
+      console.log('Password reset email sent successfully');
+    } catch (error) {}
+  }
+
+  // const inValid = email === undefined;
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
@@ -20,12 +29,11 @@ const ForgotPassword = ({}) => {
           placeholderText={'Email'}
           labelValue={email}
           autoCapitalize={'none'}
-          onChangeText={email || forgotPassword}
+          onChangeText={checkemail => setEmail(checkemail)}
         />
         <FormButton
           titleName={'Send email'}
-          onPress={() => forgotPassword(email)}
-          // disabled={}
+          onPress={() => handlePasswordReset}
         />
       </View>
     </View>

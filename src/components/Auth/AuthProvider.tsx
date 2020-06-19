@@ -3,7 +3,16 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 export const AuthContext = React.createContext({});
 
-export const AuthProvider = ({children}) => {
+interface SignUpProps {
+  email: string;
+  password: string;
+  children: any;
+}
+export const AuthProvider: React.FC<SignUpProps> = ({
+  email,
+  password,
+  children,
+}) => {
   const [user, setUser] = React.useState(null);
   const [isError, setError] = React.useState('');
   return (
@@ -13,28 +22,10 @@ export const AuthProvider = ({children}) => {
         setUser,
         isError,
         setError,
-        login: async (email, password) => {
-          try {
-            await auth().signInWithEmailAndPassword(email, password);
-          } catch (e) {
-            switch (e.code) {
-              case 'auth/email-already-in-use':
-                setError('Email already in use.');
-                break;
-              case 'auth/wrong-password':
-                setError('Invalid');
-                break;
-              case 'auth/invalid-email':
-                setError('Invalid email.');
-                break;
-              case 'auth/user-not-found':
-                setError('Account does not exist.');
-                break;
-            }
-            console.log(e.code);
-          }
-        },
-        register: async (email, password, name, newUser) => {
+        login: (email, password) =>
+          auth().signInWithEmailAndPassword(email, password),
+
+        register: async (name, newUser) => {
           try {
             await auth()
               .createUserWithEmailAndPassword(email, password)
@@ -74,10 +65,14 @@ export const AuthProvider = ({children}) => {
             console.error(e);
           }
         },
-        forgotPassword: async email => {
+        forgotPassword: async () => {
           try {
-            await auth().sendPasswordResetEmail(email);
-            setError('');
+            await auth()
+              .sendPasswordResetEmail(email)
+              .then(function(_user) {
+                //navigate login
+                setError('');
+              });
           } catch (e) {
             switch (e.code) {
               case 'auth/invalid-email':

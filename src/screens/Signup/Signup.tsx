@@ -30,21 +30,22 @@ const SignUp = ({}) => {
         <Text style={styles.title}>Sign up</Text>
         <ErrorMessage errorText={isError} />
         <FormInput
-          placeholderText="Full Name"
+          placeholder="Full Name"
           onChangeText={userName => setName(userName)}
           autoCorrect={false}
         />
         <FormInput
-          placeholderText="Email"
+          placeholder="Email"
           onChangeText={userEmail => setEmail(userEmail)}
           keyboardType="email-address"
           autoCorrect={false}
           autoCapitalize={'none'}
         />
         <FormInput
-          placeholderText="Password"
-          labelValue={password}
+          placeholder="Password"
+          value={password}
           secureTextEntry={true}
+          autoCapitalize={'none'}
           onChangeText={userPassword => setPassword(userPassword)}
         />
         <FormButton
