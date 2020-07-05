@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "name": "Amina Aden",
     "email": "aden@gmail.com",
     "title": "MC",
@@ -10,7 +10,7 @@
     "active": true
   },
   {
-    "id": "2",
+    "id": 2,
     "name": "Yasin Ali",
     "email": "myles@gmail.com",
     "title": "Grocery store",
@@ -20,7 +20,7 @@
     "active": true
   },
   {
-    "id": "3",
+    "id": 3,
     "name": "Amber Williams",
     "email": "amber@gmail.com",
     "title": "Post office",
@@ -30,7 +30,7 @@
     "active": true
   },
   {
-    "id": "4",
+    "id": 4,
     "name": "Ida Niskanen",
     "time": "20 min",
     "email": "iida.niskanen@gmail.com",
@@ -40,7 +40,7 @@
     "active": true
   },
   {
-    "id": "5",
+    "id": 5,
     "name": "Khela Somti",
     "email": "mohammed@gmail.com",
     "title": "The Park",
@@ -50,7 +50,7 @@
     "active": true
   },
   {
-    "id": "6",
+    "id": 6,
     "name": "Sang Wang",
     "email": "wang@gmail.com",
     "title": "North",
@@ -60,7 +60,7 @@
     "active": true
   },
   {
-    "id": "7",
+    "id": 7,
     "name": "Annie Lim",
     "email": "lim@gmail.com",
     "title": "Post Office",

@@ -5,17 +5,15 @@ import Colors from '../../styles/Colors';
 interface FormProps extends HTMLInputElement {
   value: string;
   placeholder: string;
-  inputRef: any;
 }
 const FormInput: React.FC<FormProps> = props => {
-  const {value, placeholder, inputRef, ...rest} = props;
+  const {value, placeholder, ...rest} = props;
 
   return (
     <TextInput
       value={value}
       placeholder={placeholder}
       style={styles.input}
-      ref={inputRef}
       {...rest}
     />
   );
