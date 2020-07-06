@@ -12,10 +12,10 @@
   {
     "id": 2,
     "name": "Yasin Ali",
-    "email": "myles@gmail.com",
+    "email": "yasin@gmail.com",
     "title": "Grocery store",
     "photo": "https://images.unsplash.com/photo-1518882570151-157128e78fa1",
-    "transport": "bike",
+    "transport": "taxi",
     "time": "2 min",
     "active": true
   },
@@ -33,7 +33,7 @@
     "id": 4,
     "name": "Ida Niskanen",
     "time": "20 min",
-    "email": "iida.niskanen@gmail.com",
+    "email": "ida.niskanen@gmail.com",
     "title": "Off to Ikea",
     "photo": "https://images.unsplash.com/photo-1499155286265-79a9dc9c6380",
     "transport": "bus",
@@ -42,10 +42,10 @@
   {
     "id": 5,
     "name": "Khela Somti",
-    "email": "mohammed@gmail.com",
+    "email": "khela@gmail.com",
     "title": "The Park",
     "photo": "https://images.unsplash.com/photo-1578220390767-b706eac7c36b",
-    "transport": "walk",
+    "transport": "scooter",
     "time": "30 min",
     "active": true
   },
@@ -59,6 +59,7 @@
     "time": "25 min",
     "active": true
   },
+
   {
     "id": 7,
     "name": "Annie Lim",
