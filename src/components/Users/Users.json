@@ -69,5 +69,26 @@
     "transport": "car",
     "time": "35 min",
     "active": false
+  },
+  {
+    "id": 8,
+    "name": "Sang Wang",
+    "email": "wang@gmail.com",
+    "title": "North",
+    "photo": "https://images.unsplash.com/photo-1487309078313-fad80c3ec1e5",
+    "transport": "car",
+    "time": "25 min",
+    "active": true
+  },
+
+  {
+    "id": 9,
+    "name": "Annie Lim",
+    "email": "lim@gmail.com",
+    "title": "Post Office",
+    "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+    "transport": "car",
+    "time": "35 min",
+    "active": false
   }
 ]
