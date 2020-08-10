@@ -12,7 +12,7 @@ import {NavigationStackProp} from 'react-navigation-stack';
 import {useNavigation} from '@react-navigation/native';
 import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/Feather';
 import UsersApi from '../../components/Users/UsersHook';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 
@@ -64,7 +64,7 @@ const Home: React.FC<NavProps> = props => {
                   />
                 </TouchableOpacity>
               )}
-              keyExtractor={item => item.id}
+              keyExtractor={item => item.id.toString()}
             />
           )}
         </>
@@ -90,13 +90,16 @@ export const Item = ({time, name, title, image, transport}) => {
           navigation.navigate('Message');
         }}>
         <Icon
-          name="message-outline"
+          name="message-square"
           size={25}
           color="black"
           style={styles.listIconPadding}
         />
       </TouchableOpacity>
-      <Icon name={transport} size={25} color="black" style={styles.listIcon} />
+      <Image
+        source={require('../../assets/icons/bus.png')}
+        style={styles.listIcon}
+      />
     </View>
   );
 };
