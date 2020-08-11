@@ -34,13 +34,13 @@ const name = {
   search: '',
   message: '',
 };
-const Icon: React.FC<Props> = props => (
-  <Svg width="24" height="24" viewBox="0 0 24 24">
+const Icon: React.FC<Props> = ({size, ...props}) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24">
     <Path d={name[props.name]} fill="black" />
   </Svg>
 );
 Icon.defaultProps = {
-  size: 24,
+  size: 27,
   color: '',
   // style: {},
 };

@@ -51,18 +51,13 @@ const Home: React.FC<NavProps> = props => {
               contentContainerStyle={styles.listPadding}
               data={data}
               renderItem={({item}) => (
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate('Profile', item.id);
-                  }}>
-                  <Item
-                    time={item.time}
-                    name={item.name}
-                    title={item.title}
-                    image={item.photo}
-                    transport={item.transport}
-                  />
-                </TouchableOpacity>
+                <Item
+                  time={item.time}
+                  name={item.name}
+                  title={item.title}
+                  image={item.photo}
+                  transport={item.transport}
+                />
               )}
               keyExtractor={item => item.id.toString()}
             />
@@ -72,12 +67,18 @@ const Home: React.FC<NavProps> = props => {
     </SafeAreaView>
   );
 };
-export const Item = ({time, name, title, image, transport}) => {
+export const Item = ({id, time, name, title, image, transport}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.item}>
       <View style={styles.listItems}>
-        <Image source={{uri: image}} style={styles.userImage} />
+        <TouchableOpacity
+          style={styles.userImage}
+          onPress={() => {
+            navigation.navigate('Profile', name);
+          }}>
+          <Image source={{uri: image}} />
+        </TouchableOpacity>
         <View style={styles.activeIndicator} />
         <Text style={styles.userName}>{name}</Text>
         <Text style={styles.userTitle}>{title}</Text>
@@ -89,10 +90,10 @@ export const Item = ({time, name, title, image, transport}) => {
         onPress={() => {
           navigation.navigate('Message');
         }}>
-        <Icon name="chat" size={24} />
+        <Icon name="chat" size={26} />
       </TouchableOpacity>
       <View style={styles.listIcon}>
-        <Icon name={transport} size={24} />
+        <Icon name={transport} size={26} />
       </View>
     </View>
   );
@@ -103,7 +104,7 @@ export default Home;
 const styles = StyleSheet.create({
   header: {
     marginTop: 30,
-    paddingHorizontal: 24,
+    paddingHorizontal: 19,
     height: 65,
     justifyContent: 'center',
   },
