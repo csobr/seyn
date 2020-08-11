@@ -45,7 +45,7 @@
     "email": "khela@gmail.com",
     "title": "The Park",
     "photo": "https://images.unsplash.com/photo-1578220390767-b706eac7c36b",
-    "transport": "scooter",
+    "transport": "moped",
     "time": "30 min",
     "active": true
   },
@@ -66,7 +66,7 @@
     "email": "lim@gmail.com",
     "title": "Post Office",
     "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
-    "transport": "car",
+    "transport": "taxi",
     "time": "35 min",
     "active": false
   },

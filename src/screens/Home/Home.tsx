@@ -12,7 +12,7 @@ import {NavigationStackProp} from 'react-navigation-stack';
 import {useNavigation} from '@react-navigation/native';
 import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from '../../constants/Icons';
 import UsersApi from '../../components/Users/UsersHook';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 
@@ -89,17 +89,11 @@ export const Item = ({time, name, title, image, transport}) => {
         onPress={() => {
           navigation.navigate('Message');
         }}>
-        <Icon
-          name="message-square"
-          size={25}
-          color="black"
-          style={styles.listIconPadding}
-        />
+        <Icon name="chat" size={24} />
       </TouchableOpacity>
-      <Image
-        source={require('../../assets/icons/bus.png')}
-        style={styles.listIcon}
-      />
+      <View style={styles.listIcon}>
+        <Icon name={transport} size={24} />
+      </View>
     </View>
   );
 };

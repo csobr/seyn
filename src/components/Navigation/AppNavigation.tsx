@@ -9,7 +9,7 @@ import {
   ProfileScreen,
   SettingsScreen,
 } from '../../screens';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from '../../constants/Icons';
 import Colors from '../../styles/Colors';
 import {Image, StyleSheet} from 'react-native';
 
@@ -65,7 +65,7 @@ function TabNavigator(): React.ReactElement {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({}) => (
-            <Image style={styles.icon} source={require('./icon/seyn.png')} />
+            <Image source={require('./icon/seyn.png')} style={styles.icon} />
           ),
         }}
         name="Home"
@@ -85,7 +85,7 @@ function TabNavigator(): React.ReactElement {
         options={{
           tabBarLabel: 'Maps',
           tabBarIcon: ({color, size}) => (
-            <Icon name="map-pin" color={color} size={size} />
+            <Icon name="map" color={color} size={size} />
           ),
         }}
         name="Maps"
@@ -95,7 +95,7 @@ function TabNavigator(): React.ReactElement {
         options={{
           tabBarLabel: 'Message',
           tabBarIcon: ({color, size}) => (
-            <Icon name="message-square" color={color} size={size} />
+            <Icon name="chat" color={color} size={size} />
           ),
         }}
         name="Message"
