@@ -44,7 +44,6 @@ const Login = ({navigation}: Props) => {
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Log in</Text>
-
         <Form
           initialValues={initialValues}
           validationSchema={loginSchema}
@@ -60,9 +59,10 @@ const Login = ({navigation}: Props) => {
             secureTextEntry={false}
             autoFocus={true}
           />
+
           <FormInput
             textContentType="password"
-            placeholder="Password"
+            placeholder={'Password'}
             value={password}
             secureTextEntry={true}
             onChangeText={userPassword => setPassword(userPassword)}
