@@ -27,7 +27,7 @@ const Home: React.FC<NavProps> = props => {
   const {navigation} = props;
   return (
     <SafeAreaView style={GlobalStyle.container}>
-      <View style={{backgroundColor: Colors.background}}>
+      <View style={{backgroundColor: Colors.home}}>
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Pick up</Text>
           <Text style={styles.secondTitle}>Nearby</Text>
@@ -134,11 +134,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     borderRadius: 6,
     color: Colors.dark,
-    backgroundColor: Colors.background,
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    shadowColor: '#000',
-    shadowOffset: {height: 1, width: 1},
+    backgroundColor: Colors.white,
+    // shadowOpacity: 0.1,
+    // shadowRadius: 2,
+    // shadowColor: '#000',
+    // shadowOffset: {height: 1, width: 1},
   },
   profile: {
     width: 50,
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   profilePosition: {
     position: 'absolute',
     right: 15,
-    backgroundColor: Colors.background,
+    backgroundColor: 'transparent',
   },
   userImage: {
     width: 50,

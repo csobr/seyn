@@ -37,7 +37,7 @@ function getHeaderTitle(route) {
   }
 }
 const TabBarIcon = (tintColor: string): React.ReactElement => {
-  return <Icon size={25} color={tintColor} name="Home" />;
+  return <Icon size={29} color={tintColor} name="Home" />;
 };
 
 function TabNavigator(): React.ReactElement {

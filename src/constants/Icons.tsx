@@ -40,7 +40,7 @@ const Icon: React.FC<Props> = ({size, ...props}) => (
   </Svg>
 );
 Icon.defaultProps = {
-  size: 27,
+  size: 29,
   color: '',
   // style: {},
 };

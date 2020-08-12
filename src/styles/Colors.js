@@ -1,5 +1,6 @@
 const Colors = {
   background: '#FAFAFA',
+  home: '#F4F4F4',
 
   ligther: '#E1E1E1',
   grey: '#424242',
