@@ -52,12 +52,14 @@ const Login = ({navigation}: Props) => {
           <FormInput
             textContentType="emailAddress"
             keyboardType="email-address"
+            returnKeyType="next"
             placeholder={'Email'}
             autoCapitalize={'none'}
             value={email}
             onChangeText={text => setEmail(text)}
             secureTextEntry={false}
             autoFocus={true}
+            selectionColor={Colors.accent}
           />
 
           <FormInput

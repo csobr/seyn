@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 30,
     borderColor: Colors.dark,
+    padding: 15,
   },
   label: {
     fontSize: 16,
