@@ -68,6 +68,7 @@ const Login = ({navigation}: Props) => {
             value={password}
             secureTextEntry={true}
             onChangeText={userPassword => setPassword(userPassword)}
+            selectionColor={Colors.accent}
           />
           <FormButton titleName={'Login'} onPress={onSubmit} />
         </Form>

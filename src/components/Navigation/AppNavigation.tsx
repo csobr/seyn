@@ -122,7 +122,7 @@ const AppNavigation: React.FC = ({}) => {
         // gestureEnaled: true,
         // gesturedirection: 'horizontal',
         headerStyle: {
-          backgroundColor: Colors.background,
+          backgroundColor: Colors.home,
         },
         headerTintColor: Colors.dark,
 
