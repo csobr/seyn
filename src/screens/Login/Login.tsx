@@ -30,7 +30,6 @@ const Login = ({navigation}: Props) => {
   const [loginError, setLoginError] = React.useState('');
   const initialValues = {email, password};
   const {login} = React.useContext(AuthContext);
-
   async function onSubmit() {
     try {
       await login(email, password);
@@ -52,14 +51,11 @@ const Login = ({navigation}: Props) => {
           <FormInput
             textContentType="emailAddress"
             keyboardType="email-address"
-            returnKeyType="next"
             placeholder={'Email'}
             autoCapitalize={'none'}
             value={email}
-            onChangeText={text => setEmail(text)}
-            secureTextEntry={false}
             autoFocus={true}
-            selectionColor={Colors.accent}
+            onChangeText={text => setEmail(text)}
           />
 
           <FormInput
@@ -68,7 +64,6 @@ const Login = ({navigation}: Props) => {
             value={password}
             secureTextEntry={true}
             onChangeText={userPassword => setPassword(userPassword)}
-            selectionColor={Colors.accent}
           />
           <FormButton titleName={'Login'} onPress={onSubmit} />
         </Form>
