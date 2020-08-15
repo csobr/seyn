@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Text, TextInput, StyleSheet, Alert} from 'react-native';
 import Colors from '../../styles/Colors';
 interface FormProps extends HTMLInputElement {
@@ -9,17 +9,26 @@ interface FormProps extends HTMLInputElement {
 const FormInput: React.FC<FormProps> = props => {
   const [isFocused, setFocus] = React.useState({});
   const {value, placeholder, ...rest} = props;
-  const inputRef: React.RefObject<TextInput> = React.createRef();
+   const inputRef: React.RefObject<TextInput> = React.createRef();
 
+const focusedInput = () => {
+  inputRef.current && inputRef.current.setNativeProps(styles.input_focused)
+  
+}
+const onBlur =() =>{
+  inputRef.current && inputRef.current.setNativeProps(styles.input_onBlur)
+}
   return (
     <>
       <Text style={styles.label}>{placeholder}</Text>
       <TextInput
-        ref={() => inputRef}
+        ref={inputRef}
         autoCorrect={false}
         value={value}
         style={styles.input}
         selectionColor={Colors.accent}
+        onFocus={() => focusedInput()}
+        onBlur={() => onBlur()}
         returnKeyType="next" 
          blurOnSubmit={false}
         onSubmitEditing={() => inputRef.current?.focus()}
@@ -35,19 +44,16 @@ const styles = StyleSheet.create({
     width: '70%',
     marginBottom: 30,
     padding: 15,
-    backgroundColor: Colors.home,
-  },
-  textinput_focused: {
     borderRadius: 3,
     borderWidth: 1,
     borderColor: Colors.dark,
   },
-  textinput_onfocused: {
-    borderRadius: 3,
-    borderWidth: 1,
+  input_focused: {
     borderColor: Colors.accent,
   },
-
+  input_onBlur:{
+     borderColor: Colors.dark
+  },
   label: {
     fontSize: 16,
     textAlign: 'left',
