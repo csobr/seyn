@@ -49,12 +49,13 @@ const Login = ({navigation}: Props) => {
           onSubmit={onSubmit}>
           <ErrorMessage errorText={loginError} />
           <FormInput
-            textContentType="emailAddress"
-            keyboardType="email-address"
             placeholder={'Email'}
-            autoCapitalize={'none'}
             value={email}
             autoFocus={true}
+            autoCompleteType={'email'}
+            textContentType="emailAddress"
+            keyboardType="email-address"
+            autoCapitalize={'none'}
             onChangeText={text => setEmail(text)}
           />
 

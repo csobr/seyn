@@ -32,6 +32,7 @@ const SignUp = ({}) => {
         <FormInput
           placeholder="Full Name"
           onChangeText={userName => setName(userName)}
+          autoFocus={true}
           autoCorrect={false}
         />
         <FormInput

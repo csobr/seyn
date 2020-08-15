@@ -29,6 +29,7 @@ const ForgotPassword = ({}) => {
           placeholderText={'Email'}
           labelValue={email}
           autoCapitalize={'none'}
+          autoFocus={true}
           onChangeText={checkemail => setEmail(checkemail)}
         />
         <FormButton
