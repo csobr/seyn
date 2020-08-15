@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Text, TextInput, StyleSheet, Alert} from 'react-native';
+import React from 'react';
+import {Text, TextInput, StyleSheet} from 'react-native';
 import Colors from '../../styles/Colors';
 interface FormProps extends HTMLInputElement {
   value: string;
@@ -7,7 +7,6 @@ interface FormProps extends HTMLInputElement {
 }
 
 const FormInput: React.FC<FormProps> = props => {
-  const [isFocused, setFocus] = React.useState({});
   const {value, placeholder, ...rest} = props;
    const inputRef: React.RefObject<TextInput> = React.createRef();
 
