@@ -12,7 +12,7 @@ const FormInput: React.FC<FormProps> = props => {
 
 const focusedInput = () => {
   inputRef.current && inputRef.current.setNativeProps(styles.input_focused)
-  
+
 }
 const onBlur =() =>{
   inputRef.current && inputRef.current.setNativeProps(styles.input_onBlur)

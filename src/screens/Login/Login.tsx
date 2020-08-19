@@ -73,6 +73,7 @@ const Login = ({navigation}: Props) => {
             New? <Text style={styles.darkText}>Sign Up</Text>
           </Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.bottomText}
           onPress={() => navigation.navigate('ForgotPassword')}>
