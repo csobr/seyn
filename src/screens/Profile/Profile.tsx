@@ -11,7 +11,7 @@ import {NavProps} from '../Home/Home';
 import {RouteProp} from '@react-navigation/native';
 import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from '../../constants/Icons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 
