@@ -1,7 +1,7 @@
 # OSX
 #
 .DS_Store
-node_modules
+
 # Xcode
 #
 build/
@@ -28,13 +28,7 @@ build/
 .gradle
 local.properties
 *.iml
-DerivedData
-project.xcworkspace
 
-# Firebase
-app/
-google-services.json
-ios/GoogleService-Info.plist
 # node.js
 #
 node_modules/
@@ -68,3 +62,5 @@ buck-out/
 appex.js
 cmds.txt
 todo.md
+android/app/google-services.json
+ios/GoogleService-Info.plist

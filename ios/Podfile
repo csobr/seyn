@@ -1,5 +1,5 @@
-require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 platform :ios, '10.0'
 
@@ -24,11 +24,10 @@ target 'seyn' do
 end
 
 target 'seyn-tvOS' do
-  # Pods for RNTodo-tvOS
+  # Pods for seyn-tvOS
 
   target 'seyn-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
-  
   end
 end
