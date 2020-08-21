@@ -9,7 +9,6 @@ interface FormProps extends HTMLInputElement {
 const FormInput: React.FC<FormProps> = props => {
   const {value, placeholder, ...rest} = props;
    const inputRef: React.RefObject<TextInput> = React.createRef();
-
 const focusedInput = () => {
   inputRef.current && inputRef.current.setNativeProps(styles.input_focused)
 

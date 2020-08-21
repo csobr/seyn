@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
+
 import {
   Form,
   FormInput,
@@ -11,7 +12,9 @@ import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
-
+import eyeHide from '../../assets/icons/showpassword/hidepassword.png';
+import eyeShow from '../../assets/icons/showpassword/showpassword.png';
+import Icon from '../../constants/Icons';
 type Props = {
   navigation: NavProps;
 };
@@ -28,6 +31,13 @@ const Login = ({navigation}: Props) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loginError, setLoginError] = React.useState('');
+  const [icon, setIcon] = React.useState(eyeHide);
+  const [hidden, setToHidden] = React.useState(true);
+  const passwordView = () => {
+    icon !== eyeShow
+      ? (setIcon(eyeShow), setToHidden(false))
+      : (setIcon(eyeHide), setToHidden(true));
+  };
   const initialValues = {email, password};
   const {login} = React.useContext(AuthContext);
   async function onSubmit() {
@@ -63,9 +73,12 @@ const Login = ({navigation}: Props) => {
             textContentType="password"
             placeholder={'Password'}
             value={password}
-            secureTextEntry={true}
+            secureTextEntry={hidden}
             onChangeText={userPassword => setPassword(userPassword)}
           />
+          <TouchableOpacity onPress={() => passwordView()}>
+            <Image source={icon} />
+          </TouchableOpacity>
           <FormButton titleName={'Login'} onPress={onSubmit} />
         </Form>
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
