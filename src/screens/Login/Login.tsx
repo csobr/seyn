@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {SvgUri} from 'react-native-svg';
 import GlobalStyles from '../../styles/GlobalStyles';
 
 import {
@@ -12,9 +13,8 @@ import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
-import eyeHide from '../../assets/icons/showpassword/hidepassword.png';
-import eyeShow from '../../assets/icons/showpassword/showpassword.png';
-import Icon from '../../constants/Icons';
+import eyeHide from '../../assets/icons/showpassword/hidepassword.svg';
+import eyeShow from '../../assets/icons/showpassword/showpassword.svg';
 type Props = {
   navigation: NavProps;
 };
@@ -76,9 +76,10 @@ const Login = ({navigation}: Props) => {
             secureTextEntry={hidden}
             onChangeText={userPassword => setPassword(userPassword)}
           />
-          <TouchableOpacity onPress={() => passwordView()}>
-            <Image source={icon} />
-          </TouchableOpacity>
+
+          {/* <TouchableOpacity onPress={() => passwordView()}> */}
+          <SvgUri width="100%" height="100%" uri={icon} />
+          {/* </TouchableOpacity> */}
           <FormButton titleName={'Login'} onPress={onSubmit} />
         </Form>
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
