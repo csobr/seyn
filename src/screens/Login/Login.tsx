@@ -1,20 +1,18 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import {SvgUri} from 'react-native-svg';
 import GlobalStyles from '../../styles/GlobalStyles';
-
 import {
   Form,
   FormInput,
   FormButton,
   ErrorMessage,
+  PasswordView,
 } from '../../components/Form/index';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
-import eyeHide from '../../assets/icons/showpassword/hidepassword.svg';
-import eyeShow from '../../assets/icons/showpassword/showpassword.svg';
+
 type Props = {
   navigation: NavProps;
 };
@@ -31,13 +29,6 @@ const Login = ({navigation}: Props) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loginError, setLoginError] = React.useState('');
-  const [icon, setIcon] = React.useState(eyeHide);
-  const [hidden, setToHidden] = React.useState(true);
-  const passwordView = () => {
-    icon !== eyeShow
-      ? (setIcon(eyeShow), setToHidden(false))
-      : (setIcon(eyeHide), setToHidden(true));
-  };
   const initialValues = {email, password};
   const {login} = React.useContext(AuthContext);
   async function onSubmit() {
@@ -68,18 +59,17 @@ const Login = ({navigation}: Props) => {
             autoCapitalize={'none'}
             onChangeText={text => setEmail(text)}
           />
-
+          {/* <View style={styles.passwordView}> */}
           <FormInput
             textContentType="password"
             placeholder={'Password'}
             value={password}
-            secureTextEntry={hidden}
+            secureTextEntry={true}
             onChangeText={userPassword => setPassword(userPassword)}
           />
+          <PasswordView />
+          {/* </View> */}
 
-          {/* <TouchableOpacity onPress={() => passwordView()}> */}
-          <SvgUri width="100%" height="100%" uri={icon} />
-          {/* </TouchableOpacity> */}
           <FormButton titleName={'Login'} onPress={onSubmit} />
         </Form>
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
@@ -119,6 +109,12 @@ const styles = StyleSheet.create({
   bottomText: {
     position: 'absolute',
     bottom: 70,
+  },
+  passwordView: {
+    width: '70%',
+    flexDirection: 'row',
+    backgroundColor: 'grey',
+    justifyContent: 'center',
   },
 });
 export default Login;

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, TextInput, StyleSheet} from 'react-native';
 import Colors from '../../styles/Colors';
+
 interface FormProps extends HTMLInputElement {
   value: string;
   placeholder: string;
@@ -18,6 +19,7 @@ const onBlur =() =>{
 }
   return (
     <>
+  
       <Text style={styles.label}>{placeholder}</Text>
       <TextInput
         ref={inputRef}
@@ -30,9 +32,10 @@ const onBlur =() =>{
         returnKeyType="next" 
          blurOnSubmit={false}
         onSubmitEditing={() => inputRef.current?.focus()}
-      
+
         {...rest}
       />
+
     </>
   );
 };
@@ -45,6 +48,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     borderWidth: 1,
     borderColor: Colors.dark,
+    flexDirection: 'column'
   },
   input_focused: {
     borderColor: Colors.accent,
@@ -55,7 +59,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     textAlign: 'left',
-    width: '70%',
+    width: "70%"
   },
 });
 export default FormInput;
