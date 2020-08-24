@@ -1,6 +1,4 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import GlobalStyles from '../../styles/GlobalStyles';
 import {
   Form,
   FormInput,
@@ -8,6 +6,8 @@ import {
   ErrorMessage,
   PasswordView,
 } from '../../components/Form/index';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import GlobalStyles from '../../styles/GlobalStyles';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
@@ -30,6 +30,7 @@ const Login = ({navigation}: Props) => {
   const [password, setPassword] = React.useState('');
   const [loginError, setLoginError] = React.useState('');
   const initialValues = {email, password};
+
   const {login} = React.useContext(AuthContext);
   async function onSubmit() {
     try {
@@ -59,16 +60,13 @@ const Login = ({navigation}: Props) => {
             autoCapitalize={'none'}
             onChangeText={text => setEmail(text)}
           />
-          {/* <View style={styles.passwordView}> */}
-          <FormInput
-            textContentType="password"
+
+          <PasswordView
             placeholder={'Password'}
+            textContentType="password"
             value={password}
-            secureTextEntry={true}
             onChangeText={userPassword => setPassword(userPassword)}
           />
-          <PasswordView />
-          {/* </View> */}
 
           <FormButton titleName={'Login'} onPress={onSubmit} />
         </Form>
@@ -109,12 +107,6 @@ const styles = StyleSheet.create({
   bottomText: {
     position: 'absolute',
     bottom: 70,
-  },
-  passwordView: {
-    width: '70%',
-    flexDirection: 'row',
-    backgroundColor: 'grey',
-    justifyContent: 'center',
   },
 });
 export default Login;
