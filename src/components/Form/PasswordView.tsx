@@ -12,10 +12,11 @@ import {SvgXml} from 'react-native-svg';
 import Colors from '../../styles/Colors';
 
 interface Props extends HTMLInputElement {
-  icon: string;
-  hidden: boolean;
-  value: string;
-  placeholder: string;
+  icon?: string;
+  hidden?: boolean;
+  value?: string;
+  placeholder?: string;
+  onChangeText: any;
 }
 
 const PasswordView: React.FC<Props> = props => {
@@ -43,6 +44,7 @@ const PasswordView: React.FC<Props> = props => {
         <TextInput
           style={styles.input}
           secureTextEntry={hidden}
+          textContentType="password"
           selectionColor={Colors.accent}
           onFocus={() => focusedInput()}
           onBlur={() => onBlur()}

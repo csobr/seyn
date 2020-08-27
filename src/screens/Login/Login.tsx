@@ -49,7 +49,7 @@ const Login = ({navigation}: Props) => {
           initialValues={initialValues}
           validationSchema={loginSchema}
           onSubmit={onSubmit}>
-          <ErrorMessage errorText={loginError} />
+          <ErrorMessage error={loginError} visible={true} />
           <FormInput
             placeholder={'Email'}
             value={email}
@@ -63,7 +63,6 @@ const Login = ({navigation}: Props) => {
 
           <PasswordView
             placeholder={'Password'}
-            textContentType="password"
             value={password}
             onChangeText={userPassword => setPassword(userPassword)}
           />

@@ -3,8 +3,15 @@ import {Text, TextInput, StyleSheet} from 'react-native';
 import Colors from '../../styles/Colors';
 
 interface FormProps extends HTMLInputElement {
-  value: string;
-  placeholder: string;
+  value?: string;
+  placeholder?: string;
+  autoFocus?: boolean;
+  autoCompleteType?: any
+  textContentType?: any;
+  keyboardType: any;
+  autoCapitalize: any;
+  onChangeText: any;
+  
 }
 
 const FormInput: React.FC<FormProps> = props => {
@@ -24,6 +31,7 @@ const onBlur =() =>{
       <TextInput
         ref={inputRef}
         autoCorrect={false}
+        autoFocus={false}
         value={value}
         style={styles.input}
         selectionColor={Colors.accent}
