@@ -20,16 +20,19 @@ const loginSchema = yup.object().shape({
   email: yup
     .string()
     .email('Enter a valid email')
-    .required('Please enter a registered email'),
+    .required(),
 
-  password: yup.string().min(6, 'Password must have at least 6 characters'),
+  password: yup
+    .string()
+    .min(6, 'Password must have at least 6 characters')
+    .required(),
 });
 
 const Login = ({navigation}: Props) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loginError, setLoginError] = React.useState('');
-  const initialValues = {email, password};
+  const initialValues = {email: '', password: ''};
 
   const {login} = React.useContext(AuthContext);
   async function onSubmit() {
@@ -37,7 +40,6 @@ const Login = ({navigation}: Props) => {
       await login(email, password);
     } catch (error) {
       setLoginError(error.code);
-      console.log('Submit event', loginError);
     }
   }
 
@@ -49,24 +51,33 @@ const Login = ({navigation}: Props) => {
           initialValues={initialValues}
           validationSchema={loginSchema}
           onSubmit={onSubmit}>
-          <ErrorMessage error={loginError} />
+          {({errors, handleSubmit, isValid}) => (
+            <React.Fragment>
+              <ErrorMessage error={errors.email} visible={false} />
 
-          <FormInput
-            placeholder={'Email'}
-            value={email}
-            autoFocus={true}
-            autoCompleteType={'email'}
-            textContentType="emailAddress"
-            keyboardType="email-address"
-            autoCapitalize={'none'}
-            onChangeText={text => setEmail(text)}
-          />
-          <PasswordView
-            placeholder={'Password'}
-            value={password}
-            onChangeText={userPassword => setPassword(userPassword)}
-          />
-          <FormButton titleName={'Login'} onPress={onSubmit} />
+              <FormInput
+                placeholder={'Email'}
+                value={email}
+                autoFocus={true}
+                autoCompleteType={'email'}
+                textContentType="emailAddress"
+                keyboardType="email-address"
+                autoCapitalize={'none'}
+                onChangeText={text => setEmail(text)}
+              />
+              <ErrorMessage error={errors.password} visible={false} />
+              <PasswordView
+                placeholder={'Password'}
+                value={password}
+                onChangeText={userPassword => setPassword(userPassword)}
+              />
+              <FormButton
+                titleName={'Login'}
+                disabled={isValid}
+                onPress={handleSubmit}
+              />
+            </React.Fragment>
+          )}
         </Form>
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.lightText}>
