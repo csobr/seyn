@@ -36,8 +36,8 @@ const Login = ({navigation}: Props) => {
     try {
       await login(email, password);
     } catch (error) {
-      console.log('Submit event', error.code);
       setLoginError(error.code);
+      console.log('Submit event', loginError);
     }
   }
 
@@ -49,7 +49,8 @@ const Login = ({navigation}: Props) => {
           initialValues={initialValues}
           validationSchema={loginSchema}
           onSubmit={onSubmit}>
-          <ErrorMessage error={loginError} visible={true} />
+          <ErrorMessage error={loginError} />
+
           <FormInput
             placeholder={'Email'}
             value={email}
@@ -60,13 +61,11 @@ const Login = ({navigation}: Props) => {
             autoCapitalize={'none'}
             onChangeText={text => setEmail(text)}
           />
-
           <PasswordView
             placeholder={'Password'}
             value={password}
             onChangeText={userPassword => setPassword(userPassword)}
           />
-
           <FormButton titleName={'Login'} onPress={onSubmit} />
         </Form>
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>

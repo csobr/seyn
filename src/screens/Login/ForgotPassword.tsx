@@ -19,7 +19,7 @@ const ForgotPassword = ({}) => {
     } catch (error) {}
   }
 
-  // const inValid = email === undefined;
+  const inValid = email === undefined;
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
