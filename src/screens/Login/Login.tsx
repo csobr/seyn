@@ -12,10 +12,16 @@ import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
+import {FormikProps} from 'formik';
 
-type Props = {
-  navigation: NavProps;
+type FormValues = {
+  email: string;
+  password: string;
 };
+
+interface OtherProps {
+  navigation: NavProps;
+}
 const loginSchema = yup.object().shape({
   email: yup
     .string()
@@ -28,11 +34,12 @@ const loginSchema = yup.object().shape({
     .required(),
 });
 
-const Login = ({navigation}: Props) => {
+const Login = (props: OtherProps & FormValues) => {
+  const {navigation} = props;
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loginError, setLoginError] = React.useState('');
-  const initialValues = {email: '', password: ''};
+  const initialValues: FormValues = {email: '', password: ''};
 
   const {login} = React.useContext(AuthContext);
   async function onSubmit() {
@@ -51,9 +58,12 @@ const Login = ({navigation}: Props) => {
           initialValues={initialValues}
           validationSchema={loginSchema}
           onSubmit={onSubmit}>
-          {({errors, handleSubmit, isValid}) => (
+          {({touched, errors, isValid, handleSubmit}) => (
             <React.Fragment>
-              <ErrorMessage error={errors.email} visible={false} />
+              <ErrorMessage
+                error={touched.email && errors.email}
+                visible={false}
+              />
 
               <FormInput
                 placeholder={'Email'}
@@ -65,7 +75,10 @@ const Login = ({navigation}: Props) => {
                 autoCapitalize={'none'}
                 onChangeText={text => setEmail(text)}
               />
-              <ErrorMessage error={errors.password} visible={false} />
+              <ErrorMessage
+                error={touched.password && errors.password}
+                visible={false}
+              />
               <PasswordView
                 placeholder={'Password'}
                 value={password}
