@@ -25,11 +25,10 @@ const FormButton: React.FC<ButtonProps> = ({titleName, disabled, ...props}) => (
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Colors.dark,
-    height: 50,
-    width: 240,
+    backgroundColor: Colors.accent,
+    width: '70%',
+    padding: 15,
     margin: 30,
-    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: '700',
     color: Colors.background,
     textTransform: 'uppercase',
   },
