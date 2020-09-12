@@ -3,8 +3,9 @@ import {View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
 import Colors from '../../styles/Colors';
 
 interface ButtonProps extends HTMLButtonElement {
-  titleName: string;
-  disabled: any;
+  titleName?: string;
+  disabled?: any;
+  onPress: any;
 }
 const activeRef: React.RefObject<TouchableWithoutFeedback> = React.createRef();
 const active = () => {

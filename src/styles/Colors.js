@@ -10,7 +10,7 @@ const Colors = {
   black: '#000',
 
   dark: '#0C0C0C',
-
+  red: '#FF0000',
   primary: '#181818',
 
   secondary: '#ececec',

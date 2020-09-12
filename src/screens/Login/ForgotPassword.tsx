@@ -19,15 +19,16 @@ const ForgotPassword = ({}) => {
     } catch (error) {}
   }
 
-  // const inValid = email === undefined;
+  const inValid = email === undefined;
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Forgot Password</Text>
-        <ErrorMessage errorText={isError} />
+        <ErrorMessage error={isError} visible={true} />
         <FormInput
-          placeholderText={'Email'}
-          labelValue={email}
+          placeholder={'Email'}
+          keyboardType={'email-address'}
+          value={email}
           autoCapitalize={'none'}
           autoFocus={true}
           onChangeText={checkemail => setEmail(checkemail)}

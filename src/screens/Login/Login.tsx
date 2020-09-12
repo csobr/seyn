@@ -1,40 +1,51 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
-import GlobalStyles from '../../styles/GlobalStyles';
 import {
   Form,
   FormInput,
   FormButton,
   ErrorMessage,
+  PasswordView,
 } from '../../components/Form/index';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import GlobalStyles from '../../styles/GlobalStyles';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
+import {FormikProps} from 'formik';
 
-type Props = {
-  navigation: NavProps;
+type FormValues = {
+  email: string;
+  password: string;
 };
+
+interface OtherProps {
+  navigation: NavProps;
+}
 const loginSchema = yup.object().shape({
   email: yup
     .string()
     .email('Enter a valid email')
-    .required('Please enter a registered email'),
+    .required(),
 
-  password: yup.string().min(6, 'Password must have at least 6 characters'),
+  password: yup
+    .string()
+    .min(6, 'Password must have at least 6 characters')
+    .required(),
 });
 
-const Login = ({navigation}: Props) => {
+const Login = (props: OtherProps & FormValues) => {
+  const {navigation} = props;
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loginError, setLoginError] = React.useState('');
-  const initialValues = {email, password};
+  const initialValues: FormValues = {email: '', password: ''};
+
   const {login} = React.useContext(AuthContext);
   async function onSubmit() {
     try {
       await login(email, password);
     } catch (error) {
-      console.log('Submit event', error.code);
       setLoginError(error.code);
     }
   }
@@ -47,26 +58,39 @@ const Login = ({navigation}: Props) => {
           initialValues={initialValues}
           validationSchema={loginSchema}
           onSubmit={onSubmit}>
-          <ErrorMessage errorText={loginError} />
-          <FormInput
-            placeholder={'Email'}
-            value={email}
-            autoFocus={true}
-            autoCompleteType={'email'}
-            textContentType="emailAddress"
-            keyboardType="email-address"
-            autoCapitalize={'none'}
-            onChangeText={text => setEmail(text)}
-          />
+          {({touched, errors, isValid, handleSubmit}) => (
+            <React.Fragment>
+              <ErrorMessage
+                error={touched.email && errors.email}
+                visible={false}
+              />
 
-          <FormInput
-            textContentType="password"
-            placeholder={'Password'}
-            value={password}
-            secureTextEntry={true}
-            onChangeText={userPassword => setPassword(userPassword)}
-          />
-          <FormButton titleName={'Login'} onPress={onSubmit} />
+              <FormInput
+                placeholder={'Email'}
+                value={email}
+                autoFocus={true}
+                autoCompleteType={'email'}
+                textContentType="emailAddress"
+                keyboardType="email-address"
+                autoCapitalize={'none'}
+                onChangeText={text => setEmail(text)}
+              />
+              <ErrorMessage
+                error={touched.password && errors.password}
+                visible={false}
+              />
+              <PasswordView
+                placeholder={'Password'}
+                value={password}
+                onChangeText={userPassword => setPassword(userPassword)}
+              />
+              <FormButton
+                titleName={'Login'}
+                disabled={isValid}
+                onPress={handleSubmit}
+              />
+            </React.Fragment>
+          )}
         </Form>
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.lightText}>
