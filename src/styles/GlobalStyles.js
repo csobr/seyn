@@ -4,7 +4,7 @@ import Colors from './Colors';
 export default StyleSheet.create({
   body: {
     backgroundColor: Colors.background,
-    fontFamily: 'HelveticaNeue',
+    fontFamily: 'OpenSans-Regular',
     height: '100%',
   },
   container: {

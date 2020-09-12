@@ -1,9 +1,9 @@
 const Colors = {
-  background: '#FAFAFA',
-  home: '#f5f5f5',
+  background: '#F7F5F3',
+  home: '#F7F5F3',
 
-  ligther: '#E1E1E1',
-  grey: '#424242',
+  ligther: '#DEDCDA',
+  grey: '#7B7A79',
 
   white: '#FFFFFF',
 
@@ -14,7 +14,7 @@ const Colors = {
   primary: '#181818',
 
   secondary: '#ececec',
-  yellow: '#fefb82',
-  accent: '#FFA371',
+
+  accent: '#FF7249',
 };
 export default Colors;

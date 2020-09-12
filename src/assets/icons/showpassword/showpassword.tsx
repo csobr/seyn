@@ -1,38 +1,5 @@
 // <!-- <?xml version="1.0" encoding="UTF-8" standalone="no"?> -->
-export const eyeShow = `<svg
-xmlns:dc="http://purl.org/dc/elements/1.1/"
-xmlns:cc="http://creativecommons.org/ns#"
-xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:svg="http://www.w3.org/2000/svg"
-xmlns="http://www.w3.org/2000/svg"
-xmlns:xlink="http://www.w3.org/1999/xlink"
-viewBox="0 0 7.6799998 7.6799998"
-height="7.6799998"
-width="7.6799998"
-xml:space="preserve"
-id="svg2"
-version="1.1"><metadata
-  id="metadata8"><rdf:RDF><cc:Work
-      rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-        rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
-  id="defs6"><clipPath
-    id="clipPath20"
-    clipPathUnits="userSpaceOnUse"><path
-      id="path18"
-      d="M 0,0 H 10 V 10 H 0 Z" /></clipPath></defs><g
-  transform="matrix(1.3333333,0,0,-1.3333333,0,7.68)"
-  id="g10"><g
-    transform="scale(0.1)"
-    id="g12"><g
-      id="g14"><g
-        clip-path="url(#clipPath20)"
-        id="g16" /></g><g
-      transform="matrix(57.6,0,0,57.6,0,-1.72e-6)"
-      id="g22"><image
-        id="image24"
-        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAflJREFUSIntVE1rE1EUPe3EumiJSZs2mQlpiBT9Aw06zbQx/gJBXIoIdh3o0oK6K1lZddVGEXHTFg22lq4ksVAU3HXIpiitu9QwSbGjkjDzOC6UsdMOdkS6EHvgbe4759777sfrIEkcITqP0vlxAF8I+CFdvXYd9VoNu7ufAQDB4CkMyDKePnl8qLbDa4qEbaNSKeNZ6QXWVl9j+9M2hG25MwucQDSmYHQsiyuXLyGby0GSPPLlHrTbLd6dnmZyMMFQsOePTiqZ5L0H99lut/a6pPOCSvkVxm+Mo9EwnODd3T3QLlyEqp7D2TNDiIR7AQDGThMbG+/x5u07rK2W8e3rF0fT3x/Fw0dFjGVzP8shBG9OTjIcCjrZaNooV1aWaVuWk4lpmlyYn+PC/BxN03TstmVx+eUSR9QRRx8OBXnr9h0KIYh8fsK5SMQVLi0ucj90fZ2KHHN4ihyjrq+7OEIIlkrPGVdkh5fPTxDVqk45OkAto7HZbBxwTpLp4fSBmqeH055cw6hTPa9SiUVZreo/evBxaxNKPI6urpOeoxbpDUMI22WTpACM5o4nv91qoV6vITGY8h7T/Rg6nXI1HwD6+iL4sLl1mNTfJk8VCuiUpF8iScJUoeBH6t6D36E4O0Mto1HLaCzOzviV0VeJ/gb//m96HOA/CPAdYTa2ampJpyIAAAAASUVORK5CYII="
-        transform="matrix(1,0,0,-1,0,1)"
-        preserveAspectRatio="none"
-        style="image-rendering:optimizeSpeed"
-        height="1"
-        width="1" /></g></g></g></svg>`;
+export const eyeShow = `  <svg xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+</svg>`;

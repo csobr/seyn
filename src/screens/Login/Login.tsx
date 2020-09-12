@@ -12,7 +12,6 @@ import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
-import {FormikProps} from 'formik';
 
 type FormValues = {
   email: string;
@@ -97,7 +96,6 @@ const Login = (props: OtherProps & FormValues) => {
             New? <Text style={styles.darkText}>Sign Up</Text>
           </Text>
         </TouchableOpacity>
-
         <TouchableOpacity
           style={styles.bottomText}
           onPress={() => navigation.navigate('ForgotPassword')}>
@@ -119,6 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     paddingBottom: 20,
     fontWeight: '700',
+    fontFamily: 'Futura',
   },
   lightText: {
     color: Colors.grey,
