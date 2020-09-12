@@ -1,5 +1,6 @@
+import { Row } from 'native-base';
 import React from 'react';
-import {Text, TextInput, StyleSheet} from 'react-native';
+import {View,Text, TextInput, StyleSheet} from 'react-native';
 import Colors from '../../styles/Colors';
 
 interface FormProps extends HTMLInputElement {
@@ -25,11 +26,10 @@ const onBlur =() =>{
   inputRef.current && inputRef.current.setNativeProps(styles.input_onBlur)
 }
   return (
-    <>
-  
+    <View style={styles.InputContainer} ref={inputRef}>
       <Text style={styles.label}>{placeholder}</Text>
       <TextInput
-        ref={inputRef}
+       ref={inputRef}
         autoCorrect={false}
         autoFocus={false}
         value={value}
@@ -43,31 +43,36 @@ const onBlur =() =>{
 
         {...rest}
       />
-
-    </>
+     
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  input: {
+  InputContainer: {
+    flexDirection: 'row',
     width: '70%',
     marginBottom: 30,
-    padding: 15,
-    borderRadius: 3,
-    borderWidth: 1,
-    borderColor: Colors.dark,
-    flexDirection: 'column'
+    padding: 10,
+    backgroundColor: '#EDE8E4',
+   borderBottomWidth:1,
+   borderBottomColor: Colors.primary
+  },
+  input:{
+    flex:1,
+    paddingTop:15
   },
   input_focused: {
-    borderColor: Colors.accent,
+    borderBottomColor: Colors.accent,
   },
   input_onBlur:{
-     borderColor: Colors.dark
+     borderBottomColor: Colors.dark
   },
   label: {
-    fontSize: 16,
-    textAlign: 'left',
-    width: "70%"
+    fontSize: 11,
+    position: 'absolute',
+    padding: 3,
+
   },
 });
 export default FormInput;

@@ -39,8 +39,8 @@ const PasswordView: React.FC<Props> = props => {
 
   return (
     <React.Fragment>
-      <Text style={styles.label}>{placeholder}</Text>
       <View style={styles.passwordView} ref={inputRef}>
+        <Text style={styles.label}>{placeholder}</Text>
         <TextInput
           style={styles.input}
           secureTextEntry={hidden}
@@ -63,25 +63,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '70%',
     marginBottom: 30,
-    padding: 15,
-    borderRadius: 3,
-    borderWidth: 1,
-    borderColor: Colors.dark,
+    padding: 10,
+    backgroundColor: '#EDE8E4',
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.primary,
   },
   input: {
     flex: 1,
+    padding: 10,
   },
 
   input_focused: {
-    borderColor: Colors.accent,
+    borderBottomColor: Colors.accent,
   },
   input_onBlur: {
-    borderColor: Colors.dark,
+    borderBottomColor: Colors.dark,
   },
   label: {
-    fontSize: 16,
-    textAlign: 'left',
-    width: '70%',
+    fontSize: 11,
+    position: 'absolute',
+    padding: 3,
   },
 });
 
