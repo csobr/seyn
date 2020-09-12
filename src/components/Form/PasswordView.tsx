@@ -50,8 +50,8 @@ const PasswordView: React.FC<Props> = props => {
           onBlur={() => onBlur()}
           {...rest}
         />
-        <TouchableOpacity onPress={() => passwordView()}>
-          <SvgXml xml={icon} width="20" height="20" />
+        <TouchableOpacity onPress={() => passwordView()} style={{padding: 5}}>
+          <SvgXml xml={icon} fill={Colors.grey} width="25" height="20" />
         </TouchableOpacity>
       </View>
     </React.Fragment>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    padding: 10,
+    paddingTop: 15,
   },
 
   input_focused: {
