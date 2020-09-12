@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     paddingBottom: 20,
     fontWeight: '700',
+    fontFamily: 'Futura',
   },
   lightText: {
     color: Colors.grey,
