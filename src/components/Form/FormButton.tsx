@@ -1,39 +1,30 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableWithoutFeedback} from 'react-native';
+import {Text, StyleSheet, Pressable} from 'react-native';
 import Colors from '../../styles/Colors';
 
 interface ButtonProps extends HTMLButtonElement {
   titleName?: string;
   disabled?: any;
-  onPress: any;
 }
-const activeRef: React.RefObject<TouchableWithoutFeedback> = React.createRef();
-const active = () => {
-  activeRef.current && activeRef.current;
-};
+
 const FormButton: React.FC<ButtonProps> = ({titleName, disabled, ...props}) => (
-  // change to pressable
-  <View style={styles.button}>
-    <TouchableWithoutFeedback
-      ref={activeRef}
-      onPressIn={() => active()}
-      {...props}>
-      <Text style={styles.text}>{titleName}</Text>
-    </TouchableWithoutFeedback>
-  </View>
+  <Pressable
+    style={({pressed}) => [
+      {backgroundColor: pressed ? Colors.ligther : Colors.accent},
+      styles.button,
+    ]}
+    {...props}>
+    <Text style={styles.text}>{titleName}</Text>
+  </Pressable>
 );
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Colors.accent,
     width: '70%',
     padding: 15,
     margin: 30,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  active: {
-    backgroundColor: Colors.accent,
   },
   text: {
     fontSize: 18,
