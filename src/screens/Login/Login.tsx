@@ -4,14 +4,15 @@ import {
   FormInput,
   FormButton,
   ErrorMessage,
-  PasswordView,
+  PasswordInput,
 } from '../../components/Form/index';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text, Alert} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
+import value from '*.json';
 
 type FormValues = {
   email: string;
@@ -35,19 +36,9 @@ const loginSchema = yup.object().shape({
 
 const Login = (props: OtherProps & FormValues) => {
   const {navigation} = props;
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [loginError, setLoginError] = React.useState('');
   const initialValues: FormValues = {email: '', password: ''};
 
   const {login} = React.useContext(AuthContext);
-  async function onSubmit() {
-    try {
-      await login(email, password);
-    } catch (error) {
-      setLoginError(error.code);
-    }
-  }
 
   return (
     <View style={GlobalStyles.body}>
@@ -56,8 +47,16 @@ const Login = (props: OtherProps & FormValues) => {
         <Form
           initialValues={initialValues}
           validationSchema={loginSchema}
-          onSubmit={onSubmit}>
-          {({touched, errors, isValid, handleSubmit}) => (
+          onSubmit={values => login(values.email, values.password)}>
+          {({
+            errors,
+            touched,
+            isValid,
+            values,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+          }) => (
             <React.Fragment>
               <ErrorMessage
                 error={touched.email && errors.email}
@@ -66,26 +65,29 @@ const Login = (props: OtherProps & FormValues) => {
 
               <FormInput
                 placeholder={'Email'}
-                value={email}
+                value={values.email}
                 autoFocus={true}
                 autoCompleteType={'email'}
                 textContentType="emailAddress"
                 keyboardType="email-address"
                 autoCapitalize={'none'}
-                onChangeText={text => setEmail(text)}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
               />
               <ErrorMessage
                 error={touched.password && errors.password}
                 visible={false}
               />
-              <PasswordView
+
+              <PasswordInput
                 placeholder={'Password'}
-                value={password}
-                onChangeText={userPassword => setPassword(userPassword)}
+                value={values.password}
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
               />
               <FormButton
                 titleName={'Login'}
-                disabled={isValid}
+                disabled={!isValid}
                 onPress={handleSubmit}
               />
             </React.Fragment>

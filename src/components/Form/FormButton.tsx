@@ -5,6 +5,7 @@ import Colors from '../../styles/Colors';
 interface ButtonProps extends HTMLButtonElement {
   titleName?: string;
   disabled?: any;
+  onPress?: any;
 }
 
 const FormButton: React.FC<ButtonProps> = ({titleName, disabled, ...props}) => (
