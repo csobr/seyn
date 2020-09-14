@@ -5,6 +5,7 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {eyeHide} from '../../assets/icons/showpassword/hidepassword';
 import {eyeShow} from '../../assets/icons/showpassword/showpassword';
@@ -40,7 +41,7 @@ const PasswordView: React.FC<Props> = props => {
 
   return (
     <React.Fragment>
-      <View style={styles.passwordView} ref={inputRef}>
+      <View style={styles.passwordInputContainer} ref={inputRef}>
         <Text style={styles.label}>{placeholder}</Text>
         <TextInput
           style={styles.input}
@@ -50,7 +51,7 @@ const PasswordView: React.FC<Props> = props => {
           onFocus={() => focusedInput()}
           {...rest}
         />
-        <TouchableOpacity onPress={() => passwordView()} style={{padding: 5}}>
+        <TouchableOpacity onPress={() => passwordView()} style={styles.icon}>
           <SvgXml xml={icon} fill={Colors.grey} width="25" height="20" />
         </TouchableOpacity>
       </View>
@@ -59,18 +60,21 @@ const PasswordView: React.FC<Props> = props => {
 };
 
 const styles = StyleSheet.create({
-  passwordView: {
+  passwordInputContainer: {
     flexDirection: 'row',
     width: '70%',
     marginBottom: 30,
-    padding: 10,
     backgroundColor: '#EDE8E4',
     borderBottomWidth: 1,
+    padding: Platform.OS === 'android' ? 0 : 4,
     borderBottomColor: Colors.primary,
   },
   input: {
     flex: 1,
-    paddingTop: 15,
+    paddingBottom: 5,
+    paddingLeft: 5,
+    paddingTop: 20,
+    includeFontPadding: false,
   },
 
   input_focused: {
@@ -81,8 +85,14 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 11,
+    padding: 1,
+    paddingLeft: 3,
     position: 'absolute',
-    padding: 3,
+  },
+  icon: {
+    paddingRight: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

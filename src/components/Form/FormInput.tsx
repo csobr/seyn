@@ -1,6 +1,6 @@
-import { Row } from 'native-base';
+
 import React from 'react';
-import {View,Text, TextInput, StyleSheet} from 'react-native';
+import {View,Text, TextInput, StyleSheet, Platform} from 'react-native';
 import Colors from '../../styles/Colors';
 
 interface FormProps extends HTMLInputElement {
@@ -53,14 +53,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '70%',
     marginBottom: 30,
-    padding: 10,
+    padding: Platform.OS === 'android' ? 0 : 4,
     backgroundColor: '#EDE8E4',
    borderBottomWidth:1,
    borderBottomColor: Colors.primary
   },
   input:{
     flex:1,
-    paddingTop:15
+    paddingBottom:5,
+    paddingLeft: 5,
+    paddingTop: 20,
+    includeFontPadding: false,
+
   },
   input_focused: {
     borderBottomColor: Colors.accent,
@@ -70,8 +74,9 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 11,
+    paddingLeft: 3,
     position: 'absolute',
-    padding: 3,
+    paddingTop: 1,
 
   },
 });
