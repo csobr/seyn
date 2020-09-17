@@ -12,7 +12,6 @@ interface FormProps extends HTMLInputElement {
   keyboardType: any;
   autoCapitalize: any;
   onChangeText: any;
-  onBlur: any
   
 }
 
@@ -37,6 +36,7 @@ const onBlur =() =>{
         style={styles.input}
         selectionColor={Colors.accent}
         onFocus={() => focusedInput()}
+        onBlur={() => onBlur()}
         returnKeyType="next" 
          blurOnSubmit={false}
         onSubmitEditing={() => inputRef.current?.focus()}
@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     padding: Platform.OS === 'android' ? 0 : 4,
     backgroundColor: '#EDE8E4',
    borderBottomWidth:1,
-   borderBottomColor: Colors.primary
   },
   input:{
     flex:1,

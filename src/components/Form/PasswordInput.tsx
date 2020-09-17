@@ -18,7 +18,6 @@ interface Props extends HTMLInputElement {
   value?: string;
   placeholder?: string;
   onChangeText: any;
-  onBlur: any;
 }
 
 const PasswordView: React.FC<Props> = props => {
@@ -49,6 +48,7 @@ const PasswordView: React.FC<Props> = props => {
           textContentType="password"
           selectionColor={Colors.accent}
           onFocus={() => focusedInput()}
+          onBlur={() => onBlur()}
           {...rest}
         />
         <TouchableOpacity onPress={() => passwordView()} style={styles.icon}>
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDE8E4',
     borderBottomWidth: 1,
     padding: Platform.OS === 'android' ? 0 : 4,
-    borderBottomColor: Colors.primary,
   },
   input: {
     flex: 1,
