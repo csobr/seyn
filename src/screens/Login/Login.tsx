@@ -12,7 +12,6 @@ import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
-import value from '*.json';
 
 type FormValues = {
   email: string;
@@ -72,7 +71,6 @@ const Login = (props: OtherProps & FormValues) => {
                 keyboardType="email-address"
                 autoCapitalize={'none'}
                 onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
               />
               <ErrorMessage
                 error={touched.password && errors.password}
@@ -83,7 +81,6 @@ const Login = (props: OtherProps & FormValues) => {
                 placeholder={'Password'}
                 value={values.password}
                 onChangeText={handleChange('password')}
-                onBlur={handleBlur('password')}
               />
               <FormButton
                 titleName={'Login'}

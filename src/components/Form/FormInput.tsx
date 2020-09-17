@@ -1,42 +1,42 @@
 
 import React from 'react';
-import {View,Text, TextInput, StyleSheet, Platform} from 'react-native';
+import {View,Text, TextInput, StyleSheet, Platform, TextProps} from 'react-native';
 import Colors from '../../styles/Colors';
 
-interface FormProps extends HTMLInputElement {
-  value?: string;
-  placeholder?: string;
+interface FormProps extends HTMLInputElement  {
+  value: string;
+  placeholder: string;
   autoFocus?: boolean;
   autoCompleteType?: any
   textContentType?: any;
   keyboardType: any;
   autoCapitalize: any;
   onChangeText: any;
-  
 }
-
-const FormInput: React.FC<FormProps> = props => {
+const FormInput = (props: FormProps)  => {
   const {value, placeholder, ...rest} = props;
    const inputRef: React.RefObject<TextInput> = React.createRef();
+   const labelRef: React.RefObject<Text> = React.createRef()
 const focusedInput = () => {
   inputRef.current && inputRef.current.setNativeProps(styles.input_focused)
+  labelRef.current && labelRef.current?.setNativeProps({style:{color: Colors.accent}})
 
 }
-const onBlur =() =>{
+const blurInput =() =>{
   inputRef.current && inputRef.current.setNativeProps(styles.input_onBlur)
+  labelRef.current && labelRef.current?.setNativeProps({style:{color: Colors.dark}})
 }
   return (
     <View style={styles.InputContainer} ref={inputRef}>
-      <Text style={styles.label}>{placeholder}</Text>
+      <Text ref ={labelRef}style={styles.label}>{placeholder}</Text>
       <TextInput
-       ref={inputRef}
         autoCorrect={false}
         autoFocus={false}
         value={value}
         style={styles.input}
         selectionColor={Colors.accent}
         onFocus={() => focusedInput()}
-        onBlur={() => onBlur()}
+        onBlur={() => blurInput()}
         returnKeyType="next" 
          blurOnSubmit={false}
         onSubmitEditing={() => inputRef.current?.focus()}

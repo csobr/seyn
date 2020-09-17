@@ -26,11 +26,16 @@ const PasswordView: React.FC<Props> = props => {
   const [hidden, setToHidden] = React.useState(true);
 
   const inputRef: React.RefObject<TextInput> = React.createRef();
+  const labelRef: React.RefObject<Text> = React.createRef();
   const focusedInput = () => {
     inputRef.current && inputRef.current.setNativeProps(styles.input_focused);
+    labelRef.current &&
+      labelRef.current.setNativeProps({style: {color: Colors.accent}});
   };
   const onBlur = () => {
     inputRef.current && inputRef.current.setNativeProps(styles.input_onBlur);
+    labelRef.current &&
+      labelRef.current.setNativeProps({style: {color: Colors.dark}});
   };
   const passwordView = () => {
     icon !== eyeShow
@@ -41,7 +46,9 @@ const PasswordView: React.FC<Props> = props => {
   return (
     <React.Fragment>
       <View style={styles.passwordInputContainer} ref={inputRef}>
-        <Text style={styles.label}>{placeholder}</Text>
+        <Text ref={labelRef} style={styles.label}>
+          {placeholder}
+        </Text>
         <TextInput
           style={styles.input}
           secureTextEntry={hidden}
