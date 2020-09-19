@@ -18,6 +18,7 @@ interface Props extends HTMLInputElement {
   value?: string;
   placeholder?: string;
   onChangeText: any;
+  onBlur?: any;
 }
 
 const PasswordView: React.FC<Props> = props => {

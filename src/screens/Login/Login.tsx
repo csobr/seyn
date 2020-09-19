@@ -71,6 +71,7 @@ const Login = (props: OtherProps & FormValues) => {
                 keyboardType="email-address"
                 autoCapitalize={'none'}
                 onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
               />
               <ErrorMessage
                 error={touched.password && errors.password}
@@ -81,6 +82,7 @@ const Login = (props: OtherProps & FormValues) => {
                 placeholder={'Password'}
                 value={values.password}
                 onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
               />
               <FormButton
                 titleName={'Login'}

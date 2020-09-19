@@ -3,7 +3,7 @@ import {Text, StyleSheet, Pressable} from 'react-native';
 import Colors from '../../styles/Colors';
 
 interface ButtonProps extends HTMLButtonElement {
-  titleName?: string;
+  titleName: string;
   disabled?: any;
   onPress?: any;
 }
