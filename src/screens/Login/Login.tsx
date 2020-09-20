@@ -21,6 +21,7 @@ type FormValues = {
 interface OtherProps {
   navigation: NavProps;
 }
+
 const loginSchema = yup.object().shape({
   email: yup
     .string()
@@ -43,19 +44,8 @@ const Login = (props: OtherProps & FormValues) => {
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Log in</Text>
-        <Form
-          initialValues={initialValues}
-          validationSchema={loginSchema}
-          onSubmit={values => login(values.email, values.password)}>
-          {({
-            errors,
-            touched,
-            isValid,
-            values,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-          }) => (
+        <Form initialValues={initialValues} validationSchema={loginSchema}>
+          {({errors, touched, isValid, values, handleChange, handleBlur}) => (
             <React.Fragment>
               <ErrorMessage
                 error={touched.email && errors.email}
@@ -87,7 +77,7 @@ const Login = (props: OtherProps & FormValues) => {
               <FormButton
                 titleName={'Login'}
                 disabled={!isValid}
-                onPress={handleSubmit}
+                onPress={values => login(values.email, values.password)}
               />
             </React.Fragment>
           )}

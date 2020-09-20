@@ -1,11 +1,14 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
-import FormInput from '../../components/Form/FormInput';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {User} from '../../types/user';
-import FormButton from '../../components/Form/FormButton';
-import {ErrorMessage} from '../../components/Form';
+import {
+  FormInput,
+  FormButton,
+  PasswordInput,
+  ErrorMessage,
+} from '../../components/Form/index';
 
 const SignUp = ({}) => {
   const [name, setName] = React.useState('');
@@ -28,7 +31,7 @@ const SignUp = ({}) => {
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Sign up</Text>
-        <ErrorMessage errorText={isError} />
+        <ErrorMessage error={isError} visible={false} />
         <FormInput
           placeholder="Full Name"
           onChangeText={userName => setName(userName)}
@@ -42,10 +45,9 @@ const SignUp = ({}) => {
           autoCorrect={false}
           autoCapitalize={'none'}
         />
-        <FormInput
+        <PasswordInput
           placeholder="Password"
           value={password}
-          secureTextEntry={true}
           autoCapitalize={'none'}
           onChangeText={userPassword => setPassword(userPassword)}
         />

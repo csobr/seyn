@@ -22,8 +22,8 @@ export const AuthProvider: React.FC<SignUpProps> = ({
         setUser,
         isError,
         setError,
-        login: (email, password) =>
-          auth().signInWithEmailAndPassword(email, password),
+        login: async (email, password) =>
+          await auth().signInWithEmailAndPassword(email, password),
 
         register: async (name, newUser) => {
           try {
