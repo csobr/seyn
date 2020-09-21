@@ -11,7 +11,7 @@ interface ButtonProps extends HTMLButtonElement {
 const FormButton: React.FC<ButtonProps> = ({titleName, disabled, ...props}) => (
   <Pressable
     style={({pressed}) => [
-      {backgroundColor: pressed ? Colors.ligther : Colors.accent},
+      {backgroundColor: pressed ? Colors.ligther : Colors.primary},
       styles.button,
     ]}
     {...props}>

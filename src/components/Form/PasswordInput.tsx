@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '70%',
     marginBottom: 30,
-    backgroundColor: '#EDE8E4',
+    backgroundColor: '#EFEDEA',
     borderBottomWidth: 1,
     padding: Platform.OS === 'android' ? 0 : 4,
   },

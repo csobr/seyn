@@ -7,14 +7,14 @@ const Colors = {
 
   white: '#FFFFFF',
 
-  black: '#000',
+  black: '#181818',
 
   dark: '#0C0C0C',
   red: '#FF0000',
-  primary: '#181818',
+  primary: '#1d1d1d',
 
   secondary: '#ececec',
 
-  accent: '#FF7249',
+  accent: '#49C3C3',
 };
 export default Colors;

@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     width: '70%',
     marginBottom: 30,
     padding: Platform.OS === 'android' ? 0 : 4,
-    backgroundColor: '#EDE8E4',
+    backgroundColor: '#EFEDEA',
    borderBottomWidth:1,
   },
   input:{
