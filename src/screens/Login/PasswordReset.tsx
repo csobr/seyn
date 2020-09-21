@@ -1,9 +1,8 @@
 import React from 'react';
-import FormInput from '../../components/Form/FormInput';
+import {PasswordInput, FormButton} from '../../components/Form/index';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {View, Text, StyleSheet} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
-import FormButton from '../../components/Form/FormButton';
 
 const ResetPassword = ({}) => {
   const {password} = React.useContext(AuthContext);
@@ -13,10 +12,10 @@ const ResetPassword = ({}) => {
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Reset Password</Text>
-        <FormInput placeholder="New Password" labelValue={resetPassword} />
-        <FormInput
+        <PasswordInput placeholder="New Password" value={resetPassword} />
+        <PasswordInput
           placeholder=" Confirm New Password"
-          labelValue={resetPassword}
+          value={resetPassword}
         />
         <FormButton titleName={'Reset password'} />
       </View>

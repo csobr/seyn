@@ -11,7 +11,7 @@ interface FormProps extends HTMLInputElement  {
   textContentType?: any;
   keyboardType: any;
   autoCapitalize: any;
-  onChangeText: any;
+  onChangeText?: any;
   onBlur?: any
 }
 const FormInput = (props: FormProps)  => {

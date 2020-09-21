@@ -37,18 +37,28 @@ const loginSchema = yup.object().shape({
 const Login = (props: OtherProps & FormValues) => {
   const {navigation} = props;
   const initialValues: FormValues = {email: '', password: ''};
+  const [isError, setError] = React.useState('');
 
   const {login} = React.useContext(AuthContext);
-
+  async function handleSubmit(email, password) {
+    try {
+      await login(email, password);
+    } catch (error) {
+      setError(error.code);
+    }
+  }
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
         <Text style={styles.title}>Log in</Text>
-        <Form initialValues={initialValues} validationSchema={loginSchema}>
+        <Form
+          initialValues={initialValues}
+          validationSchema={loginSchema}
+          onSubmit={values => handleSubmit(values.email, values.password)}>
           {({errors, touched, isValid, values, handleChange, handleBlur}) => (
             <React.Fragment>
               <ErrorMessage
-                error={touched.email && errors.email}
+                error={(touched.email && errors.email) || isError}
                 visible={false}
               />
 
@@ -77,7 +87,7 @@ const Login = (props: OtherProps & FormValues) => {
               <FormButton
                 titleName={'Login'}
                 disabled={!isValid}
-                onPress={values => login(values.email, values.password)}
+                onPress={handleSubmit}
               />
             </React.Fragment>
           )}

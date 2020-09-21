@@ -17,7 +17,7 @@ interface Props extends HTMLInputElement {
   hidden?: boolean;
   value?: string;
   placeholder?: string;
-  onChangeText: any;
+  onChangeText?: any;
   onBlur?: any;
 }
 
