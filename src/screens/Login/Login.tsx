@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Futura',
   },
   lightText: {
-    color: Colors.grey,
+    color: Colors.accent,
   },
   darkText: {
     color: Colors.dark,
