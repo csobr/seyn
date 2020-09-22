@@ -16,6 +16,9 @@ export const getFirebaseMessage = code => {
     case 'auth/user-not-found':
       message = ErrorMessages.USER_NOT_FOUND;
       break;
+    case 'auth/user-disabled':
+      message = ErrorMessages.USER_DISABLED;
+      break;
   }
   return message;
 };
