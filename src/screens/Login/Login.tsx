@@ -55,7 +55,15 @@ const Login = (props: OtherProps & FormValues) => {
           initialValues={initialValues}
           validationSchema={loginSchema}
           onSubmit={values => handleSubmit(values.email, values.password)}>
-          {({errors, touched, isValid, values, handleChange, handleBlur}) => (
+          {({
+            errors,
+            touched,
+            isValid,
+            values,
+            handleChange,
+            handleSubmit,
+            handleBlur,
+          }) => (
             <React.Fragment>
               <ErrorMessage
                 error={(touched.email && errors.email) || isError}
