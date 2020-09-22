@@ -54,6 +54,7 @@ const PasswordView: React.FC<Props> = props => {
           style={styles.input}
           secureTextEntry={hidden}
           textContentType="password"
+          autoCapitalize={'none'}
           selectionColor={Colors.accent}
           onFocus={() => focusedInput()}
           onBlur={() => onBlur()}

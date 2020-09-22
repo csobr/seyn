@@ -17,11 +17,11 @@ const SignUp = ({}) => {
   const newUser = {
     name: name,
     email: email,
-    profileImg: null,
-    transport: null,
-    time: null,
+    profileImg: '',
+    transport: '',
+    time: undefined,
     active: false,
-    status: null,
+    status: '',
   };
   const userInfo: User = newUser;
   // //Add  sec
@@ -34,26 +34,26 @@ const SignUp = ({}) => {
         <ErrorMessage error={isError} visible={false} />
         <FormInput
           placeholder="Full Name"
+          value={name}
           onChangeText={userName => setName(userName)}
           autoFocus={true}
-          autoCorrect={false}
+          keyboardType={'default'}
         />
         <FormInput
           placeholder="Email"
+          value={email}
           onChangeText={userEmail => setEmail(userEmail)}
           keyboardType="email-address"
-          autoCorrect={false}
           autoCapitalize={'none'}
         />
         <PasswordInput
           placeholder="Password"
           value={password}
-          autoCapitalize={'none'}
           onChangeText={userPassword => setPassword(userPassword)}
         />
         <FormButton
           titleName="Sign Up"
-          onPress={() => register(email, password, name, userInfo)}
+          onPress={() => register(email, password, userInfo)}
         />
       </View>
     </View>

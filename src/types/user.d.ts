@@ -1,9 +1,9 @@
 export type User = {
   name: string;
   email: string;
-  profileImg: null;
-  transport: null;
-  time: null;
+  profileImg: string;
+  transport: string;
+  time: undefined;
   active: boolean;
-  status: null;
+  status: string;
 };

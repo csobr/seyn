@@ -25,12 +25,12 @@ export const AuthProvider: React.FC<SignUpProps> = ({
         login: async (email, password) =>
           await auth().signInWithEmailAndPassword(email, password),
 
-        register: async (name, newUser) => {
+        register: async (email, password, newUser) => {
           try {
             await auth()
               .createUserWithEmailAndPassword(email, password)
               .then(userName => {
-                userName.user.updateProfile({displayName: name}).then(() => {
+                userName.user.updateProfile({displayName: email}).then(() => {
                   firestore()
                     .collection('users')
                     .add({

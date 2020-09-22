@@ -8,9 +8,10 @@ interface FormProps extends HTMLInputElement  {
   placeholder: string;
   autoFocus?: boolean;
   autoCompleteType?: any
+  autoCorrect?: any
   textContentType?: any;
   keyboardType: any;
-  autoCapitalize: any;
+  autoCapitalize?: any;
   onChangeText?: any;
   onBlur?: any
 }
