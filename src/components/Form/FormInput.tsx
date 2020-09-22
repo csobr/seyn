@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {View,Text, TextInput, StyleSheet, Platform, TextProps} from 'react-native';
+import {View,Text, TextInput, StyleSheet, Platform} from 'react-native';
 import Colors from '../../styles/Colors';
 
 interface FormProps extends HTMLInputElement  {
