@@ -1,6 +1,7 @@
 import React from 'react';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import {getFirebaseMessage} from '../Form/ErrorCodes';
 export const AuthContext = React.createContext({});
 
 interface SignUpProps {
@@ -41,21 +42,8 @@ export const AuthProvider: React.FC<SignUpProps> = ({
               .then(() => {
                 console.log('User added!');
               });
-          } catch (e) {
-            switch (e.code) {
-              case 'auth/email-already-in-use':
-                setError('Email already in use.');
-                break;
-              case 'auth/wrong-password':
-                setError('Invalid');
-                break;
-              case 'auth/invalid-email':
-                setError('Invalid email.');
-                break;
-              case 'auth/user-not-found':
-                setError('Account does not exist.');
-                break;
-            }
+          } catch (error) {
+            setError(getFirebaseMessage(error.code));
           }
         },
         logout: async () => {

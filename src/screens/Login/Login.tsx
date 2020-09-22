@@ -12,6 +12,7 @@ import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
+import {getFirebaseMessage} from '../../components/Form/ErrorCodes';
 
 type FormValues = {
   email: string;
@@ -44,7 +45,7 @@ const Login = (props: OtherProps & FormValues) => {
     try {
       await login(email, password);
     } catch (error) {
-      setError(error.code);
+      setError(getFirebaseMessage(error.code));
     }
   }
   return (
