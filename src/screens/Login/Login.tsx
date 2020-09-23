@@ -6,7 +6,7 @@ import {
   ErrorMessage,
   PasswordInput,
 } from '../../components/Form/index';
-import {View, StyleSheet, TouchableOpacity, Text, Alert} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
@@ -41,6 +41,7 @@ const Login = (props: OtherProps & FormValues) => {
   const [isError, setError] = React.useState('');
 
   const {login} = React.useContext(AuthContext);
+
   async function handleSubmit(email, password) {
     try {
       await login(email, password);
@@ -70,7 +71,6 @@ const Login = (props: OtherProps & FormValues) => {
                 error={(touched.email && errors.email) || isError}
                 visible={false}
               />
-
               <FormInput
                 placeholder={'Email'}
                 value={values.email}
@@ -86,13 +86,13 @@ const Login = (props: OtherProps & FormValues) => {
                 error={touched.password && errors.password}
                 visible={false}
               />
-
               <PasswordInput
                 placeholder={'Password'}
                 value={values.password}
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}
               />
+
               <FormButton
                 titleName={'Login'}
                 disabled={!isValid}

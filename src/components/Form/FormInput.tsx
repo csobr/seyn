@@ -26,7 +26,7 @@ const focusedInput = () => {
 }
 const blurInput =() =>{
   inputRef.current && inputRef.current.setNativeProps(styles.input_onBlur)
-  labelRef.current && labelRef.current?.setNativeProps({style:{color: Colors.dark}})
+  labelRef.current && labelRef.current.setNativeProps({style:{color: Colors.dark}})
 }
   return (
     <View style={styles.InputContainer} ref={inputRef}>

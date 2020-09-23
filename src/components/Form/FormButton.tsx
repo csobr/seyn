@@ -1,5 +1,12 @@
 import React from 'react';
-import {Text, StyleSheet, Pressable} from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  Pressable,
+  PressableProps,
+  StyleProp,
+  ViewStyle, PressableStateCallbackType
+} from 'react-native';
 import Colors from '../../styles/Colors';
 
 interface ButtonProps extends HTMLButtonElement {
@@ -7,24 +14,38 @@ interface ButtonProps extends HTMLButtonElement {
   disabled?: any;
   onPress?: any;
 }
+interface PressableOpacity extends PressableProps {
+  disabledOpacity?: number;
+}
+type StyleType = (state: PressableStateCallbackType) => StyleProp<ViewStyle>
 
-const FormButton: React.FC<ButtonProps> = ({titleName, disabled, ...props}) => (
-  <Pressable
-    style={({pressed}) => [
-      {backgroundColor: pressed ? Colors.ligther : Colors.primary},
-      styles.button,
-    ]}
-    {...props}>
-    <Text style={styles.text}>{titleName}</Text>
-  </Pressable>
-);
 
+const FormButton = (props: ButtonProps & PressableOpacity) => {
+  const {titleName, disabled, disabledOpacity, style, ...rest} = props
+  const getOpacity = React.useCallback((pressed: boolean) => {
+    if (disabled) return disabledOpacity ?? 0.6;
+    else return pressed ? 0.6 : 1
+  },
+    [disabled,disabledOpacity]
+  );
+  const _style = React.useCallback<StyleType>(({pressed}) => [ styles.button, {opacity: getOpacity(pressed) }], [getOpacity, style, styles.button]);
+  return (
+    
+    <Pressable
+      style={_style}
+     disabled={disabled}
+      {...rest}>
+      <Text style={styles.text}>{titleName}</Text>
+    </Pressable>
+  );
+};
 const styles = StyleSheet.create({
   button: {
     width: '70%',
     padding: 15,
     margin: 30,
-    justifyContent: 'center',
+    backgroundColor: Colors.primary,
+       justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
