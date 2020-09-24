@@ -17,8 +17,7 @@ const styles = StyleSheet.create({
   container: {},
   error: {
     width: '70%',
-    alignContent: 'center',
-    justifyContent: 'center',
+    textAlign: 'center',
     color: Colors.red,
     fontSize: 12,
     paddingBottom: 10,
