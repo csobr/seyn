@@ -53,11 +53,12 @@ const blurInput =() =>{
 const styles = StyleSheet.create({
   InputContainer: {
     flexDirection: 'row',
-    width: '70%',
-    marginBottom: 30,
+    width: '75%',
+    marginBottom: 35,
     padding: Platform.OS === 'android' ? 0 : 4,
     backgroundColor: '#EFEDEA',
    borderBottomWidth:1,
+  
   },
   input:{
     flex:1,

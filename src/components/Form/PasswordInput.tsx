@@ -71,7 +71,7 @@ const PasswordView: React.FC<Props> = props => {
 const styles = StyleSheet.create({
   passwordInputContainer: {
     flexDirection: 'row',
-    width: '70%',
+    width: '75%',
     marginBottom: 30,
     backgroundColor: '#EFEDEA',
     borderBottomWidth: 1,

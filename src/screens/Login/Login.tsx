@@ -122,15 +122,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    height: '100%',
   },
   title: {
     fontSize: 28,
-    paddingBottom: 20,
+    paddingBottom: 35,
     fontWeight: '700',
     fontFamily: 'Futura',
   },
   lightText: {
-    color: Colors.accent,
+    color: Colors.primary,
   },
   darkText: {
     color: Colors.dark,

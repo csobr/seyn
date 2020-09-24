@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: Colors.red,
     fontSize: 12,
-    paddingBottom: 10,
+    paddingBottom: 2,
   },
 });
 export default ErrorMessage;
