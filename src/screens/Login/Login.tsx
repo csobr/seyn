@@ -13,6 +13,7 @@ import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
 import {getFirebaseMessage} from '../../components/Form/ErrorCodes';
+import {Type} from '../../styles/Font';
 
 type FormValues = {
   email: string;
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     paddingBottom: 35,
     fontWeight: '700',
-    fontFamily: 'Futura',
+    fontFamily: Type.title,
   },
   lightText: {
     color: Colors.primary,

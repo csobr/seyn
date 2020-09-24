@@ -15,6 +15,7 @@ import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from '../../constants/Icons';
 import UsersApi from '../../components/Users/UsersHook';
 import {AuthContext} from '../../components/Auth/AuthProvider';
+import {Type} from '../../styles/Font';
 
 export interface NavProps {
   navigate: any;
@@ -112,6 +113,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: '700',
     color: Colors.dark,
+    fontFamily: Type.title,
   },
   secondTitle: {
     fontSize: 16,
