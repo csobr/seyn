@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import Colors from '../../styles/Colors';
 
 interface Props extends HTMLElement {
@@ -14,9 +14,14 @@ const ErrorMessage: React.FC<Props> = ({error, visible}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {},
   error: {
+    width: '70%',
+    alignContent: 'center',
+    justifyContent: 'center',
     color: Colors.red,
-    fontSize: 11,
+    fontSize: 12,
+    paddingBottom: 10,
   },
 });
 export default ErrorMessage;
