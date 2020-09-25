@@ -8,68 +8,71 @@ import {
   FlatList,
   Image,
 } from 'react-native';
-import {NavigationStackProp} from 'react-navigation-stack';
-import {useNavigation} from '@react-navigation/native';
+import { NavigationStackProp } from 'react-navigation-stack';
+import { useNavigation } from '@react-navigation/native';
 import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from '../../constants/Icons';
 import UsersApi from '../../components/Users/UsersHook';
-import {AuthContext} from '../../components/Auth/AuthProvider';
-import {Type} from '../../styles/Font';
+import { AuthContext } from '../../components/Auth/AuthProvider';
+import { Type } from '../../styles/Font';
 
 export interface NavProps {
   navigate: any;
   navigation: NavigationStackProp<any, any>;
 }
 const Home: React.FC<NavProps> = props => {
-  const [{data, isLoading}] = UsersApi();
-  const {user} = React.useContext(AuthContext);
+  const [{ data, isLoading }] = UsersApi();
+  const { user } = React.useContext(AuthContext);
 
-  const {navigation} = props;
+  const { navigation } = props;
   return (
     <SafeAreaView style={GlobalStyle.container}>
-      <View style={{backgroundColor: Colors.home}}>
+      <View style={{ backgroundColor: Colors.home }}>
         <View style={styles.header}>
-          <Text style={styles.sectionTitle}>Pick up</Text>
-          <Text style={styles.secondTitle}>Nearby</Text>
-          {data.map(uid => (
-            <TouchableOpacity
-              key={uid.id}
-              onPress={() => navigation.navigate('Profile', uid)}
-              style={styles.profilePosition}>
-              <Image source={{uri: uid.photo}} style={styles.profileImage} />
-            </TouchableOpacity>
-          ))}
+          <Text style={styles.sectionTitle}>Nearby</Text>
+          <>
+            {data.map(uid => (
+              <TouchableOpacity
+                key={uid.id}
+                onPress={() => navigation.navigate('Profile', uid)}
+                style={styles.profilePosition}>
+                <Image source={{ uri: uid.photo }} style={styles.profileImage} />
+              </TouchableOpacity>
+            ))}
+          </>
         </View>
-
-        <Text style={styles.dateTitle}>Today</Text>
+        <View style={styles.adressTitle}>
+          <Icon name="map" size={17} />
+          <Text style={styles.adress}>South green st</Text>
+        </View>
 
         <>
           {/* {isError && <Text>Opps.. something went wrong</Text>} */}
           {isLoading ? (
             <Text>loading..</Text>
           ) : (
-            <FlatList
-              contentContainerStyle={styles.listPadding}
-              data={data}
-              renderItem={({item}) => (
-                <Item
-                  time={item.time}
-                  name={item.name}
-                  title={item.title}
-                  photo={item.photo}
-                  transport={item.transport}
-                />
-              )}
-              keyExtractor={item => item.id}
-            />
-          )}
+              <FlatList
+                contentContainerStyle={styles.listPadding}
+                data={data}
+                renderItem={({ item }) => (
+                  <Item
+                    time={item.time}
+                    name={item.name}
+                    title={item.title}
+                    photo={item.photo}
+                    transport={item.transport}
+                  />
+                )}
+                keyExtractor={item => item.id}
+              />
+            )}
         </>
       </View>
     </SafeAreaView>
   );
 };
-export const Item = ({time, name, title, photo, transport}) => {
+export const Item = ({ time, name, title, photo, transport }) => {
   const navigation = useNavigation();
 
   return (
@@ -80,7 +83,7 @@ export const Item = ({time, name, title, photo, transport}) => {
           onPress={() => {
             navigation.navigate('Profile', name);
           }}>
-          <Image style={styles.profileImage} source={{uri: photo}} />
+          <Image style={styles.profileImage} source={{ uri: photo }} />
         </TouchableOpacity>
         <View style={styles.activeIndicator} />
         <Text style={styles.userName}>{name}</Text>
@@ -106,9 +109,9 @@ export default Home;
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: 30,
+    marginTop: 15,
     paddingHorizontal: 19,
-    height: 65,
+    height: 75,
     justifyContent: 'center',
   },
   sectionTitle: {
@@ -117,18 +120,16 @@ const styles = StyleSheet.create({
     color: Colors.dark,
     fontFamily: Type.title,
   },
-  secondTitle: {
-    fontSize: 16,
-    fontWeight: '300',
-    color: Colors.dark,
+  adressTitle: {
+    paddingHorizontal: 16,
+    paddingBottom: 5,
+    flexDirection: 'row',
   },
-  dateTitle: {
+  adress: {
     fontSize: 14,
-    paddingLeft: 20,
-    paddingBottom: 8,
-    fontWeight: '700',
-    color: Colors.dark,
-    marginTop: 15,
+    color: Colors.primary,
+    textTransform: 'uppercase',
+    paddingLeft: 3,
   },
   item: {
     justifyContent: 'center',
@@ -142,8 +143,9 @@ const styles = StyleSheet.create({
   },
   profilePosition: {
     position: 'absolute',
-    right: 15,
+    right: 17,
   },
+
   profileImageWrapper: {
     position: 'absolute',
     margin: 10,
