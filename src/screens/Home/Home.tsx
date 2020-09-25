@@ -37,12 +37,13 @@ const Home: React.FC<NavProps> = props => {
               key={uid.id}
               onPress={() => navigation.navigate('Profile', uid)}
               style={styles.profilePosition}>
-              <Image source={{uri: uid.photo}} style={styles.profile} />
+              <Image source={{uri: uid.photo}} style={styles.profileImage} />
             </TouchableOpacity>
           ))}
         </View>
 
         <Text style={styles.dateTitle}>Today</Text>
+
         <>
           {/* {isError && <Text>Opps.. something went wrong</Text>} */}
           {isLoading ? (
@@ -56,11 +57,11 @@ const Home: React.FC<NavProps> = props => {
                   time={item.time}
                   name={item.name}
                   title={item.title}
-                  image={item.photo}
+                  photo={item.photo}
                   transport={item.transport}
                 />
               )}
-              keyExtractor={item => item.id.toString()}
+              keyExtractor={item => item.id}
             />
           )}
         </>
@@ -68,17 +69,18 @@ const Home: React.FC<NavProps> = props => {
     </SafeAreaView>
   );
 };
-export const Item = ({id, time, name, title, image, transport}) => {
+export const Item = ({time, name, title, photo, transport}) => {
   const navigation = useNavigation();
+
   return (
     <View style={styles.item}>
       <View style={styles.listItems}>
         <TouchableOpacity
-          style={styles.userImage}
+          style={styles.profileImageWrapper}
           onPress={() => {
             navigation.navigate('Profile', name);
           }}>
-          <Image source={{uri: image}} />
+          <Image style={styles.profileImage} source={{uri: photo}} />
         </TouchableOpacity>
         <View style={styles.activeIndicator} />
         <Text style={styles.userName}>{name}</Text>
@@ -137,29 +139,20 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     color: Colors.dark,
     backgroundColor: Colors.white,
-    // shadowOpacity: 0.1,
-    // shadowRadius: 2,
-    // shadowColor: '#000',
-    // shadowOffset: {height: 1, width: 1},
-  },
-  profile: {
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    backgroundColor: Colors.primary,
   },
   profilePosition: {
     position: 'absolute',
     right: 15,
-    backgroundColor: 'transparent',
   },
-  userImage: {
+  profileImageWrapper: {
+    position: 'absolute',
+    margin: 10,
+  },
+  profileImage: {
     width: 50,
     height: 50,
     borderRadius: 50,
-    backgroundColor: Colors.primary,
-    position: 'absolute',
-    margin: 10,
+    backgroundColor: Colors.ligther,
   },
   userName: {
     fontSize: 14,
