@@ -41,7 +41,7 @@ const FormButton = (props: ButtonProps & PressableOpacity) => {
 };
 const styles = StyleSheet.create({
   button: {
-    width: '70%',
+    width: '75%',
     padding: 15,
     margin: 30,
     backgroundColor: Colors.primary,
