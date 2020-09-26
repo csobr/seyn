@@ -102,15 +102,15 @@ const Login = (props: OtherProps & FormValues) => {
             </React.Fragment>
           )}
         </Form>
-        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-          <Text style={styles.lightText}>
-            New? <Text style={styles.darkText}>Sign Up</Text>
-          </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+          <Text style={styles.lightText}>Forgot Password?</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.bottomText}
-          onPress={() => navigation.navigate('ForgotPassword')}>
-          <Text style={styles.lightText}>Forgot Password?</Text>
+          onPress={() => navigation.navigate('SignUp')}>
+          <Text>
+            New? <Text style={styles.darkText}>Sign Up</Text>
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   },
   bottomText: {
     position: 'absolute',
-    bottom: 70,
+    bottom: 90,
   },
 });
 export default Login;
