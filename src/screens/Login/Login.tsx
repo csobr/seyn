@@ -53,7 +53,7 @@ const Login = (props: OtherProps & FormValues) => {
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
-        <Text style={styles.title}>Log in</Text>
+        <Text style={styles.title}>Sign in</Text>
         <Form
           initialValues={initialValues}
           validationSchema={loginSchema}
@@ -95,7 +95,7 @@ const Login = (props: OtherProps & FormValues) => {
               />
 
               <FormButton
-                titleName={'Login'}
+                titleName={'Sign In'}
                 disabled={!isValid}
                 onPress={handleSubmit}
               />
@@ -103,14 +103,12 @@ const Login = (props: OtherProps & FormValues) => {
           )}
         </Form>
         <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
-          <Text style={styles.lightText}>Forgot Password?</Text>
+          <Text style={styles.lightText}>Forgot password?</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.bottomText}
           onPress={() => navigation.navigate('SignUp')}>
-          <Text>
-            New? <Text style={styles.darkText}>Sign Up</Text>
-          </Text>
+          <Text style={styles.darkText}>Create account</Text>
         </TouchableOpacity>
       </View>
     </View>
