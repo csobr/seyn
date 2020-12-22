@@ -8,7 +8,7 @@ import {
   MapsScreen,
   ProfileScreen,
   SettingsScreen,
-} from '../../screens';
+} from '../../Screens';
 import Icon from '../../constants/Icons';
 import Colors from '../../styles/Colors';
 import {Image, StyleSheet} from 'react-native';

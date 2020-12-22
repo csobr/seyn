@@ -5,7 +5,7 @@ import {
   SignUpScreen,
   ForgotPassword,
   ResetPassword,
-} from '../../screens/index';
+} from '../../Screens/index';
 
 const Stack = createStackNavigator();
 
