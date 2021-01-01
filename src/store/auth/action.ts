@@ -4,6 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import {RootState} from '../auth/index';
 import * as Types from './types';
 
+
 export const signup = (
   data: Types.SignUpData,
   onError: () => void,
@@ -22,7 +23,7 @@ export const signup = (
           createdAt: firestore.FieldValue.serverTimestamp(),
         };
         await firestore()
-          .collection('/users')
+          .collection('users')
           .doc(res.user.uid)
           .set(userData);
         await res.user.sendEmailVerification();
@@ -110,7 +111,7 @@ export const setError = (
   };
 };
 
-export const needVerification = (): ThunkAction<
+export const setNeedVerification = (): ThunkAction<
   void,
   RootState,
   null,
@@ -148,3 +149,20 @@ export const sendPasswordResetEmail = (
     }
   };
 };
+
+export const signout = (): ThunkAction<void, RootState, null, Types.AuthAction> => {
+  return async dispatch => {
+  try {
+    dispatch(setLoading(true))
+    await auth().signOut();
+    dispatch({
+      type: Types.SIGN_OUT
+    })
+  }
+  catch (error) {
+    console.error()
+    dispatch(setLoading(false))
+  }
+
+}
+}

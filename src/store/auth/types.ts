@@ -36,7 +36,7 @@ interface SetUserAction {
     type: typeof SET_USER;
     payload: User;
 }
-interface NeedVerification {
+interface NeedVerificationAction {
     type: typeof NEED_VERIFICATION;
 }
 
@@ -57,4 +57,4 @@ interface SetSuccessAction {
     payload: string;
 }
 
-export type AuthAction = SetUserAction | SetLoadingAction | SignOutAction | SetSuccessAction | SetErrorAction | NeedVerification
+export type AuthAction = SetUserAction | SetLoadingAction | SignOutAction | SetSuccessAction | SetErrorAction | NeedVerificationAction

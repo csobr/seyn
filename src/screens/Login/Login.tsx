@@ -55,8 +55,7 @@ const Login = (props: OtherProps & FormValues) => {
     };
   }, [error, dispatch]);
 
-  const submitHandler = (e: FormEvent) => {
-    e.preventDefault();
+  const submitHandler = (email, password) => {
     setLoading(true);
     dispatch(signin({email, password}, () => setLoading(false)));
   };
@@ -68,7 +67,7 @@ const Login = (props: OtherProps & FormValues) => {
         <Form
           initialValues={initialValues}
           validationSchema={loginSchema}
-          onSubmit={submitHandler}>
+          onSubmit={values => submitHandler(values.email, values.password)}>
           {({
             errors,
             touched,

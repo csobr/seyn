@@ -13,7 +13,10 @@ import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from '../../constants/Icons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {AuthContext} from '../../components/Auth/AuthProvider';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/auth';
+import { signout } from '../../store/auth/action';
+
 
 type Params = {
   Profile: {name: string; title: string; transport: string; photo?: string};
@@ -26,7 +29,14 @@ type Props = {
 };
 const Profile = ({route, navigation}: Props) => {
   const {name, title, transport, photo} = route.params;
-  const {logout} = React.useContext(AuthContext);
+  const dispatch = useDispatch()
+ 
+
+  const logutClickHandler = () => {
+    dispatch(signout())
+  }
+
+
   return (
     <SafeAreaView style={GlobalStyle.container}>
       <View style={GlobalStyle.body}>
@@ -43,7 +53,7 @@ const Profile = ({route, navigation}: Props) => {
                 <Text>Edit profile</Text>
               </TouchableOpacity>
             </View>
-            <Button title="Log out" onPress={() => logout()} />
+            <Button title="Log out" onPress={(logutClickHandler)} />
           </View>
         </View>
       </View>

@@ -13,6 +13,8 @@ const store = () => {
         compose(applyMiddleware(thunk))
     );
 }
+
+
 export type RootState = ReturnType<typeof rootReducer>
 
     export default store;

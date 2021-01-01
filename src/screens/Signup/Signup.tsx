@@ -51,23 +51,23 @@ const SignUp = ({}) => {
         <Text style={styles.title}>Sign up</Text>
         <ErrorMessage error={error} visible={false} />
         <FormInput
-          placeholder="Full Name"
+          placeholder="Name"
           value={firstName}
-          onChangeText={(e) => setFirstName(e.currentTarget.value)}
+          onChangeText={name => setFirstName(name)}
           autoFocus={true}
           keyboardType={'default'}
         />
         <FormInput
           placeholder="Email"
           value={email}
-          onChangeText={(e) => setEmail(e.currentTarget.value)}
+          onChangeText={email => setEmail(email)}
           keyboardType="email-address"
           autoCapitalize={'none'}
         />
         <PasswordInput
           placeholder="Password"
           value={password}
-          onChangeText={(e) => setPassword(e.currentTarget.value)}
+          onChangeText={password => setPassword(password)}
         />
         <FormButton
           titleName="Sign Up"

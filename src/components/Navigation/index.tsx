@@ -1,11 +1,15 @@
 import React from 'react';
-import {AuthProvider} from '../Auth/AuthProvider';
+import { Provider } from 'react-redux';
+import store from '../../store/auth';
+
 import Routes from './Routes';
 
 export default function Providers() {
   return (
-    <AuthProvider>
-      <Routes />
-    </AuthProvider>
+    <Provider store={store()}>
+        <Routes />
+    </Provider>
+    
+
   );
 }

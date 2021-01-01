@@ -16,6 +16,9 @@ import Icon from '../../constants/Icons';
 import UsersApi from '../../components/Users/UsersHook';
 import { AuthContext } from '../../components/Auth/AuthProvider';
 import { Type } from '../../styles/Font';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/auth';
+import { setSuccess } from '../../store/auth/action';
 
 export interface NavProps {
   navigate: any;
@@ -23,7 +26,7 @@ export interface NavProps {
 }
 const Home: React.FC<NavProps> = props => {
   const [{ data, isLoading }] = UsersApi();
-  const { user } = React.useContext(AuthContext);
+  
 
   const { navigation } = props;
   return (

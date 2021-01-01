@@ -1,32 +1,44 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import auth from '@react-native-firebase/auth';
+import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from './AuthNavigation';
 import AppNavigation from './AppNavigation';
-import {AuthContext} from '../Auth/AuthProvider';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/auth';
+import { getUserById, setLoading, setNeedVerification } from '../../store/auth/action';
 import Loading from '../../constants/Loading';
+import auth from '@react-native-firebase/auth'
 
 export default function Routes() {
-  const {user, setUser} = React.useContext(AuthContext);
-  const [loading, setLoading] = React.useState(true);
-  const [initializing, setInitializing] = React.useState(true);
-  function onAuthStateChanged(user) {
-    setUser(user);
-    if (initializing) {
-      setInitializing(false);
-      setLoading(false);
-    }
-  }
+  const { authenticated } = useSelector((state: RootState) => state.auth)
+  const dispatch = useDispatch()
+  const { loading } = useSelector((state: RootState) => state.auth)
+
   React.useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber;
-  });
+    dispatch(setLoading(true))
+    const unsubscribe = auth().onAuthStateChanged(async (user) => {
+      if (user) {
+        dispatch(setLoading(true))
+
+        await dispatch(getUserById(user.uid))
+        if (!user.emailVerified) {
+          dispatch(setNeedVerification());
+
+        }
+      }
+      dispatch(setLoading(false));
+
+    })
+    return () => {
+      unsubscribe();
+
+    }
+  }, [dispatch])
   if (loading) {
-    return <Loading />;
+    return <Loading />
   }
   return (
     <NavigationContainer>
-      {user ? <AppNavigation /> : <AuthStack />}
+      {authenticated ? <AppNavigation /> : <AuthStack />}
     </NavigationContainer>
   );
 }
