@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FormEvent} from 'react';
 import {
   Form,
   FormInput,
@@ -8,12 +8,13 @@ import {
 } from '../../components/Form/index';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
-import {AuthContext} from '../../components/Auth/AuthProvider';
 import {NavProps} from '../Home/Home';
 import Colors from '../../styles/Colors';
 import * as yup from 'yup';
-import {getFirebaseMessage} from '../../components/Form/ErrorCodes';
 import {Type} from '../../styles/Font';
+import {setError, signin} from '../../store/auth/action';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../store/auth';
 
 type FormValues = {
   email: string;
@@ -37,19 +38,29 @@ const loginSchema = yup.object().shape({
 });
 
 const Login = (props: OtherProps & FormValues) => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const {navigation} = props;
   const initialValues: FormValues = {email: '', password: ''};
-  const [isError, setError] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
 
-  const {login} = React.useContext(AuthContext);
+  const dispatch = useDispatch();
+  const {error} = useSelector((state: RootState) => state.auth);
 
-  async function handleSubmit(email, password) {
-    try {
-      await login(email, password);
-    } catch (error) {
-      setError(getFirebaseMessage(error.code));
-    }
-  }
+  React.useEffect(() => {
+    return () => {
+      if (error) {
+        dispatch(setError(''));
+      }
+    };
+  }, [error, dispatch]);
+
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    dispatch(signin({email, password}, () => setLoading(false)));
+  };
+
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
@@ -57,7 +68,7 @@ const Login = (props: OtherProps & FormValues) => {
         <Form
           initialValues={initialValues}
           validationSchema={loginSchema}
-          onSubmit={values => handleSubmit(values.email, values.password)}>
+          onSubmit={submitHandler}>
           {({
             errors,
             touched,
@@ -69,7 +80,7 @@ const Login = (props: OtherProps & FormValues) => {
           }) => (
             <React.Fragment>
               <ErrorMessage
-                error={(touched.email && errors.email) || isError}
+                error={(touched.email && errors.email) || ''}
                 visible={false}
               />
               <FormInput
