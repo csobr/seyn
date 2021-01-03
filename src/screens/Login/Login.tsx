@@ -26,10 +26,7 @@ interface OtherProps {
 }
 
 const loginSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Enter a valid email')
-    .required(),
+  email: yup.string().email('Enter a valid email').required(),
 
   password: yup
     .string()
@@ -67,7 +64,7 @@ const Login = (props: OtherProps & FormValues) => {
         <Form
           initialValues={initialValues}
           validationSchema={loginSchema}
-          onSubmit={values => submitHandler(values.email, values.password)}>
+          onSubmit={(values) => submitHandler(values.email, values.password)}>
           {({
             errors,
             touched,

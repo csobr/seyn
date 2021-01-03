@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React, {FormEvent} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import GlobalStyles from '../../styles/GlobalStyles';
 import {
@@ -7,15 +7,15 @@ import {
   PasswordInput,
   ErrorMessage,
 } from '../../components/Form/index';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/auth/index';
-import { setError, signup } from '../../store/auth/action';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../store/auth/index';
+import {setError, signup} from '../../store/auth/action';
 
 const SignUp = ({}) => {
   const [firstName, setFirstName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(false);
 
   const newUser = {
     name: firstName,
@@ -27,24 +27,23 @@ const SignUp = ({}) => {
     status: '',
   };
 
-
   const dispatch = useDispatch();
-  const { error } = useSelector((state: RootState) => state.auth)
-  
+  const {error} = useSelector((state: RootState) => state.auth);
+
   React.useEffect(() => {
     return () => {
       if (error) {
-        dispatch(setError(''))
+        dispatch(setError(''));
       }
-    }
+    };
   }, [error, dispatch]);
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true)
-    dispatch(signup({email, password ,firstName}, () => setLoading(false)))
-  }
-  
+    setLoading(true);
+    dispatch(signup({email, password, firstName}, () => setLoading(false)));
+  };
+
   return (
     <View style={GlobalStyles.body}>
       <View style={styles.container}>
@@ -53,26 +52,26 @@ const SignUp = ({}) => {
         <FormInput
           placeholder="Name"
           value={firstName}
-          onChangeText={name => setFirstName(name)}
+          onChangeText={(name) => setFirstName(name)}
           autoFocus={true}
           keyboardType={'default'}
         />
         <FormInput
           placeholder="Email"
           value={email}
-          onChangeText={email => setEmail(email)}
+          onChangeText={(email) => setEmail(email)}
           keyboardType="email-address"
           autoCapitalize={'none'}
         />
         <PasswordInput
           placeholder="Password"
           value={password}
-          onChangeText={password => setPassword(password)}
+          onChangeText={(password) => setPassword(password)}
         />
         <FormButton
           titleName="Sign Up"
           onPress={submitHandler}
-          disabled= {loading}
+          disabled={loading}
         />
       </View>
     </View>

@@ -1,6 +1,6 @@
 import * as ErrorMessages from './CustomErrorMessages';
 
-export const getFirebaseMessage = code => {
+export const getFirebaseMessage = (code) => {
   let message = '';
 
   switch (code) {

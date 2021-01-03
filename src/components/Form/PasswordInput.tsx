@@ -21,7 +21,7 @@ interface Props extends HTMLInputElement {
   onBlur?: any;
 }
 
-const PasswordView: React.FC<Props> = props => {
+const PasswordView: React.FC<Props> = (props) => {
   const {value, placeholder, ...rest} = props;
   const [icon, setIcon] = React.useState(eyeHide);
   const [hidden, setToHidden] = React.useState(true);

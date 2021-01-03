@@ -30,13 +30,11 @@ export const AuthProvider: React.FC<SignUpProps> = ({
           try {
             await auth()
               .createUserWithEmailAndPassword(email, password)
-              .then(userName => {
+              .then((userName) => {
                 userName.user.updateProfile({displayName: email}).then(() => {
-                  firestore()
-                    .collection('users')
-                    .add({
-                      userDetails: newUser,
-                    });
+                  firestore().collection('users').add({
+                    userDetails: newUser,
+                  });
                 });
               })
               .then(() => {
@@ -57,7 +55,7 @@ export const AuthProvider: React.FC<SignUpProps> = ({
           try {
             await auth()
               .sendPasswordResetEmail(email)
-              .then(function(_user) {
+              .then(function (_user) {
                 //navigate login
                 setError('');
               });

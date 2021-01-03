@@ -50,7 +50,7 @@ const ForgotPassword = ({}) => {
           value={email}
           autoCapitalize={'none'}
           autoFocus={true}
-          onChangeText={e => setEmail(e.currentTarget.value)}
+          onChangeText={(e) => setEmail(e.currentTarget.value)}
         />
         <FormButton titleName={'Send email'} onPress={submitHandler} />
       </View>

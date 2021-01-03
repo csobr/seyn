@@ -6,7 +6,7 @@ type Form = {
   validationSchema: any;
   onSubmit: any;
 };
-const Form: React.FC<Form> = props => {
+const Form: React.FC<Form> = (props) => {
   const {initialValues, validationSchema, onSubmit, children, ...rest} = props;
 
   return (

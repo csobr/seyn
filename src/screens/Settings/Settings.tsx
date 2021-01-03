@@ -13,7 +13,7 @@ const Settings = ({route}) => {
   const {name, title, photo} = route.params;
   const [userName, setName] = useState(name);
 
-  const handleChange = newName => {
+  const handleChange = (newName) => {
     setName(newName);
   };
   useEffect(() => {}, [userName]);
