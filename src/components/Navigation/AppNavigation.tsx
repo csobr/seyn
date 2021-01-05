@@ -12,14 +12,13 @@ import {
 import Icon from '../../constants/Icons';
 import Colors from '../../styles/Colors';
 import {Image, StyleSheet} from 'react-native';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function getHeaderTitle(route) {
-  const routeName = route.state
-    ? route.state.routes[route.state.index].name
-    : 'Home';
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
 
   switch (routeName) {
     case 'Home':
@@ -36,11 +35,16 @@ function getHeaderTitle(route) {
       return 'Settings';
   }
 }
+
 const TabBarIcon = (tintColor: string): React.ReactElement => {
   return <Icon size={29} color={tintColor} name="Home" />;
 };
 
-function TabNavigator(): React.ReactElement {
+function TabNavigator({ route, navigation }): React.ReactElement {
+    React.useLayoutEffect(() => {
+    navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+  }, [navigation, route]);
+  
   return (
     <Tab.Navigator
       screenOptions={{
@@ -133,7 +137,9 @@ const AppNavigation: React.FC = ({}) => {
       <Stack.Screen
         options={({route}) => ({
           title: getHeaderTitle(route),
+    
         })}
+        
         name="Home"
         component={TabNavigator}
       />

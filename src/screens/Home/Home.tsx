@@ -66,7 +66,7 @@ const Home: React.FC<NavProps> = (props) => {
                   transport={item.transport}
                 />
               )}
-              keyExtractor={(item) => item.id}
+              keyExtractor={(item, index) => index.toString()}
             />
           )}
         </>
