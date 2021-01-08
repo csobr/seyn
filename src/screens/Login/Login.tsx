@@ -14,7 +14,7 @@ import * as yup from 'yup';
 import {Type} from '../../styles/Font';
 import {setError, signin} from '../../store/auth/action';
 import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../../store/auth';
+import {RootState} from '../../store';
 
 type FormValues = {
   email: string;

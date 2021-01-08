@@ -1,7 +1,7 @@
 import {ThunkAction} from 'redux-thunk';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import {RootState} from '../auth/index';
+import {RootState} from '../index';
 import * as Types from './types';
 
 export const signup = (

@@ -14,7 +14,7 @@ import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from '../../constants/Icons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../../store/auth';
+import {RootState} from '../../store';
 import {signout} from '../../store/auth/action';
 
 type Params = {

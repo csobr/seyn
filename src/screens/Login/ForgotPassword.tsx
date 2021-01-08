@@ -5,7 +5,7 @@ import FormInput from '../../components/Form/FormInput';
 import FormButton from '../../components/Form/FormButton';
 import {ErrorMessage} from '../../components/Form';
 import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../../store/auth';
+import {RootState} from '../../store';
 import {
   setError,
   setLoading,

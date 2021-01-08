@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,32 +16,39 @@ import Icon from '../../constants/Icons';
 import UsersApi from '../../components/Users/UsersHook';
 import {AuthContext} from '../../components/Auth/AuthProvider';
 import {Type} from '../../styles/Font';
-import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../../store/auth';
-import {setSuccess} from '../../store/auth/action';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+
+
 
 export interface NavProps {
   navigate: any;
   navigation: NavigationStackProp<any, any>;
 }
 const Home: React.FC<NavProps> = (props) => {
-  const [{data, isLoading}] = UsersApi();
+  const [{ data, isLoading }] = UsersApi();
+  
+  const posts: readonly Posts[] = useSelector(
+    (state: PostsState) => state.posts,
+    shallowEqual
+  )
+
 
   const {navigation} = props;
   return (
     <SafeAreaView style={GlobalStyle.container}>
+
       <View style={{backgroundColor: Colors.home}}>
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Nearby</Text>
           <>
-            {data.map((uid) => (
+            {/* {posts.map((post: Posts) => (
               <TouchableOpacity
-                key={uid.id}
-                onPress={() => navigation.navigate('Profile', uid)}
+                key={post.id}
+                onPress={() => navigation.navigate('Profile', post)}
                 style={styles.profilePosition}>
-                <Image source={{uri: uid.photo}} style={styles.profileImage} />
+                <Image source={{ uri: post.photo }} style={styles.profileImage} />
               </TouchableOpacity>
-            ))}
+            ))} */}
           </>
         </View>
         <View style={styles.adressTitle}>
@@ -50,13 +57,11 @@ const Home: React.FC<NavProps> = (props) => {
         </View>
 
         <>
-          {/* {isError && <Text>Opps.. something went wrong</Text>} */}
-          {isLoading ? (
-            <Text>loading..</Text>
-          ) : (
+       
+{/*             
             <FlatList
               contentContainerStyle={styles.listPadding}
-              data={data}
+                  data={posts}
               renderItem={({item}) => (
                 <Item
                   time={item.time}
@@ -67,10 +72,11 @@ const Home: React.FC<NavProps> = (props) => {
                 />
               )}
               keyExtractor={(item, index) => index.toString()}
-            />
-          )}
+            /> */}
+        
         </>
-      </View>
+        </View>
+   
     </SafeAreaView>
   );
 };

@@ -8,7 +8,7 @@ import {
   ErrorMessage,
 } from '../../components/Form/index';
 import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../../store/auth/index';
+import {RootState} from '../../store/index';
 import {setError, signup} from '../../store/auth/action';
 
 const SignUp = ({}) => {

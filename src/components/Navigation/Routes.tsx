@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import AuthStack from './AuthNavigation';
 import AppNavigation from './AppNavigation';
 import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../../store/auth';
+import {RootState} from '../../store';
 import {
   getUserById,
   setLoading,
