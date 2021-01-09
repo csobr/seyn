@@ -1,18 +1,18 @@
 import * as Types from './types'
 
-export function addPosts(posts: Posts) {
+export function addPosts(post: Posts) {
     const action: PostsAction = {
         type: Types.ADD_POSTS,
-        posts
+        post
     }
 
     return simulateHttpRequest(action)
 }
 
-export function removePosts(posts: Posts) {
+export function removePosts(post: Posts) {
     const action: PostsAction = {
         type: Types.REMOVE_POSTS,
-     posts
+     post
     }
     return simulateHttpRequest(action)
 }

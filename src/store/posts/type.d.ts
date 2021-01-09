@@ -15,7 +15,7 @@ type PostsState = {
 
 type PostsAction = {
     type: string
-    posts: Posts
+    post: Posts
 }
 
 type DispatchType = (args: PostsAction) => PostsAction

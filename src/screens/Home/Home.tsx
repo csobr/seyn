@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -13,10 +13,8 @@ import {useNavigation} from '@react-navigation/native';
 import Colors from '../../styles/Colors';
 import GlobalStyle from '../../styles/GlobalStyles';
 import Icon from '../../constants/Icons';
-import UsersApi from '../../components/Users/UsersHook';
-import {AuthContext} from '../../components/Auth/AuthProvider';
 import {Type} from '../../styles/Font';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 
 
 
@@ -25,13 +23,11 @@ export interface NavProps {
   navigation: NavigationStackProp<any, any>;
 }
 const Home: React.FC<NavProps> = (props) => {
-  const [{ data, isLoading }] = UsersApi();
-  
-  const posts: readonly Posts[] = useSelector(
+
+  const getPosts: readonly Posts[] = useSelector(
     (state: PostsState) => state.posts,
     shallowEqual
   )
-
 
   const {navigation} = props;
   return (
@@ -41,14 +37,14 @@ const Home: React.FC<NavProps> = (props) => {
         <View style={styles.header}>
           <Text style={styles.sectionTitle}>Nearby</Text>
           <>
-            {/* {posts.map((post: Posts) => (
+            {getPosts.map((post) => (
               <TouchableOpacity
                 key={post.id}
                 onPress={() => navigation.navigate('Profile', post)}
                 style={styles.profilePosition}>
                 <Image source={{ uri: post.photo }} style={styles.profileImage} />
               </TouchableOpacity>
-            ))} */}
+            ))}  
           </>
         </View>
         <View style={styles.adressTitle}>
@@ -57,22 +53,23 @@ const Home: React.FC<NavProps> = (props) => {
         </View>
 
         <>
-       
-{/*             
             <FlatList
               contentContainerStyle={styles.listPadding}
-                  data={posts}
-              renderItem={({item}) => (
+                  data={getPosts}
+            renderItem={({ item}) => (
+            <>
                 <Item
                   time={item.time}
                   name={item.name}
                   title={item.title}
                   photo={item.photo}
                   transport={item.transport}
-                />
+                  />
+            
+                </>
               )}
               keyExtractor={(item, index) => index.toString()}
-            /> */}
+            />
         
         </>
         </View>
